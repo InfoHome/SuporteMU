@@ -1,0 +1,20 @@
+'I8,A,001'+chr(10)+
+'Q232,024'+chr(10)+
+'q450'+chr(10)+
+'rN'+chr(10)+
+'S4'+chr(10)+
+'D7'+chr(10)+
+'ZT'+chr(10)+
+'JF'+chr(10)+
+'OD'+chr(10)+
+'R171,0'+chr(10)+
+'f100'+chr(10)+
+'N'+chr(10)+
+'A50,0,0,2,1,1,N,"'+ ALLTRIM(curNfSaidaEtiq.EspDoc)+' '+ALLTRIM(curNfSaidaEtiq.NumNota)  +'"'+chr(10)+
+'A50,30,0,2,1,1,N,"'+ LEFT(ALLTRIM(curNfSaidaEtiq.CodPro)+' '+ALLTRIM(curNfSaidaEtiq.Descr),22) +'"'+chr(10)+
+'A50,60,0,2,1,1,N,"'+ LEFT(ALLTRIM(curNfSaidaEtiq.NumeroSerial),22) +'"'+chr(10)+
+'A50,90,0,2,1,1,N,"'+ SUBSTR(lcMensagemEtiqueta,1,22) +'"'+chr(10)+
+'A50,120,0,2,1,1,N,"'+ SUBSTR(lcMensagemEtiqueta,23,22) +'"'+chr(10)+
+'A50,150,0,2,1,1,N,"'+ SUBSTR(lcMensagemEtiqueta,45,22) +'"'+chr(10)+
+'A50,180,0,2,1,1,N,"'+ LEFT(curNfSaidaEtiq.TipoGarantia,50) +'"'+chr(10)+
+'P1'+CHR(10)+chr(13)

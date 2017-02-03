@@ -1,0 +1,13 @@
+'^XA'+chr(10)+
+'^MD22'+chr(10)+
+'^ASN,36,10^FO30,10^FD'+ALLTRIM(ITemFil.DESCR)+'^FS'+chr(10)+
+'^CWA,R:TIMES04^FO30,47^FD'+ALLTRIM(ItemFil.Nome)+'^FS'+chr(10)+
+'^BY2,3.0^FO16,69^B3N,N,85,Y,N^FD'+ALLTRIM(Itemfil.Codinterno)+'^FS'+chr(10)+
+'^CWA,R:TIMES04^FO33,185^FC%,L,#^FDEmis:%d/%m/%y^FS'+chr(10)+
+'^ASN,18,10^FO240,93^FD'+'A Vista^FS'+chr(10)+
+'^ASN,28,28^FO240,123^FD'+'R$^FS'+chr(10)+
+'^ASN,135,60^FO342,60^FD'+ALLTRIM(cprecoven)+'^FS'+chr(10)+
+'^ABN,18,10^FO275,181^FD'+'Prz(1+14)'+^FS'+chr(10)+
+'^AQN,40,40^FO387,190^FD'+ALLTRIM(cPrecoPrz)+'^FS'+chr(10)+
+'^PQ1,0,1,Y'+chr(10)+
+'^XZ'+chr(10)

@@ -1,0 +1,14 @@
+'^XA'+chr(13)+
+'^SS013,062,048,0209,162,056'+chr(13)+
+'^MNY'+chr(13)+
+'^FO020,010^GB630,1,60^FS'+chr(13)+
+'^FO080,020^A0N,60,100^FR^FDPROMOCAO^FS'+chr(13)+
+'^FO040,075^A0N,15,15^FD'+PADL(ALLTRIM(STR(HOUR(fObterDataHora()))),2,"0")+PADL(ALLTRIM(STR(MINUTE(fObterDataHora()))),2,"0")+'^FS'+chr(13)+
+'^FO040,090^A0N,15,15^FD'+ALLTRIM(strtran(dtoc(mdataproc),"/",""))+'^FS'+chr(13)+
+'^FO200,100^FB180,1,0,R,0^A0N,60,50^FD'+ALLTRIM(TRANSFORM(EtiqProduto.PrecoPromocao,'9999999.99'))+'^FS'+chr(13)+
+'^FO570,110^A0N,24,19^FDA VISTA^FS'+chr(13)+
+'^FO590,135^A0N,24,19^FDOU^FS'+chr(13)+
+'^FO583,160^A0N,28,23^FD10x^FS'+chr(13)+
+'^FO010,177^A0N,30,24^FD'+ALLTRIM(EtiqProduto.Codpro)+'^FS'+chr(13)+
+'^FO100,177^A0N,30,24^FD'+ALLTRIM(EtiqProduto.Descr)+'^FS'+chr(13)+
+'^XZ'+chr(13)

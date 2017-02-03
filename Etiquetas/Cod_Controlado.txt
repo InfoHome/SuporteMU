@@ -1,0 +1,18 @@
+'^XA'+chr(13)+
+'^MD10^FD'+chr(13)+
+'^FO10,35^FB245,1,0,C,0^A0N,22,20^FD'+ALLTRIM(EtiqProduto.Codpro+EtiqProduto.DV)+' - '+ALLTRIM(left(EtiqProduto.Descr,at(' ',EtiqProduto.Descr)))+'^FS'+chr(13)+
+'^FO10,60^FB245,1,0,C,0^A0N,34,20^FD'+ALLTRIM(Str(EtiqProduto.Sequencial))+'^FS'+chr(13)+
+'^FO10,109^FB245,1,0,C,0^A0N,22,N^FD'+ALLTRIM(EtiqProduto.CNPJFilial)+'^FS'+chr(13)+
+'^FO10,135^FB245,3,0,C,0^A0N,22,20^FDSAO JORGE SHOPPING^FS'+chr(13)+
+'^FO10,159^FB245,3,0,C,0^A0N,22,20^FD'+ALLTRIM(EtiqProduto.TelefoneFilial)+'^FS'+chr(13)+
+'^FO310,35^FB245,1,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('EtiqProduto',.T.), ALLTRIM(EtiqProduto.Codpro+EtiqProduto.DV)+' - '+ALLTRIM(left(EtiqProduto.Descr,at(' ',EtiqProduto.Descr))),'')+'^FS'+chr(13)+
+'^FO310,60^FB245,1,0,C,0^A0N,34,20^FD'+iif(fproximoregistro('EtiqProduto',.F.), ALLTRIM(Str(EtiqProduto.Sequencial)),'')+'^FS'+chr(13)+
+'^FO310,109^FB245,1,0,C,0^A0N,22,N^FD'+iif(fproximoregistro('EtiqProduto',.F.), ALLTRIM(EtiqProduto.CNPJFilial),'')+'^FS'+chr(13)+
+'^FO310,135^FB245,3,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('EtiqProduto',.F.), 'SAO JORGE SHOPPING','')+'^FS'+chr(13)+
+'^FO310,159^FB245,3,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('EtiqProduto',.F.), ALLTRIM(EtiqProduto.TelefoneFilial),'')+'^FS'+chr(13)+
+'^FO599,35^FB245,1,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('EtiqProduto',.T.), ALLTRIM(EtiqProduto.Codpro+EtiqProduto.DV)+' - '+ALLTRIM(left(EtiqProduto.Descr,at(' ',EtiqProduto.Descr))),'')+'^FS'+chr(13)+
+'^FO599,60^FB245,1,0,C,0^A0N,34,20^FD'+iif(fproximoregistro('EtiqProduto',.F.), ALLTRIM(Str(EtiqProduto.Sequencial)),'')+'^FS'+chr(13)+
+'^FO599,109^FB245,1,0,C,0^A0N,22,N^FD'+iif(fproximoregistro('EtiqProduto',.F.), ALLTRIM(EtiqProduto.CNPJFilial),'')+'^FS'+chr(13)+
+'^FO599,135^FB245,3,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('EtiqProduto',.F.), 'SAO JORGE SHOPPING','')+'^FS'+chr(13)+
+'^FO599,159^FB245,3,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('EtiqProduto',.F.), ALLTRIM(EtiqProduto.TelefoneFilial),'')+'^FS'+chr(13)+
+'^XZ'+chr(13)

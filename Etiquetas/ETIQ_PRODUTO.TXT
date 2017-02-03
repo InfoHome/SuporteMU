@@ -1,0 +1,16 @@
+'^XA'+chr(19)+
+'^MD30'+chr(19)+
+'^LL160'+chr(19)+
+'^LH22,40'+chr(19)+
+'^PRA'+chr(19)+
+'^PQ1'+chr(19)+
+'^FO116,04^A0N,23,19^FD'  +    (ITemFil.codpro)+'^FS'+chr(19)+
+'^FO388,04^A0N,23,19^FD'  +    (ITemFil.codpro)+'^FS'+chr(19)+
+'^FO659,04^A0N,23,19^FD'  +    (ITemFil.codpro)+'^FS'+chr(19)+
+'^FO03,35^A0N,23,14^FD'  +LEFT(ITemFil.DESCR,35)+'^FS'+chr(19)+
+'^FO276,35^A0N,23,14^FD'  +LEFT(ITemFil.DESCR,35)+'^FS'+chr(19)+
+'^FO549,35^A0N,23,14^FD'  +LEFT(ITemFil.DESCR,35)+'^FS'+chr(19)+
+'^FO41,75^BEN,52,Y,N^FD' +ALLTRIM(itemfil.CodInterno)+'^FS'+chr(19)+
+'^FO316,75^BEN,52,Y,N^FD' +ALLTRIM(itemfil.CodInterno)+'^FS'+chr(19)+
+'^FO590,75^BEN,52,Y,N^FD' +ALLTRIM(itemfil.CodInterno)+'^FS'+chr(19)+
+'^XZ'+chr(19)

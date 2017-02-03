@@ -1,0 +1,17 @@
+<xpml><page quantity='0' pitch='20.0 mm'></xpml>n
+M0500
+O0220
+V0
+f296
+SC
+D
+<xpml></page></xpml><xpml><page quantity='1' pitch='20.0 mm'></xpml>L
+D11
+PC
+A2
+1e4203400180012C123456789012&E3
+1911A06000600441234567890123
+1911A0600590012DESCRICAO PARC PRODUTO
+Q0001
+E
+<xpml></page></xpml><xpml><end/></xpml>

@@ -1,0 +1,21 @@
+'N'+chr(10)+
+'OD'+chr(10)+
+'q816'+chr(10)+
+'Q177,24+0'+chr(10)+
+'S3'+chr(10)+
+'D8'+chr(10)+
+'ZT'+chr(10)+
+'TTh:m'+chr(10)+
+'TDy2.mn.dd'+chr(10)+
+'A020,15,0,3,1,1,N,"CONSTRULAR'   +'"'+chr(10)+
+'A005,43,0,2,1,1,N,"' + left(EtiqProduto.Descr,19) +'"'+chr(10)+
+'B005,72,0,E80,3,1,50,B,"' + ALLTRIM(EtiqProduto.Codpro)+ALLTRIM(EtiqProduto.DV) +'"'+chr(10)+
+'A310,15,0,3,1,1,N,"' + iif(fproximoregistro('Itemfil',.F.),"CONSTRULAR",'') +'"'+chr(10)+
+'A285,43,0,2,1,1,N,"' + iif(fproximoregistro('Itemfil',.F.),left(EtiqProduto.Descr,19),'') +'"'+chr(10)+
+'B300,72,0,E80,3,1,50,B,"' + iif(fproximoregistro('Itemfil',.F.),ALLTRIM(EtiqProduto.Codpro+EtiqProduto.DV),'') +'"'+chr(10)+
+'A599,15,0,3,1,1,N,"' + iif(fproximoregistro('Itemfil',.F.),"CONSTRULAR",'') +'"'+chr(10)+
+'A580,43,0,2,1,1,N,"' + iif(fproximoregistro('Itemfil',.F.),left(EtiqProduto.Descr,19),'') +'"'+chr(10)+
+'B580,72,0,E80,3,1,50,B,"' + iif(fproximoregistro('Itemfil',.F.),ALLTRIM(EtiqProduto.Codpro+EtiqProduto.DV),'') +'"'+chr(10)+
+'P1'+chr(10)+chr(13)
+
+

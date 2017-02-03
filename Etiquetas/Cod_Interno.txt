@@ -1,0 +1,12 @@
+'^XA'+chr(13)+
+'^MD10^FD'+chr(13)+
+'^FO20,23^FB220,1,0,C,0^A0N,34,42^FD'+ALLTRIM(Itemfil.Codpro)+ALLTRIM(Itemfil.Dv)+'^FS'+chr(13)+
+'^FO35,52^BY2,1,40^BCN,40,N,N^FD'+ALLTRIM(Itemfil.Codpro)+ALLTRIM(Itemfil.Dv)+'^FS'+chr(13)+
+'^FO20,97^FB245,3,0,C,0^A0N,22,20^FD'+ALLTRIM(ITemFil.DESCR)+'^FS'+chr(13)+
+'^FO310,23^FB220,1,0,C,0^A0N,34,42^FD'+iif(fproximoregistro('Itemfil',.T.),ALLTRIM(Itemfil.Codpro)+ALLTRIM(Itemfil.Dv),'')+'^FS'+chr(13)+
+'^FO325,52^BY2,1,40^BCN,40,N,N^FD'+iif(fproximoregistro('Itemfil',.F.),ALLTRIM(Itemfil.Codpro+Itemfil.Dv),'')+'^FS'+chr(13)+
+'^FO310,97^FB245,3,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('Itemfil',.F.),ALLTRIM(ITemFil.DESCR),'')+'^FS'+chr(13)+
+'^FO599,23^FB220,1,0,C,0^A0N,34,42^FD'+iif(fproximoregistro('Itemfil',.T.),ALLTRIM(Itemfil.Codpro)+ALLTRIM(Itemfil.Dv),'')+'^FS'+chr(13)+
+'^FO614,52^BY2,1,40^BCN,40,N,N^FD'+iif(fproximoregistro('Itemfil',.F.),ALLTRIM(Itemfil.Codpro)+ALLTRIM(Itemfil.Dv),'')+'^FS'+chr(13)+
+'^FO599,97^FB245,3,0,C,0^A0N,22,20^FD'+iif(fproximoregistro('Itemfil',.F.),ALLTRIM(ITemFil.DESCR),'')+'^FS'+chr(13)+
+'^XZ'+chr(13)

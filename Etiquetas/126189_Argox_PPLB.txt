@@ -1,0 +1,8 @@
+'A75,65,0,4,1,1,N,'+ALLTRIM(curNfSaidaEtiq.EspDoc)+' '+ALLTRIM(curNfSaidaEtiq.NumNota)+CHR(10)+
+'A75,85,0,4,1,1,N,'+LEFT(ALLTRIM(curNfSaidaEtiq.CodPro)+' '+ALLTRIM(curNfSaidaEtiq.Descr),22)+CHR(10)+
+'A75,105,0,4,1,1,N,'+LEFT(ALLTRIM(curNfSaidaEtiq.NumeroSerial),22)+CHR(10)+
+'A75,125,0,4,1,1,N,'+SUBSTR(lcMensagemEtiqueta,1,22)+CHR(10)+
+'A75,145,0,4,1,1,N,'+SUBSTR(lcMensagemEtiqueta,23,22)+CHR(10)+
+'A75,165,0,4,1,1,N,'+SUBSTR(lcMensagemEtiqueta,45,22)+CHR(10)+
+'A75,185,0,4,1,1,N,'+LEFT(curNfSaidaEtiq.TipoGarantia,50)+CHR(10)+
+'P1,1' + CHR(10)

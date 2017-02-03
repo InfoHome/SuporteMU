@@ -1,0 +1,13 @@
+'^XA'+chr(15)+
+'^MD30'+chr(15)+
+'^LL220'+chr(15)+
+'^LH32'+chr(15)+
+'^PRA'+chr(15)+
+'^PQ1'+chr(15)+
+'^FO35,04^A0N,40,30^FD'+RIGHT(ALLTRIM(ITemFil.DESCR),35)+'^FS'+chr(30)+
+'^FO35,55^A0N,28,32^FDCOD:'  +    (ITemFil.codpro)+'^FS'+chr(19)+
+'^FO35,95^BEN,65,Y,N^FD'+ALLTRIM(ITemFil.CodInterno)+'^FS'+chr(15)+
+'^FO270,95^ATN,20,63^FDR$ '+ALLTRIM(cprecoven)+'^FS'+chr(30)+
+'^FO400,150^ADN,20,08^SN'+'A VISTA,N'+'^FS'+chr(10)+
+'^FO270,150^ADN,05,05^FD'+ALLTRIM(unid1)+'^FS'+chr(30)+
+'^XZ'+chr(15)

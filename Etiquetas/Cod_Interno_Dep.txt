@@ -1,0 +1,26 @@
+'^XA'+chr(13)+
+'^FO25,20^A0N,15,15^FDProduto^FS'+chr(13)+
+'^FO188,20^A0N,15,15^FDDetalhe^FS'+chr(13)+
+'^FO313,20^A0N,15,15^FDPalet^FS'+chr(13)+
+'^FO15,35^GB165,62,2,B^FS'+chr(13)+
+'^FO178,35^GB127,62,2,B^FS'+chr(13)+
+'^FO303,35^GB92,62,2,B^FS'+chr(13)+
+'^FO15,48^FB175,1,0,C,0^A0N,50,50^FD'+ALLTRIM(EtiqProduto.Codpro)+'^FS'+chr(13)+
+'^FO178,48^FB137,1,0,C,0^A0N,50,50^FD'+ALLTRIM(left(EtiqProduto.lote,5))+'^FS'+chr(13)+
+'^FO303,48^FB102,1,0,C,0^A0N,50,50^FD'+LEFT(EtiqProduto.Embalagem,2)+'^FS'+chr(13)+
+'^FO10,105^BY2,1,50^BCN,50,N,N^FD'+ALLTRIM(EtiqProduto.Codpro+EtiqProduto.DV)+ALLTRIM(EtiqProduto.lote)+' '+LEFT(EtiqProduto.Embalagem,2)+'^FS'+chr(13)+
+'^FO10,161^FB390,2,0,C,0^A0N,26,26^FD'+ALLTRIM(EtiqProduto.Descr)+'^FS'+chr(13)+
+'^FO10,215^FB390,1,0,C,0^A0N,26,26^FD'+ALLTRIM(EtiqProduto.DescrEmbalagem)+'^FS'+chr(13)+
+'^FO450,20^A0N,15,15^FDProduto^FS'+chr(13)+
+'^FO613,20^A0N,15,15^FDDetalhe^FS'+chr(13)+
+'^FO738,20^A0N,15,15^FDPalet^FS'+chr(13)+
+'^FO440,35^GB165,62,2,B^FS'+chr(13)+
+'^FO603,35^GB127,62,2,B^FS'+chr(13)+
+'^FO728,35^GB92,62,2,B^FS'+chr(13)+
+'^FO440,48^FB175,1,0,C,0^A0N,50,50^FD'+ALLTRIM(EtiqProduto.Codpro)+'^FS'+chr(13)+
+'^FO603,48^FB137,1,0,C,0^A0N,50,50^FD'+ALLTRIM(left(EtiqProduto.lote,5))+'^FS'+chr(13)+
+'^FO728,48^FB102,1,0,C,0^A0N,50,50^FD'+LEFT(EtiqProduto.Embalagem,2)+'^FS'+chr(13)+
+'^FO435,105^BY2,1,50^BCN,50,N,N^FD'+ALLTRIM(EtiqProduto.Codpro)+'^FS'+chr(13)+
+'^FO435,161^FB390,2,0,C,0^A0N,26,26^FD'+ALLTRIM(EtiqProduto.Descr)+'^FS'+chr(13)+
+'^FO435,215^FB390,1,0,C,0^A0N,26,26^FD'+ALLTRIM(EtiqProduto.DescrEmbalagem)+'^FS'+chr(13)+
+'^XZ'+chr(13)

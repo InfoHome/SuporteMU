@@ -1,0 +1,9 @@
+'^XA'+chr(13)+
+'^MD10^FD'+chr(13)+
+'^BY3,2,115^FT506,147^BEN,,Y,N'+chr(13)+
+'^FD'+ALLTRIM(Itemfil.Codinterno)+'^FS'+chr(13)+
+'^FT477,206^A0N,17,19^FH\^FD'+ALLTRIM(ITemFil.DESCR)+'^FS'+chr(13)+
+'^BY3,2,120^FT105,152^BEN,,Y,N'+chr(13)+
+'^FD'+iif(fproximoregistro('Itemfil',.T.),ALLTRIM(Itemfil.Codinterno),'')+'^FS'+chr(13)+
+'^FT80,214^A0N,20,19^FH\^FD'+iif(fproximoregistro('Itemfil',.F.),ALLTRIM(ITemFil.DESCR),'')+'^FS'+chr(13)+
+'^PQ1,0,1,Y^XZ'+chr(13)

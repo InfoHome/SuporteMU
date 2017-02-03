@@ -1,0 +1,16 @@
+'Q208,019'+CHR(10)+
+'q831'+CHR(10)+
+'rN'+CHR(10)+
+'S1'+CHR(10)+
+'D7'+CHR(10)+
+'ZT'+CHR(10)+
+'JB'+CHR(10)+
+'OD'+CHR(10)+
+'R4,0'+CHR(10)+
+'N'+CHR(10)+
+'A30,13,0,3,1,1,N,"'+SUBSTR(ALLTRIM(itemfil.DESCRICAOLONGA),1,50)+'"'+CHR(10)+
+'A30,33,0,3,1,1,N,"'+SUBSTR(ALLTRIM(itemfil.DESCRICAOLONGA),50,100)+'"'+CHR(10)+
+'B64,56,0,E30,2,4,92,B,"'+ALLTRIM(ITemFil.codinterno)+'"'+CHR(10)+
+'A334,79,0,2,4,4,N,"'+SUBSTR(ALLTRIM(cprecoven),1,35)+'"'+CHR(10)+
+'A281,67,0,2,2,2,N,"R$"' +CHR(10)+
+'P1'+CHR(10)

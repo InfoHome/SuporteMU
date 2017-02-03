@@ -1,0 +1,23 @@
+'Q432,024'+CHR(10)+
+'q831'+CHR(10)+
+'rN'+CHR(10)+
+'S4'+CHR(10)+
+'D7'+CHR(10)+
+'ZT'+CHR(10)+
+'JF'+CHR(10)+
+'OD'+CHR(10)+
+'R96,0'+CHR(10)+
+'f100'+CHR(10)+
+'N'+CHR(10)+
+'A610,167,2,3,1,1,N,"'SUBSTR(ALLTRIM(itemfil.NomeFantasia),1,20)+'"'+CHR(10)+
+'A484,126,2,2,2,2,N,"'+ALLTRIM(EtiqProduto.Lote)+'"'+chr(10)+
+'A608,125,2,2,2,2,N,"Lote:"'+CHR(10)+
+'A482,77,2,2,2,2,N,"VOLUME"
+'A605,76,2,2,2,2,N,"'+ALLTRIM(ITemFil.UNID1)+'"'+chr(10)+
+'A609,192,2,3,1,1,N,"Fabricante"'+CHR(10)+
+'A610,243,2,2,2,2,N,"'+SUBSTR(ALLTRIM(EtiqProduto.DESCR),1,24)+'"'+CHR(10)+ 
+'A609,282,2,2,2,2,N,"'+SUBSTR(ALLTRIM(EtiqProduto.DESCR),31,48)+'"'+CHR(10)+ 
+'B608,405,2,1,3,9,80,B,"'+ALLTRIM(ITemFil.codinterno)+'"'+CHR(10)+
+'A219,402,2,1,3,3,N,"'+ALLTRIM(Itemfil.Codpro)+'"'+chr(10)+
+'A228,49,2,2,1,1,N,"DALLA BERNARDINA"'+CHR(10)+
+'P1'+CHR(10)

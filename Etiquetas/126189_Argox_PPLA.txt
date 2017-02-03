@@ -1,0 +1,8 @@
+'1411000'+'0026'+'0280'+ALLTRIM(curNfSaidaEtiq.EspDoc)+' '+ALLTRIM(curNfSaidaEtiq.NumNota)+CHR(13)+
+'1411000'+'0026'+'0261'+LEFT(ALLTRIM(curNfSaidaEtiq.CodPro)+' '+ALLTRIM(curNfSaidaEtiq.Descr),22)+CHR(13)+
+'1411000'+'0026'+'0242'+LEFT(ALLTRIM(curNfSaidaEtiq.NumeroSerial),22)+CHR(13)+
+'1411000'+'0026'+'0223'+SUBSTR(lcMensagemEtiqueta,1,22)+CHR(13)+
+'1411000'+'0026'+'0204'+SUBSTR(lcMensagemEtiqueta,23,22)+CHR(13)+
+'1411000'+'0026'+'0185'+SUBSTR(lcMensagemEtiqueta,45,22)+CHR(13)+
+'1411000'+'0026'+'0166'+LEFT(curNfSaidaEtiq.TipoGarantia,50)+CHR(13)+
+'E'+CHR(13)

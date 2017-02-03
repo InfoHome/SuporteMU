@@ -1,0 +1,17 @@
+﻿'^XA'+chr(13)+
+'^MMT'+chr(13)+
+'^PW599'+chr(13)+
+'^LL0416'+chr(13)+
+'^LS0'+chr(13)+
+'^FO141,76^GB323,42,42^FS'+chr(13)+
+'^FT464,84^A0I,34,33^FR^FH\^FD'+ALLTRIM(EtiqProduto.Lote)+'^FS'+chr(13)+
+'^FO467,75^GB68,42,42^FS'+chr(13)+
+'^FT535,83^A0I,34,33^FR^FH\^FDLote:^FS'+chr(13)+
+'^FT535,153^A0I,36,36^FH\^FD'+SUBSTR(ALLTRIM(EtiqProduto.DESCR),31,60)+'^FS'+chr(13)+
+'^FT535,192^A0I,36,36^FH\^FD'+SUBSTR(ALLTRIM(EtiqProduto.DESCR),1,30)+'^FS'+chr(13)+
+'^BY2,3,94^FT240,265^BCI,,Y,N'+chr(13)+
+'^FD>;'+ALLTRIM(EtiqProduto.CodPro)+'>6'+RIGHT(ALLTRIM(EtiqProduto.CodPro),1)+'^FS'+chr(13)+
+'^BY2,3,97^FT533,264^BCI,,Y,N'+chr(13)+
+'^FD>;'+ALLTRIM(EtiqProduto.codinterno)+'>6'+RIGHT(ALLTRIM(EtiqProduto.Codinterno),1)+'^FS'+chr(13)+
+'^FT197,30^A0I,20,19^FH\^FDDALLA BERNARDINA^FS'+chr(13)+
+'^PQ1,0,1,Y^XZ'+chr(13)

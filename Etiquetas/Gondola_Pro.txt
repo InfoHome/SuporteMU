@@ -1,0 +1,12 @@
+'^XA'+chr(13)+
+'^MD10^FD'+chr(13)+
+'^FO020,010^GB530,1,80^FS'+chr(13)+
+'^FO050,020^A0N,80,100^FR^FDPROMOCAO^FS'+chr(13)+
+'^FO010,100^A0N,40,25^FD'+ALLTRIM(EtiqProduto.Descr)+'^FS'+chr(13)+
+'^FO010,140^A0N,50,50^FD'+ALLTRIM(EtiqProduto.Codpro)+'^FS'+chr(13)+
+'^FO170,140^A0N,20,20^FD1551^FS'+chr(13)+
+'^FO170,160^A0N,20,20^FD'+ALLTRIM(strtran(dtoc(mdataproc),"/",""))+'^FS'+chr(13)+
+'^FO250,140^BY2,1,35^BCN,35,N,N^FD'+ALLTRIM(EtiqProduto.Codpro)+'^FS'+chr(13)+
+'^FO480,160^A0N,25,17^FDA VISTA^FS'+chr(13)+
+'^FO0,180^FB550,1,0,R,0^A0N,150,120^FD'+ALLTRIM(TRANSFORM(EtiqProduto.PrecoPromocao,'9999999.99'))+'^FS'+chr(13)+
+'^XZ'+chr(13)

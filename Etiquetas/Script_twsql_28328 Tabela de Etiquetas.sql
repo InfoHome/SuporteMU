@@ -1,0 +1,1 @@
+INSERT INTO  tabelas_spt (nome)  VALUES ('Etiquetatf')

@@ -1,0 +1,20 @@
+'N'+chr(10)+
+'OD'+chr(10)+
+'q816'+chr(10)+
+'Q15,24+1'+chr(10)+
+'S3'+chr(10)+
+'D8'+chr(10)+
+'ZT'+chr(10)+
+'TTh:m'+chr(10)+
+'TDy2.mn.dd'+chr(10)+
+'A80,3,0,4,1,2,N,"' + LEFT(Itemfil.DESCR,35)+'"'+chr(10)+
+'A660,3,0,4,1,2,N,"'+" - "+ALLTRIM(ITemFil.UNID1)+'"'+chr(10)+
+'A365,70,0,3,1,2,N,"' +  ALLTRIM(Itemfil.CodPro)+'"'+chr(10)+
+'B250,55,0,3,2,5,79,A,"'+ ALLTRIM(Itemfil.CodInterno)+'"'+chr(10)+
+'A250,170,0,4,2,2,N,"R$ "'+chr(10)+
+'A340,170,0,4,3,2,N,"' +ALLTRIM(cprecoven)+'"'+chr(10)+
+'A345,140,0,4,1,1,N,"'+ALLTRIM(Itemfil.CodInterno)+'"'+chr(10)+
+'A030,55,0,3,1,1,N,"COD. "'+chr(10)+
+'A090,55,0,3,1,2,N,"' +  ALLTRIM(Itemfil.CodPro)+'"'+chr(10)+
+'A030,95,0,3,1,2,N,"' +  ALLTRIM(Itemfil.Modelo)+'"'+chr(10)+
+'P1'+chr(10)+chr(13)
