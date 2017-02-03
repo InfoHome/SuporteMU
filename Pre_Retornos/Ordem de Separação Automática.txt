@@ -1,0 +1,26 @@
+Por favor considerar as seguintes orientações:
+
+1 - No parâmetro Impressora para ordem de separação automática de expedição local e outro local. (Utilizado Filial - Domínio Núcleo Comercial).
+Configure o caminho do diretório onde está o arquivo de impressão (Relacad.cad)
+
+Exemplo: 
+No meu caso esse arquivo fica em: C:\Microuni\Enterprise\Cad\Relacad.cad
+
+2 - Entrar em C:\Microuni\Enterprise e copie o programa Suporte.exe para C:\Microuni\Enterprise\Cad
+2.1 - Acessar C:\Microuni\Enterprise\Cad e executar o programa Suporte.exe
+2.2 - No cursor, digitar: use Relacad.cad pressione [Enter] e depois clique em OK
+2.3 - Em seguida digite: brow pressione [Enter]
+2.4 - Na coluna "NumOpcao" encontre a linha ORDEMSEP 
+
+Se 
+não existir esta linha acesse o menu "Table\Append New Record" e insira a linha ORDEMSEP, 
+os demais parâmetros veja nas indicações abaixo .
+
+2.5 - Na Linha ORDEMSEP informe o valor P na coluna Disp
+2.6 - Ainda na Linha ORDEMSEP informe o valor \\IP\Nome_Compartilhamento na coluna ArqSaida
+2.7 - Pressionar Ctrl + W para salvar e depois clique em OK. 
+2.8 - Digitar: quit [Enter] para sair.
+
+Em caso de dúvida dos demais parâmetros desse arquivo assista o vídeo a seguir na base de conhecimento de sua extranet:
+#MUVD - Relatórios Gerenciais - Recursos do botão Parâmetros dos relatórios.mp4
+

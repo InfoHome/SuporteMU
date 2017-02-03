@@ -1,0 +1,20 @@
+Bom dia
+
+Acesse a <b>Base de Conhecimento</b> pela sua EXTRANET e assista os vídeos abaixo, neles contas as orientações necessárias 
+para que possa manter seu ambiente de sistema atualizado:
+
+#MUVD - Estrutura - S1.6 - Atualização Masteren.mp4
+#MUVD - Estrutura - Links para atualização Versão HCU - Home Center Unica.mp4
+#MUVD - Estrutura - Links de atualização MUNFE versão 4.mp4
+#MUVD - Estrutura - Links de atualização MUNFE versão 4.1.x.x.mp4
+#MUVD - Estrutura - Atualização dos Módulos Trade.mp4
+#MUVD - Estrutura - Links para atualização Versão TRADEWIN E MONITORNFE.mp4
+#MUVD - Estrutura - Links para atualização ESGE(Validar).mp4
+#MUVD - Estrutura - Parametrização dll para validar IE inclusive da Bahia.mp4
+#MUVD - Estrutura - Atualização da dll SRVCUSTO.DLL.mp4
+#MUVD - Estrutura - Usuário predefinido ao carregar o sistema.mp4
+#MUVD - Estrutura - DANFE sem código de barras (Bcode128).mp4
+#MUVD - Estrutura - Configurações básicas CobrebemX (Principais causas de erros para rotina já implantada).mp4
+
+
+A disposição

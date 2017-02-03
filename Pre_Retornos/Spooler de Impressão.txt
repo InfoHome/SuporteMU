@@ -1,0 +1,14 @@
+
+Boa tarde
+
+1 - No menu Iniciar\Executar do Windows digite: <b>services.msc</b> e pressione a tecla Enter.
+2 - Irá abrir a tela <b>Serviços</b>
+3 - Encontre na lista de serviços o serviço com o Nome <b>Spooler de Impressão</b>
+4 - Clique com o botão direito do Mouse sobre o serviço <b>Spooler de Impressão</b> e clique em <b>Reiniciar</b>
+
+5 - Reinicie os Monitores.
+
+Se o problema persistir entre em contato com uma empresas especializada para verificar porque o <b>Spooler de Impressão do Windows</b> 
+está parando pode ser que alguns dos drivers de impressão instalados nesse servidor precisem ser reinstalados.
+
+A disposição
