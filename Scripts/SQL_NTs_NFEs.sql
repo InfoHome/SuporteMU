@@ -1444,3 +1444,111 @@ IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'COMP
 alter TABLE COMPLEMENTONFENTRA add VALORFORNECIDO NUMERIC(15,2)
 
 go
+
+*********************************
+
+NUMERO:
+
+*********************************
+
+alter TABLE ITNFSAICAD add valipi [numeric](15, 2) NULL
+go
+alter TABLE ITNFSAICOMPLEMENTO add [ValorDesconto] [numeric](15, 2) NULL
+go
+alter TABLE ITNFSAICOMPLEMENTO add [ValorSeguro] [numeric](15, 2) NULL
+go
+
+IF not EXISTS (SELECT 1 FROM ITEM WHERE OID = 37047)
+
+insert into item (rescopo, criadopor, atualizadopor, codigo, criadoem, atualizadoem , observacao, nome, cid, oid, excluido) 
+
+values (7,1,1,' ','01/01/01','01/01/01','Determina se a filial tratará as regras fiscais de acordo com o Convenio 52/91. Valores possíveis S ou N.','Participante do Convênio 52/91',18,37047,0)
+
+go
+
+IF not EXISTS (SELECT 1 FROM CATEGORIA WHERE OID = 37047)
+
+insert into categoria (rsuper, nomeinterno, oid) values (11767,'PARTICIPANTE_CONV_52_91',37047)
+
+go
+
+IF not EXISTS (SELECT 1 FROM DADOADICIONAL WHERE OID = 37046)
+
+insert into dadoadicional (RCLASSECONCRETA,RAPLICATIVO,RDOMINIO,RLISTA,RTIPO,RITEM,RESTRICAO,VISIVEL,MASCARA,PADRAO,MAXIMO,MINIMO,VALOR,OID) 
+
+values (7,1884 ,16024,7,37047,10128,0,0,'A',' ',0,0,'',37046)
+
+go
+
+IF not EXISTS (SELECT 1 FROM ADITIVO WHERE OID = 37048)
+
+insert into aditivo (RITEM,RDEFINICAO,SVALOR,OID) values (1,37046,'',37048)
+
+go
+
+IF NOT EXISTS (SELECT 1 FROM SYSCOLUMNS WHERE name = 'NUMEROREGISTRO' and syscolumns.id IN (SELECT ID FROM SYSOBJECTS WHERE TYPE='U' AND name='ProdutoCad'))
+
+alter table ProdutoCad add NUMEROREGISTRO varchar(40) NULL
+
+go
+
+
+/*********************************
+
+NUMERO:176391
+
+*********************************
+*/
+
+
+-- --------------------------------------
+
+-- SCRIPT: scriptSQLPadrao
+
+-- --------------------------------------
+
+-- Tabela ITEMFILEST
+
+ALTER TABLE ITEMFILEST ADD PISMEDIO NUMERIC(15,5)
+
+ALTER TABLE ITEMFILEST ADD PISMEDIOINIC NUMERIC(15,5)
+
+ALTER TABLE ITEMFILEST ADD COFINSMEDIO NUMERIC(15,5)
+
+ALTER TABLE ITEMFILEST ADD COFINSMEDIOINIC NUMERIC(15,5)
+
+go
+
+
+
+-- Tabela ITFILCMEST
+
+ALTER TABLE ITFILCMEST ADD PISMEDIO NUMERIC(15,5)
+
+ALTER TABLE ITFILCMEST ADD COFINSMEDIO NUMERIC(15,5)
+
+go
+
+
+-- Tabela ITNFENTCOMPLEMENTO
+
+ALTER TABLE ITNFENTCOMPLEMENTO ADD STMEDIA NUMERIC(15,5)
+
+ALTER TABLE ITNFENTCOMPLEMENTO ADD PISMEDIO NUMERIC(15,5)
+
+ALTER TABLE ITNFENTCOMPLEMENTO ADD COFINSMEDIO NUMERIC(15,5)
+
+go
+
+
+-- Tabela ITNFSAICOMPLEMENTO
+
+ALTER TABLE ITNFSAICOMPLEMENTO ADD STMEDIA NUMERIC(15,5)
+
+ALTER TABLE ITNFSAICOMPLEMENTO ADD PISMEDIO NUMERIC(15,5)
+
+ALTER TABLE ITNFSAICOMPLEMENTO ADD COFINSMEDIO NUMERIC(15,5)
+
+go
+
+

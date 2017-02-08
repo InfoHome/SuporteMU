@@ -69,6 +69,7 @@ select
 Into #TempE14 from ImportacaoAto_Cotep 
 where 
 	left(registro,3) = 'E14' -- Registro tipo E14 – Cupom Fiscal, Nota Fiscal de Venda a Consumidor ou Bilhete de Passagem;
+	and substring(registro,123,1) = 'N'
 --------------------------------------------------------------------------------------------------------------
 -- Detalhe do Cupom (Itens)
 -- Alimentar os registros E15 na tabela temporária (#TempE15)
@@ -101,7 +102,7 @@ select
 into #TempE15 from ImportacaoAto_Cotep 
 where 
 	left(registro,3) = 'E15' -- Registro tipo E15 – Detalhe do Cupom Fiscal, da Nota Fiscal de Venda a Consumidor ou do Bilhete de Passagem;
-
+	and substring(registro,231,1) = 'N'
 --------------------------------------------------------------------------------------------------------------
 -- select * from ImportacaoAto_Cotep
 -- select * from #TempE14
