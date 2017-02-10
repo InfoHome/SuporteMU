@@ -1,0 +1,18 @@
+Boa tarde 
+
+A rotina funciona da seguinte forma:
+
+1 - Se o Crédito de Devolução(CREDEV) for utilizado em uma <B>BAIXA</B>, exemplo: No Recebimento no Checkout ou Na Baixa de Contas a Receber no Masteren
+então é possível estornar o MOVIMENTO DE BAIXA, inclusive confirmei estas informações com Francisco e com as simulações que fiz em sua base de testes aqui na Microuniverso.
+
+2 - Quando o Crédito de Devolução(CREDEV) é utilizado na venda como um "Tipo de Documento", ou seja, o Tipo de documento do orçamento for "Crédito Devolução", quando esse venda 
+for Faturada no ECF ou no Checkout, nesse momento o crédito é PAGO e gerado o número de Movimento desse Pagamento. Esse movimento não pode ser estornado pela rotina citada anteriormente.
+
+Neste caso, existe duas alternativas para ajustar o financeiro do cliente:
+
+1 - No mesmo dia da Venda, Cancelar a Venda
+2 - No dia posterior a Venda, Emitir uma nota de Saída e fazer a Devolução dessa nota para o Cliente.
+
+Neste Caso o Movimento pretendido a ser estornado se encaixa nessa segunda forma dessa rotina.
+
+A disposição
