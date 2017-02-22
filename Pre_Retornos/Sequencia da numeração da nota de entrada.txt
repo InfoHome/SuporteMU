@@ -1,0 +1,16 @@
+
+
+Olá!
+
+Para a numeração da Nota Fiscal de Entrada seguir sequência da nota de saída faça a configuração dos parametros abaixo:
+
+1 - Acesse o Cadastro da Filial, na Guia <b>Parâmetros<b> No domímio <b>Faturamento:</b>
+2 - Alterar o valor do parâmetro: <b>Altera Numeração Automática?</b> para <b>N</b>
+3 - Alterar o valor do parâmetro: <b>Numeração Automática NFs de Entrada</b> para <b>2</b>
+4 - Alterar o valor do parâmetro: <b>Numeração Automática NFs de Saída</b> para <b>S</b>
+
+Em caso de dúvidas por favor entrar em contato com o sertor de Base da Microuniverso.
+
+A disposição
+
+
