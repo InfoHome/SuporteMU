@@ -1,0 +1,15 @@
+
+Boa tarde 
+
+Para enviar o valor das notas com CFOP 5929 ou 6929 para o SPED, deve ajustar o valor o parâmetro por Filial/ Domínio: Livros Fiscais abaixo:
+
+<b>Emitir Nota de Cupom Fiscal com indicação de valores?</b>
+
+==> Deve informar o valor:  <b>S</b>
+
+Obs.: O TPO da nota consumidor tem que estar configurado no valor do parâmetro Geral/ Domínio: FaturamenTo abaixo:
+
+<b>[TPO para Varejo]</b>.
+
+
+A disposição

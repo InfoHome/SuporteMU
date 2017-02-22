@@ -1,20 +1,39 @@
 Bom dia
 
-Acesse a <b>Base de Conhecimento</b> pela sua EXTRANET e assista os vídeos abaixo, neles contas as orientações necessárias 
-para que possa manter seu ambiente de sistema atualizado:
 
+Acesse a <b>Base de Conhecimento</b> pela sua EXTRANET e assista os vídeos na ordem proposta abaixo. 
+Nesses vídeos constam as orientações necessárias para que possa manter seu ambiente de sistema atualizado:
+
+O importante é atualizar os scripts de banco de dados antes de colocar as novas versões em produção
+
+Segue:
+-- Masteren -------------------------------------------------------------------------------------------------------
 #MUVD - Estrutura - S1.6 - Atualização Masteren.mp4
-#MUVD - Estrutura - Links para atualização Versão HCU - Home Center Unica.mp4
-#MUVD - Estrutura - Links de atualização MUNFE versão 4.mp4
-#MUVD - Estrutura - Links de atualização MUNFE versão 4.1.x.x.mp4
+Obs.: Deve ser feito sem usuários conectados no sistema
+
+-- Versão Padrão e Trade ------------------------------------------------------------------------------------------
 #MUVD - Estrutura - Atualização dos Módulos Trade.mp4
 #MUVD - Estrutura - Links para atualização Versão TRADEWIN E MONITORNFE.mp4
-#MUVD - Estrutura - Links para atualização ESGE(Validar).mp4
+#MUVD - Estrutura - Links para atualização Versão HCU - Home Center Unica.mp4
+
+-- NFE ------------------------------------------------------------------------------------------------------------
+#MUVD - Estrutura - Links de atualização MUNFE versão 4.1.x.x.mp4
+
+-- ECF ------------------------------------------------------------------------------------------------------------
+Caso utilize o PAF-ECF assista esse vídeo: #MUVD - Estrutura - Links para atualização ESGE(Validar).mp4
+Caso Contrário assista esse vídeo: #MUVD - Estrutura - Links para atualização MU_ECF.mp4
+
+*** Em caso de dúvida entre em contato com o suporte
+
+-- Dlls -----------------------------------------------------------------------------------------------------------
 #MUVD - Estrutura - Parametrização dll para validar IE inclusive da Bahia.mp4
 #MUVD - Estrutura - Atualização da dll SRVCUSTO.DLL.mp4
+
+-- Outras ----------------------------------------------------------------------------------------------------------
+<b>#MUVD - NFE - Gerenciamento de Exceções (Desfazer Cancelamento).mp4</b>
 #MUVD - Estrutura - Usuário predefinido ao carregar o sistema.mp4
 #MUVD - Estrutura - DANFE sem código de barras (Bcode128).mp4
 #MUVD - Estrutura - Configurações básicas CobrebemX (Principais causas de erros para rotina já implantada).mp4
 
-
+A disposição
 A disposição
