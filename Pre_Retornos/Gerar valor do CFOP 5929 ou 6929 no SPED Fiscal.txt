@@ -1,5 +1,4 @@
-
-Boa tarde 
+﻿Boa tarde 
 
 Para enviar o valor das notas com CFOP 5929 ou 6929 para o SPED, deve ajustar o valor o parâmetro por Filial/ Domínio: Livros Fiscais abaixo:
 
