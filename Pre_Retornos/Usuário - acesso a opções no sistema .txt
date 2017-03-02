@@ -1,0 +1,21 @@
+
+Olá
+
+Essa opção é definida na configuração de GRUPO de Usuário ao qual o usuário está relacionado!
+
+Para entender sobre o processo assista o vídeo <b>#MUVD - Relacionamento de Usuário ao grupo de Usuários.mp4</b> disponível na Base de Conhecimento em sua extranet.
+
+Após isso, acesse o sistema:
+==> TradeWin/Sistemas/Administrador/
+==> Menu: Cadastros/Grupos de Usuários/Acesso a opções
+
+Passos:
+
+1 - Clique no botão "Procurar".
+2 - No campo GRUPO você digita o nome do grupo que o usuário está relacionado.
+3 - No campo SISTEMA você seleciona: <b>Estoque</b>.
+4 - Por fim marque a opção "Acesso permitido".
+5 - Agora dessa vez clique no botão "Recuperar".
+6 - Clique no botão "Relatório" e dê as permissões necessárias.
+
+7 - Se ao clicar no botão "Recuperar" e não localizar nenhum registro para esse GRUPO, clique no botão "NOVO", repita os passos do número 2 em diante.

@@ -1,0 +1,23 @@
+
+<b>Configuração da Venda Presencial</b>
+
+No cadastro do <b>Estado</b> relacionado a Filial Emitente deve configurar os seguintes Dados Adicionais:
+
+1 - Acesse o cadastro do Estado que está configurado na Filial Emitente:
+
+Financeiro Contábil [Masteren] / Cadastros /  Nucleo Comum /  Estados
+
+2 - No Dado Adicional desse Estado configurar os parâmetros abaixo:
+2.1 - <b>Considerar venda presencial para consumidor final de fora do estado como venda interna?</b> 
+=> Configurar com o valor = <b>S</b>
+------------------------------------------------------------------------------------------------------------
+2.2 - <b>CFOP para consumidor final fora do estado</b> 
+=> Configurar com o CFOP de venda presencial dentro do estado para produtos Tributados
+------------------------------------------------------------------------------------------------------------
+2.3 - <b>CFOP Substituição Tributária para consumidor final fora do estado</b>
+=> Configurar com o CFOP de venda presencial fora do estado para produtos Substituição Tributária
+------------------------------------------------------------------------------------------------------------
+2.4 - <b>Considerar o endereço de entrega para cálculo do ICMS-DIFAL?</b>
+=> Configurar com o valor = <b>S</b>
+
+A disposição
