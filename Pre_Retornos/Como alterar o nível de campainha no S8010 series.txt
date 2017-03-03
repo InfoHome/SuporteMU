@@ -1,0 +1,11 @@
+Muito fácil, basta seguir os seguintes passos:
+
+- Ligar o aparelho
+- Pressionar a tecla mute
+- Pressionar a tecla #
+- Pressionar uma das teclas (1 a 9) cada tecla se refere a uma campainha e um nível volume
+- Se desejar manter momentaneamente sem campainha, pressione a tecla 0
+- Pressione a tecla Mute
+- Desligue o aparelho
+
+Pronto, o nível foi alterado.
