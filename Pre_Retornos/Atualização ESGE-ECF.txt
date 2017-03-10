@@ -1,0 +1,100 @@
+
+
+Olá,
+
+Para te ajudar, vou tentar descrever aqui uma simulação de uma atualização do ECF que você questionou além dos vídeos que já foram indicados.
+
+Conforme você informou que não teve treinamento o mesmo ainda pode ser solicitado após a implantação caso ainda não consiga fazer a atualização 
+dos módulos, esse serviço é passível de cobrança, e sobre essas questões financeiras vocês poderão ver com seu Gerente de Base, no seu caso Walerson.
+
+<b>OK, Vamos lá!</b>
+
+1 - Vamos fazer alguns levantamentos para atualização:
+
+1.1 - Vou considerar que a versão atual do meu validar seja <b>20800</b>
+- Acesso o caixa e verifique qual o sua.
+
+1.2 - Vou considerar que a que o banco de dados que utilizo seja da Microsoft <b>SQL SERVER</b>
+- Verifique qual o seu, em caso de dúvidas verifique com a equipe técnica de TI.
+
+1.3 - Vou considerar que a versão atual do meu PAF ECF seja <b>114</b>
+
+<i><b>Dica!</b>
+Para descobrir a versão do seu PAF-ECF podemos seguir essa lógica:
+
+1.3.1 - Acesse: Financeiro Contábil[Masteren] / Cadastros / Núcleo Comum / Filial, Clique no Botão "OK"
+- Selecione a filial que está atualizado e dê duplo clique para abrir seu cadastro.
+
+1.3.2 - No menu "Guias" da Filial escolhida, clique sobre a guia "Parâmetros"
+1.3.3 - No campo "Domínio" selecione: "Sistema de Vendas" e clique na varinha de busca a frente do campo.
+1.3.4 - No final dos parâmetros localize o parâmetro: <b>Versão PAF/ECF</b>
+1.3.5 - Veja qual o valor desse parâmetros: Vazio, 110, 113 ou 114.
+
+Atenção: Se for Vazio indica que também é 110, porém para confirmar acesse: C:\Microuni\Enterprise\
+- Localize o programa <b>ESGE-ECF.EXE</b>
+- Clique com o botão direito do Mouse sobre ele e clique em propriedades
+- Clique na aba Detalhes
+- Localize a Descrição: "Versão do Arquivo", nesta informação deve estar o Valor 110.0.1.0, ou seja, <b>110</b>
+</i>
+
+2 - Para atualizar o Item 1.1 acesse: http://download.microuniverso.com.br/TradSql/V.Unificada%20especifica/ESGE/ECF%20HCU/?C=N;O=D
+2.1 - Baixe a última versão disponível do sistema, hoje neste momento 10/03/2017 09:51 a versão atual é <b>Validar25700.zip</b>
+2.2 - Após baixar você vai descompactar com a senha <B>BLZA</B>
+2.3 - Após descompactar você irá renomear para <b>Valida114.exe</b> para atender o item 1.3 acima.
+
+Atenção.: 
+- No item 1.3, se a versão do PAF-ECF que você utiliza for <b>110</b>, você irá renomear o arquivo descompactado para <b>Validar.exe</b>
+- No item 1.3, se a versão do PAF-ECF que você utiliza for <b>113</b>, você irá renomear o arquivo descompactado para <b>Valida113.exe</b>
+- No item 1.3, se a versão do PAF-ECF que você utiliza for <b>114</b>, você irá renomear o arquivo descompactado para <b>Valida114.exe</b>
+
+2.4 Após renomear o arquivo para nomenclatura correspondente a sua versão do PAF-ECF instalada no sistema atualmente, você 
+irá copiar o <b>Validar.exe</b> ou o <b>Valida113.exe</b> ou <b>Valida114.exe</b> para o diretório: <b>C:\Windows\AppTemp\</b>
+
+==> Pronto! Nesse ponto sua versão do executável está atualizado!
+
+3 - Agora Vamos atualizar o banco de dados.
+---------------------------------------------------------------
+3.1 - Para atualizar o banco de dados você precisa saber qual banco de dados está trabalhando: Oracle ou SQL.
+3.2 - Sabendo disso acesse: http://download.microuniverso.com.br/TradSql/V.Unificada%20especifica/ESGE/Scripts/?C=N;O=A
+3.3 - Se for Oracle, você irá utilizar os scripts que comecem com <b>ORA_</b>
+3.4 - Se for SQL, você irá utilizar os scripts que comecem com <b>SQL_</b>
+3.5 - Então para continuar com este exemplo, para atender o item 1.3 vou seguir pelo item 3.4, Banco de Dados "SQL".
+
+Então se a versão antiga do executável era <b>20800</b> e a nova <b>25700</b>, me restar acessar o Banco de Dados e Executar 
+os scripts deste intervalo, segue a relação abaixo:
+
+Scripts ESGE.sql		01-Jul-2013 14:13	53K	
+SQL_Validar20811.sql		02-Oct-2013 21:08	1.4K	 
+SQL_Validar20900r006.sql	18-Nov-2013 18:54	1.3K	 
+SQL_Validar21000r007.sql	20-Jan-2014 20:03	8.5K	 
+SQL_Validar21204.sql		02-Sep-2014 14:56	209	 
+SQL_Validar21300r017.sql	17-Nov-2014 11:05	6.2K	 
+SQL_Validar21500r009.sql	15-Apr-2015 13:57	4.9K	 
+SQL_Validar21600r004.sql	25-Jun-2015 12:19	1.4K	 
+SQL_Validar21700r007.sql	21-Oct-2015 17:06	1.2K	 
+SQL_Validar21800r002.sql	01-Dec-2015 18:57	454	 
+SQL_Validar21900r004.sql	02-Mar-2016 18:56	1.5K	 
+SQL_Validar22000.sql		18-Apr-2016 19:37	447	 
+SQL_Validar22100r009.sql	06-Jul-2016 18:29	6.9K	 
+SQL_Validar22200r007.sql	13-Sep-2016 20:27	1.0K	 
+SQL_Validar22400.sql		27-Oct-2016 12:10	3.9K	 
+SQL_Validar24000.sql		13-Dec-2016 18:36	513	 
+SQL_Validar24200.sql		20-Dec-2016 15:31	5.6K	 
+SQL_Validar25200.sql		06-Feb-2017 13:43	1.0K	 
+SQL_Validar25300.sql		10-Feb-2017 10:42	264
+
+* Os scripts devem ser executados de ordem crescente, da versão mais antiga para mais nova!
+
+Fim, O sistema já poderá ser utilizado normalmente!
+
+3.6 - A próxima atualização é só rever a versão que estão trabalhando, neste exemplo seria 25700, 
+acessar o item 2 dessa simulação identificar qual a última versão, por exemplo poderia ser Validar30000, 
+baixar e renomear levando em consideração do item 2.3 a 2.4 e por fim acessar o item 3.2 dessa simulação 
+e ver quais são os novos scripts a partir do script "SQL_Validar25300.sql" e executar no banco de dados em 
+ordem crescente caso exista mais de 1.
+
+Assim sucessivamente.
+
+
+
+A disposição

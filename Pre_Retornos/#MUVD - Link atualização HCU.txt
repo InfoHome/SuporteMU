@@ -1,7 +1,7 @@
 Bom dia
 
 Acesse a <b>Base de Conhecimento</b> pela sua EXTRANET e assista os vídeos na ordem proposta abaixo. 
-Nesses vídeos constam as orientações necessárias para que possa manter seu ambiente de sistema atualizado:
+Nesses vídeos constam as orientações necessárias para que possa manter seu ambiente de trabalho atualizado:
 
 O importante é atualizar os scripts de banco de dados antes de colocar as novas versões em produção
 
