@@ -1,17 +1,21 @@
+
 --------------------------------------------------------------------------------------------------------------------
 -- ********* Passo 1
 -- ****** // INICIO para Veridicação inexistente no banco de dados
 -- Verifica e Cria Tabela Temporária para Criar os registros sequanciais
 -- Processo para gerar a sequencia numerada Atual.
 --------------------------------------------------------------------------------------------------------------------
-IF object_id('TB_Registros') IS NOT NULL DROP TABLE TB_Registros
-Create  table  TB_Registros(Numero varchar(6))
+IF object_id('TB_Registros_F01') IS NOT NULL DROP TABLE TB_Registros_F01
+Create  table  TB_Registros_F01 (Numero varchar(6))
 -------------------------------------------------------------------------------------
 declare @registros int, @UltimoNumero int, @filial char(2)
 
 Set @filial = '01' -- Informar o código da Filial
-select @UltimoNumero = cast(numnota as int) from nfsaidacad where modelonf = '65' and serie = '1'	
-and filial = @filial -- Pegar a numeração Final
+select @UltimoNumero = max(cast(numnota as int)) from nfsaidacad 
+							where 
+								modelonf = '65' 
+								and serie = '1'	
+								and filial = @filial -- Pegar a numeração Final
 
 -- Gerar os Registros na tabela TB_Registros
 -------------------------------------------------------------------------------------
@@ -25,7 +29,7 @@ END
 -- Exibe quais numerações não estão presentes 
 -- Processo identificar os saltos na sequencia numerada.
 -------------------------------------------------------------------------------------
-select Numero from TB_Registros 
+select Numero from TB_Registros_F01 
 	where Numero not in (Select distinct numnota from nfsaidacad where  modelonf = '65' and serie = '1'
 	and filial = '01')
 
@@ -35,7 +39,7 @@ select Numero from TB_Registros
 --------------------------------------------------------------------------------------------------------------------
 -- ********* Passo 2
 -- Gerar Registos de Numerações que não foram geradas para ser inutilizadas pelo Gerenciamento de NFCE
--- Antes de iniciar este passo tem que separa um faixa de numord para prosseguir
+-- A T E N Ç Ã O - Antes de iniciar este passo tem que separa um faixa de numord para prosseguir
 --------------------------------------------------------------------------------------------------------------------
 Begin transaction
 go
@@ -50,7 +54,7 @@ set @Count = 1
 WHILE  @Count = 1
 
 BEGIN
-	(select @NNF = min(numero) from TB_Registros
+	(select @NNF = min(numero) from TB_Registros_F01
 				where Numero not in (Select distinct numnota from nfsaidacad 
 										where modelonf = '65' and serie = '1' and filial = @NFilial))
    
@@ -68,13 +72,13 @@ BEGIN
    --Incremento das variáveis   
    ---------------------------------------------------------------------------------------------------------
    set @NNumord = @NNumord + 1 -- Pegar o próximo numord da faixa
-   delete from TB_Registros where numero = @NNF -- Liberar o numero
+   delete from TB_Registros_F01 where numero = @NNF -- Liberar o numero
    -- verificar se existem registros para serem processados
-   set @Count = (select distinct 1 from TB_Registros
+   set @Count = (select distinct 1 from TB_Registros_F01
 				where Numero not in (Select distinct numnota from nfsaidacad 
 										where modelonf = '65' and serie = '1' and filial = @NFilial))
    -- // verificar se existem registros para serem processados
-   
+  
     IF (@Count = 0)
       BREAK  
    ELSE  
@@ -94,15 +98,6 @@ commit
 --IF object_id('TB_Registros_F01') IS NOT NULL DROP TABLE TB_Registros_F01
 --IF object_id('TB_Registros_F02') IS NOT NULL DROP TABLE TB_Registros_F02
 --IF object_id('TB_Registros_F03') IS NOT NULL DROP TABLE TB_Registros_F03
---IF object_id('TB_Registros_F04') IS NOT NULL DROP TABLE TB_Registros_F04
---IF object_id('TB_Registros_F05') IS NOT NULL DROP TABLE TB_Registros_F05
---IF object_id('TB_Registros_F06') IS NOT NULL DROP TABLE TB_Registros_F06
---IF object_id('TB_Registros_F07') IS NOT NULL DROP TABLE TB_Registros_F07
---IF object_id('TB_Registros_F08') IS NOT NULL DROP TABLE TB_Registros_F08
---IF object_id('TB_Registros_F09') IS NOT NULL DROP TABLE TB_Registros_F09
---IF object_id('TB_Registros_F10') IS NOT NULL DROP TABLE TB_Registros_F10
---IF object_id('TB_Registros_F11') IS NOT NULL DROP TABLE TB_Registros_F11
---IF object_id('TB_Registros_F12') IS NOT NULL DROP TABLE TB_Registros_F12
 --------------------------------------------------------------------------------------------------------------------
 
 

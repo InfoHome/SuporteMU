@@ -142,3 +142,21 @@ WHERE i.type_desc IN ( 'CLUSTERED', 'HEAP' ) AND i.[object_id] > 100
 	AND OBJECT_SCHEMA_NAME(ps.[object_id]) <> 'sys'
 GROUP BY ps.[object_id] , i.name
 ORDER BY SUM(ps.row_count) DESC
+
+
+-- Script para verificar o armazenamento das tabelas
+---------------------------------------------------------------------------
+SELECT
+    --'TRUNCATE TABLE ' + 
+	OBJECT_NAME(object_id) As Tabela, Rows As Linhas,
+    SUM(Total_Pages * 8) As Reservado,
+    SUM(CASE WHEN Index_ID > 1 THEN 0 ELSE Data_Pages * 8 END) As Dados,
+        SUM(Used_Pages * 8) -
+        SUM(CASE WHEN Index_ID > 1 THEN 0 ELSE Data_Pages * 8 END) As Indice,
+    SUM((Total_Pages - Used_Pages) * 8) As NaoUtilizado
+FROM
+    sys.partitions As P
+    INNER JOIN sys.allocation_units As A ON P.hobt_id = A.container_id
+	--AND OBJECT_NAME(object_id) LIKE '%NIVEL%'
+GROUP BY OBJECT_NAME(object_id), Rows
+ORDER BY TABELA desc
