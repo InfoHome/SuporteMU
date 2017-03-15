@@ -7,6 +7,11 @@ O importante é atualizar os scripts de banco de dados antes de colocar as novas 
 
 Segue:
 -- Masteren -------------------------------------------------------------------------------------------------------
+#MUVD - Estrutura - S1.1 - Instalação do Sistema Enterprise.mp4
+#MUVD - Estrutura - S1.2 - Configuração da Fonte de Dados ODBC.mp4
+#MUVD - Estrutura - S1.3 - Configuração da fonte de dados ODBC no Trade.dbc.mp4
+#MUVD - Estrutura - S1.4 - Configuração de Opções Regionais e Idioma.mp4
+#MUVD - Estrutura - S1.5 - Atualização do SP6 do Masteren.mp4
 #MUVD - Estrutura - S1.6 - Atualização Masteren.mp4
 Obs.: Deve ser feito sem usuários conectados no sistema
 
@@ -34,5 +39,4 @@ Caso Contrário assista esse vídeo: #MUVD - Estrutura - Links para atualização MU
 #MUVD - Estrutura - DANFE sem código de barras (Bcode128).mp4
 #MUVD - Estrutura - Configurações básicas CobrebemX (Principais causas de erros para rotina já implantada).mp4
 
-A disposição
 A disposição

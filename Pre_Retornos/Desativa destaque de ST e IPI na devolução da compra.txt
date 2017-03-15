@@ -1,0 +1,37 @@
+
+Olá,
+
+Por favor verificar as orientações abaixo:
+
+1 - Acesse o cadastro do seu Fornecedor
+1.1 - Financeiro Contábil[Masteren] / Cadastros / Núcleo Comum / Fornecedor - Filtro
+1.2 - Filtre o fornecedor desejado.
+
+2 - No menu <b>Guias</b>, clique em <b>Parâmetros:</b>
+3 - No campo <b>Domínio</b> selecione: "Núcleo Comercial" e clique na varinha de "Busca" a frente desse campo,
+
+4 - Localize e ajustes os parâmetros a seguir conforme necessidade:
+
+4.1 - PARÂMETRO: <B>Desativa destaque de IPI na devolução da compra</B>
+	
+	Determina se o fornecedor destaca o IPI  na devolução da compra ou não. Valores possíveis S ou N.
+	
+	<li> 4.1.1 - Se o valor for igual a <b>S</b>, o valor do IPI é destacado no quadro "Dados Adicionais" da Danfe
+	e no quadro <b>CÁLCULO DO IMPOSTO</b> da Danfe o valor de IPI é somado no campo <b>OUTRAS</b>.
+	
+	<li> 4.1.2 - Se o valor for igual a <b>N</b>, o valor do IPI é destacado no quadro <b>CÁLCULO DO IMPOSTO</b> da Danfe 
+	o valor de IPI é destacado no campo <b>VALOR DO IPI</b> da Danfe. 
+ 
+
+4.2 - PARÂMETRO: <B>Desativa destaque de Substituição Tributária na devolução da compra</B>
+	
+	Determina se o fornecedor destaca a Substituição Tributária na devolução da compra ou não. Valores possíveis S ou N.
+	
+	<li>4.2.1 - Se o valor for igual a <b>S</b>, o valor e base da ST é destacado no quadro "Dados Adicionais" da Danfe
+	e no quadro <b>CÁLCULO DO IMPOSTO</b> da Danfe o valor da ST é somado no campo <b>OUTRAS</b>.
+	
+	<li>4.2.2Se o valor for igual a <b>N</b>, o valor da ST é destacado no quadro <b>CÁLCULO DO IMPOSTO</b> no campo 
+	<b>VALOR DO ICMS SUBST.</b> e Base da ST é destacada no campo <b>BASE CÁLC. ICMS SUBST.</b> da Danfe. 
+
+	
+A disposição
