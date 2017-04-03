@@ -113,3 +113,6 @@ select top 1 * from RENTABICLIENTEVENDEDO order by dtproc desc	--2016-01-30 00:0
 select top 1 * from rentabicliente order by dtproc desc			--2016-01-30 00:00:00.000
 select top 1 * FROM RentabiPrazoPagto order by dataproc desc	--2016-01-30 00:00:00.000
 select top 1 * FROM RentabilidadeItem order by data desc		--2016-08-01 15:04:00.000
+
+select * from ADITIVO_R where RDEFINICAO = '19826'
+update ADITIVO_R set svalor = '06/03/2017', DTVALOR = '20170306' where RDEFINICAO = '19826'
