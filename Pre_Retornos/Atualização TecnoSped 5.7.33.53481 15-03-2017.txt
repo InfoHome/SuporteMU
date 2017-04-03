@@ -1,0 +1,22 @@
+
+
+
+Bom dia 
+
+1 - Acessar <b>C:\Program Files\TecnoSpeed\NFCe\Arquivos</b> e faça um Backup do arquivo: <b>nfceConfig.ini</b> 
+
+2 - Baixar o arquivo <b>setup_NFCe_full_5.7.33.53481.rar</b> ou superior no Link: http://download.microuniverso.com.br/TradSql/NFCe%20TecnoSpeed/?C=M;O=D
+
+3 - Descompactar e instalar o <b>setup_NFCe_full_5.7.33.53481.exe</b>
+
+4 - Voltar o arquivo de backup <b>nfceConfig.ini</b> para <b>C:\Program Files\TecnoSpeed\NFCe\Arquivos</b>
+
+5 - ATENÇÃO:
+Para corrigir problema com a impressão do Troco substitua o arquivo <b>C:\Arquivos de programas\TecnoSpeed\NFCe\Arquivos\Templates\vm50b\Danfce\retrato.rtm</b> 
+por este do arquivo "retrato (para NFCe versão 5.7.33.53481).rar" que foi baixado anteriormente.
+
+6 - Por fim siga as orientações do Link Abaixo:
+
+<a href="http://tsdn.tecnospeed.com.br/base-de-conhecimento/post/problemas-com-os-webservices-rs-rejeicao-813-qr-code-com-sequencia-de-escape-para-o-e-comercial-usar-cdata/p/1573" target="_blank" alt="Correção da Rejeição 813 da NFCE TecnoSped">Clique aqui para corrigir a Rejeição 813: QR-Code com sequência de escape para o e-comercial. Usar CDATA</a>
+
+

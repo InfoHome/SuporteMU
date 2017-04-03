@@ -1,0 +1,9 @@
+Resumo Plantão
+1 - Quantas ligações atendidas;
+R: 
+
+2 - Quais assuntos atendidos;
+R: 
+
+3 - Quais clientes atendidos;
+R: 
