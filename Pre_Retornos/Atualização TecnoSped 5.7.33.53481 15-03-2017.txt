@@ -1,7 +1,9 @@
-
+﻿
 
 
 Bom dia 
+
+Se a versão do TecnoSped está atualizada siga somente as orientações do item 6 abaixo, caso contrário siga do item 1 em diante:
 
 1 - Acessar <b>C:\Program Files\TecnoSpeed\NFCe\Arquivos</b> e faça um Backup do arquivo: <b>nfceConfig.ini</b> 
 

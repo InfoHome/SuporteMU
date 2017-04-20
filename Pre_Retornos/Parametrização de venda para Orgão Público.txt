@@ -1,0 +1,15 @@
+---------------------------------------------------------------------------
+-- Parametrização de venda para Orgão Público
+-- PA 94346
+---------------------------------------------------------------------------
+
+1 - Filial no Domínio: Sistema de vendas
+Parâmetro: Destaca descto de ICMS para orgão público no corpo da nota fiscal? 
+-- Deve estar com valor = S
+-------------------------------------------------------------------------------------------------
+2 - Da Filial no Domínio: Faturamento
+Parâmertro: Código de mensagem para órgão público:
+-- Deve estar com valor = S
+-------------------------------------------------------------------------------------------------
+3- No cadastro do Cliente, neste caso: SESP - SECRETARIA DE ESTADO DE SEGURANÇA PUBLICA
+- Tem que estar com o "Dado adicional" <b>Órgão público</b> = S

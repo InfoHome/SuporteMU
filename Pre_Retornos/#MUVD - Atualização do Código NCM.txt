@@ -1,0 +1,23 @@
+
+Boa tarde Fernanda
+
+De acordo com as consultas efetuadas o NCM 6908.90.00 informado não consta na tabela atualizada até a Resolução Camex nº 01 de 17/02/2017.
+
+Segue links para consulta:
+
+https://www4.receita.fazenda.gov.br/simulador/PesquisarNCM.jsp
+https://www.codigocest.com.br/
+
+Por favor verificar com seu contador para identificar e substituir o cadastro dos produtos com o novo NCM.
+
+
+
+Caso seja necessário cadastrar o novo NCM no sistema, acesse a <b>Base de Conhecimento</b> pela sua EXTRANET 
+e assista os vídeos propostos abaixo para incluir o novo NCM no cadastro do sistema para atualizar seus produtos: 
+
+#MUVD - Estrutura - Link para Consultar de código NCM Válidos e Inválidos.mp4
+#MUVD - Estrutura - Atualização Tabela NCM.mp4
+
+Nesses vídeos constam as orientações necessárias para que possa cadastrar os NCMs.
+
+A disposição
