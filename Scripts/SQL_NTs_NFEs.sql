@@ -1577,5 +1577,7 @@ IF NOT EXISTS (SELECT 1 FROM SYSCOLUMNS WHERE name = 'TAMANHORETORNO' and syscol
 ALTER TABLE FORCFNFFAT ADD TAMANHORETORNO NUMERIC(15) not null default 0
 go
 
+update dadoadicional set mascara = '' where oid = 37777
+go
 
 
