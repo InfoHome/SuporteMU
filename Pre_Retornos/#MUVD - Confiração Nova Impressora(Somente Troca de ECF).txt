@@ -1,0 +1,29 @@
+
+
+Bom dia Diogo
+
+Siga as orientações abaixo para colocar o novo equipamento em produção:
+
+Procedimento para substituição de Impressora Fiscal:
+
+1 - Conecte e ligue a impressora na estação.
+	1.1 - Se necessário faça um teste de reconhecimento e conexão pelo aplicativo do fabricante da Impressora Fiscal.
+	1.2 - Se necessário altere a porta de comunicação da impressora no arquivo C:\Windows\System32\BemaFI32.ini ou em C:\Windows\Syswow64\BemaFI32.ini
+	1.3 - Se a porta de comunicação da impressora for alterada, altere no cadastro de Usuário do ECF o Parâmetro: <b>Número da Porta COM para ECF</b>
+
+2 - Cadastre a nova Impressora Fiscal no sistema.
+	2.1 - Em caso de dúvidas assista o vídeo: <b>#MUVD - Cadastro de Impressora Fiscal Bematech.mp4</b>
+
+3 - Substiruir o contúdo do arquivo <b>c:\Microuni\Enterprise\NSerie_ECF.txt</b> com os dados da nova Impressora Fiscal.
+	3.1 - Abra o arquivo NSerie_ECF.txt e substitua o conteúdo dele pelo conteúdo abaixo:
+
+<b>SERIAL:QMWISWUOWQESAOWWGUWQC
+GT:WIYMO</b>
+
+obs.: não pode haver espaços inicio e nem no final das linhas e colunas!
+
+
+5 - Obs.: Caso a estação de trabalho numca tenha sido usado o ECF, ou tenha sido e foi formatada, a instalação é feita pelo 
+setor de Base da Microuniverso, e o recurso é passível de cobrança.
+
+A disposição
