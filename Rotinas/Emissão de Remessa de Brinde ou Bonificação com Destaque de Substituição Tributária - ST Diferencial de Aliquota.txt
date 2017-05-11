@@ -1,0 +1,46 @@
+
+
+<b>Configurações</b>
+
+1 - Configuração do TPO.
+1.1 - TPO: 80 
+1.2 - Nome: Saída de Mercadoria para Bonificação
+1.3 - Guia "Integração", na aba "Faturamento" o parâmetro <b>Substituição tributária na venda</b> está com valor igual a S
+
+2 - Redução de Base de Exemplo: 
+(TradeWin / Sistema / Faturamento / Tabelas / Estados / Redução de Base)
+-----------------------------------------------------------------------------------------------
+Regra:
+---------------
+Código do Produto:				00005
+Descrição:						AMOSTRA FECHADA CEPO SEM BASE PRETO
+TPO:							80 (Saidas de Mercadoria para Bonificação)
+Estado de Origem:				Sem informar
+Estado de Destino:				RS
+CFOP:							Sem informar
+Código Fiscal de IPI:			Sem informar
+-----------------------------------------------------------------------------------------------
+Base cal. do produto(S/N): N | Alíquota do produto(S/N): N
+-----------------------------------------------------------------------------------------------
+Base de Cálculo Contribuinte: 100,000 % | Alíquota Contribuinte: 12,00%
+-----------------------------------------------------------------------------------------------
+Base de Cálculo Não Contribuinte: 0,000 % | Alíquota Não Contribuinte: 0,00%
+-----------------------------------------------------------------------------------------------
+%Subst. Tributária Venda:		0,00 % | % Fundo de Combate a Pobreza:	0,00 %
+-----------------------------------------------------------------------------------------------
+Cód. Mensagem: 10    (Obs. essa mensagem está cadastrada com o Tipo Substituição Tributária)
+-----------------------------------------------------------------------------------------------
+Diferencial de Alíquotas:		Marcado
+-----------------------------------------------------------------------------------------------
+Aplicar Base Cheia no Cálculo ICMS-DIFAL:	Desmarcado
+--------Base e alíquota de débito de ICMS para cálculo de ST ou cálculo de ICMS-DIFAL-----------
+Base de Débito:			 0,00 % | Alíquota de débito:		 0,00 %
+-----------------------------------------------------------------------------------------------
+
+3 - Cadastro do cliente: EUCLIDES LUIZ BROCARDO o Dado Adicional <b>Contribuinte</b> está com calor igual a S,
+
+4 - Opções para Emissão da nota:
+
+
+
+A disposição

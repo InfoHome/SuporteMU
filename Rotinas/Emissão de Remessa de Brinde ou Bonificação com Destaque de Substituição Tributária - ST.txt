@@ -1,0 +1,72 @@
+Boa tarde Willian
+
+Para atender sua solicitação observe as parametrizações abaixo para ajustar seus cadastros e regras de redução de base para emitir a nota.
+Qualquer dúvida por favor me ligar aqui na Microuniverso.
+
+Segue
+
+1 - Configuração importante do TPO.
+
+TPO que utilizei de exemplo: 80
+Nome: Saída de Mercadoria para Bonificação
+
+Para destacar a Substituição Tributária: Configurar na guia "Integração", na aba "Faturamento" o parâmetro "Substituição tributária na venda" com valor igual a S
+*** As demais configurações do TPO que for utilizar deve ser configurado junto a seu contador.
+
+2 - Redução de Base de Exemplo: (Sistema de usuário / Tabelas / Redução de Base)
+
+*** Observe a redução de base de exemplo que criei para atender este exemplo, 
+veja abaixo que inclui o código do produto relacionado ao TPO e estado do 
+Cliente para evitar que o sistema pegue outra regra com maior nível de prioridade.
+----------------------------------------------------------------------------------
+Regra:
+---------------
+<pre>
+Código do Produto:				00005
+Descrição:						AMOSTRA FECHADA CEPO SEM BASE PRETO
+Código Fiscal de IPI:			Sem informar
+TPO:							80 (Saidas de Mercadoria para Bonificação)
+Estado de Origem:				Sem informar
+Estado de Destino:				RS
+Classificação do Cliente:		Sem informar
+Tipo de Tributação:				Sem informar
+CFOP:							Sem informar
+
+--------Padrão------------------------------------------------
+Base cal. do produto(S/N/C):	Sem informar
+Alíquota do produto(S/N):		Sem informar
+%Subst. Tributária Venda:		6,00 %
+% Fundo de Combate a Pobreza:	0,00 %
+Diferencial de Alíquotas:		Desmarcado
+
+--------Não Contribuinte---------------------------------------
+Base de Cálculo:		0,000 %
+Alíquota:				0,00%
+Cód. Mensagem:			sem informar
+Aplicar Base Cheia no Cálculo ICMS-DIFAL:	Desmarcado
+
+--------Contribuinte--------------------------------------------
+Alíquota do Estado: (S/N):	N
+Base de Cálculo:			100,0000 %
+Alíquota:					12,00 %
+Cód. Mensagem:				10    (Obs. essa mensagem está cadastrada com o Tipo Substituição Tributária)
+
+--------Base e alíquota de débito de ICMS para cálculo de ST ou cálculo de ICMS-DIFAL------------
+Base de Débito:			 0,00 %
+Alíquota de débito:		 0,00 %
+</pre>
+
+3 - No Cadastro do cliente: EUCLIDES LUIZ BROCARDO o Dado Adicional "Contribuinte" está com calor igual a S,
+de acordo com a Partilha de ICMS, só esse dado adicional no Cliente já indica que não haverá o cálculo do 
+DIFAL nessa nota.
+
+*** Por isso antes de emitir as notas deve ter certeza que essa configuração de cada cliente esteja correta.
+
+4 - Opções para Emissão da nota:
+
+4.1 - Orçamento / Outras Saidas
+4.2 - Sistema de Usuário / Movimentos / Saidas / Outras Saidas / Sem Retorno / Tributadas
+
+
+
+A disposição
