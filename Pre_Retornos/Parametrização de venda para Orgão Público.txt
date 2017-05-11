@@ -1,10 +1,11 @@
----------------------------------------------------------------------------
+﻿---------------------------------------------------------------------------
 -- Parametrização de venda para Orgão Público
 -- PA 94346
 ---------------------------------------------------------------------------
 
 1 - Filial no Domínio: Sistema de vendas
-Parâmetro: Destaca descto de ICMS para orgão público no corpo da nota fiscal? 
+Parâmetro: Destaca desconto de ICMS para orgão público no corpo da nota fiscal?
+Parâmetro: Destaca desconto de PIS/COFINS para órgão público no corpo da NF
 -- Deve estar com valor = S
 -------------------------------------------------------------------------------------------------
 2 - Da Filial no Domínio: Faturamento

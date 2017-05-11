@@ -1,0 +1,23 @@
+
+
+Bom dia Flavio
+
+Por favor assistir o vídeo indicado abaixo disponível em sua base de conhecimento: 
+
+<b>#MUVD - Cadastro Grupos de Usuários.mp4</b>
+
+
+Na tela <b>Cadastro -> Grupos</b> siga as orientações abaixo:
+
+1 - Informe o nome do grupo no campo <b>Grupo</b>
+2 - Informe o sistema <b>Faturamento</b> no campo <b>Sistema</b>
+3 - Marque o campo <b>Acesso Permitido</b>
+4 - Se não existir cadastro para esse Grupo ==> Sistema, clique em novo para cadastrar esse sistema para o grupo desejado.
+
+5 - A opção que deseja liberar está no Menu <b>Relatórios</b> Acesso: <b>Reimpressão de Danfe</b>
+
+
+Outro(s) vídeo(s) relacionado(s):
+#MUVD - Relacionamento de Usuário ao grupo de Usuários.mp4
+
+A disposição
