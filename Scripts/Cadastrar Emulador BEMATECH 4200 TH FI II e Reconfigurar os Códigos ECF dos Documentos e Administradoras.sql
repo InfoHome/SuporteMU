@@ -67,18 +67,18 @@ INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '2
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 7, '04.00 - {02}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 8, '04.10 - {03}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 9, '05.00 - {04}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 6, '05.14 - {05}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 7, '05.60 - {06}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 8, '07.00 - {07}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 9, '08.80 - {08}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 6, '10.50 - {09}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 7, '12.00 - {10}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 8, '13.20 - {11}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 9, '14.40 - {12}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 6, '17.00 - {13}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 7, '18.00 - {14}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 7, '19.00 - {15}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 8, '25.00 - {16}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 10, '05.14 - {05}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 11, '05.60 - {06}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 12, '07.00 - {07}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 13, '08.80 - {08}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 14, '10.50 - {09}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 15, '12.00 - {10}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 16, '13.20 - {11}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 17, '14.40 - {12}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 18, '17.00 - {13}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 19, '18.00 - {14}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 20, '19.00 - {15}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 21, '25.00 - {16}', 0)
 GO
 
 
@@ -123,4 +123,3 @@ UPDATE NUMERADOR SET
 				from item where oid = RITEM)
 		else Prefixo 
 		end 
-SELECT * from numerador where rcategoria = 26674
