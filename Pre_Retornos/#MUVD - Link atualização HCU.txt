@@ -1,4 +1,3 @@
-Bom dia
 
 Acesse a <b>Base de Conhecimento</b> pela sua EXTRANET e assista os vídeos na ordem proposta abaixo. 
 Nesses vídeos constam as orientações necessárias para que possa manter seu ambiente de trabalho atualizado:
@@ -6,6 +5,8 @@ Nesses vídeos constam as orientações necessárias para que possa manter seu ambie
 O importante é atualizar os scripts de banco de dados antes de colocar as novas versões em produção
 
 Segue:
+
+<pre>Obs.: Essa primeira sequencia, irá te orientar a instalar um nova estação ou formatada.</pre>
 -- Masteren -------------------------------------------------------------------------------------------------------
 #MUVD - Estrutura - S1.1 - Instalação do Sistema Enterprise.mp4
 #MUVD - Estrutura - S1.2 - Configuração da Fonte de Dados ODBC.mp4
@@ -15,6 +16,7 @@ Segue:
 #MUVD - Estrutura - S1.6 - Atualização Masteren.mp4
 Obs.: Deve ser feito sem usuários conectados no sistema
 
+<pre>Obs.: Daqui em diante você será orientado só o processo de atualização dos demais módulos e DLLs</pre>
 -- Versão Padrão e Trade ------------------------------------------------------------------------------------------
 #MUVD - Estrutura - Atualização dos Módulos Trade.mp4
 #MUVD - Estrutura - Links para atualização Versão TRADEWIN E MONITORNFE.mp4
@@ -38,5 +40,17 @@ Caso Contrário assista esse vídeo: #MUVD - Estrutura - Links para atualização MU
 #MUVD - Estrutura - Usuário predefinido ao carregar o sistema.mp4
 #MUVD - Estrutura - DANFE sem código de barras (Bcode128).mp4
 #MUVD - Estrutura - Configurações básicas CobrebemX (Principais causas de erros para rotina já implantada).mp4
+
+
+<pre>
+A T E N Ç Ã O: 
+
+Se após assistir esses vídeos não conseguir efetuar a instalação, então deverá contratar o serviço de Base 
+da Microuniverso para fazer a instalação e também solicitar o treinamento se desejar.
+Esse serviço é passível de cobrança.
+
+Para autorizar o serviço é só retornar o atendimento com a autorização, que solicitaremos que um analista do setor de 
+base entre em contato.
+</pre>
 
 A disposição

@@ -1,0 +1,38 @@
+
+Boa tarde 
+
+Conforme apurado o que ocorreu foi o seguinte:
+
+Problema: Devido a problemas físicos de Hardware, onde o HD da estação está danificado constatado pelo
+setor de TI responsável da empresa, o acesso aos dados na pasta em questão ficou comprometido e se acesso a gravação de dados.
+Esse erro foi diagnosticado como Bad Blocks de HD.
+
+Solução:
+
+1 - Uma das soluções para recuperar o XML é acessar o site da Sefaz de RJ e baixar o xml das notas pela sua chave de acesso
+2 - Nas versões atuais do sistema fica salvo uma cópia do XML no banco de dados.
+Identifiquei essas notas no período informado pelo script abaixo:
+
+<pre>Select 
+	chave_sef + '-nfce.XML' as Nome_do_arquivo,	
+	x.arq_xml as Arq_XML
+from nfsaidacad n 
+	join nota_eletronica_xml x on n.numord = x.NUMORD 
+			and n.dtemis between '20170505' and '20170531' and n.modelonf = '65'
+			and n.filial = '01'
+			and n.localporta in (
+								2592420)	--Local portador: Caixa Viviane Maria
+							--	2871629,	--Local portador: Expedição 01
+							--	6780729	--Local portador: Caixa Francine Moura
+	join COMPLEMENTONFSAIDA c on n.NUMORD = c.NUMORD</pre>
+	
+	
+	
+==> Nesse caso basta salvar o conteúdo da coluna "Arq_XML" em um arquivo XML com o nome da coluna  as Nome_do_arquivo
+
+3 - Tentar recuperar os arquivos do HD.
+
+Conforme informado por você, a equipe de TI da sua empresa conseguiu recuperar os arquivos da pastas usando a ferramenta de 
+recuperação de dados Hirens na opção Check Disk.
+
+A disposição

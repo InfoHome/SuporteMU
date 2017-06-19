@@ -1,0 +1,13 @@
+
+Boa tarde Olavo
+
+Zonas de Segurança do Internet Explorer (Controles ActiveX e Plug-ins):
+
+Orientações gerais:
+
+1 - Quando as opções estiverem marcadas como "Avisar" ou "Prompt" e não estiver informando que é "Não Seguro", deixar marcado como está
+2 - Quando as opções estiverem marcadas como "Aprovado pelo Administrador", "Habilitar" ou "Enable" e não estiver informando que é "Não Seguro",, deixar marcado como está
+3 - Quando as opções estiverem marcadas como "Habilitar" ou "Enable" e estiver informando que é "Não Seguro", marcar a opção "Avisar" ou "Prompt"
+4 - Em todas as Zonas desmarcar opção: Habilitar modo protegido(requer inicialização do internet Explorer)
+
+A disposição
