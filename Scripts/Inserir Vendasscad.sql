@@ -1,11 +1,15 @@
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 -- Script para Insereir registro de pedido que não gerou Vendasscad
+-- Descomente o insert para inserir o vendasscad
 --------------------------------------------------------------------------------------------------------------------------------------------------
 --Insert into vendasscad (numord,filial,localporta,dtven,usuven,numped,totven,freteorc,numfrete,OIDDocdeOrigem,receber,situacao,taxanf,OutrasDespesasInclusas,CondPagPosterior)
 SELECT  Distinct
 		case when nf.numord > 7 then min(nf.numord)	else min(nf.nordven) end as numord ,
 		p.filial,
-		(select OID from caixabancaria_r where nome like ''+(select nome from item where oid = hp.Usuario)+'%') as localporta,
+		case when nf.localporta > 7 	then nf.localporta
+			when l.localporta > 7  then l.localporta
+			else NULL
+			end as localporta,
 		hp.data,
 		(select left(nome,8) from item where oid = hp.Usuario) as usuven,
 		p.numped,
@@ -30,7 +34,7 @@ FROM	PEDICLICAD p
 		LEFT JOIN CONTAARECEBER_R cr ON v.oiddocdeorigem = cr.RDOCDEORIGEM
 		LEFT JOIN ITEM i5 on i5.oid = cr.rsituacao
 
-WHERE	p.numped = 2008112 -- Informar o número do pedido
+WHERE	p.numped = 1561912 -- Informar o número do pedido
 
 GROUP BY 
 	p.filial, l.localporta, nf.localporta, hp.Usuario, hp.data,	p.numped, p.valped,	p.freteorc,
