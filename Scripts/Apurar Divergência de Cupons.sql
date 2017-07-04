@@ -2,8 +2,6 @@
 /***********************************************************************************************/
 -- LIMPAR TABELAS TEMPORÁRIAS
 ------------------------------------------------------------------
-IF object_id('tempdb..#TempE14') IS NOT NULL DROP TABLE #TempE14
-IF object_id('tempdb..#TempE15') IS NOT NULL DROP TABLE #TempE15
 IF object_id('tempdb..#items') IS NOT NULL DROP TABLE #items
 IF object_id('tempdb..#cfos') IS NOT NULL DROP TABLE #cfos
 IF object_id('tempdb..#precupom') IS NOT NULL DROP TABLE #precupom
@@ -14,9 +12,9 @@ declare @filial char(2), @dtInicial datetime, @dtFinal datetime
 
 declare @serieecf char(20)				-- Mudar para char(15) se form Impressora Daruma
 
-set @serieecf = '000000000217431'		-- Insira a Série do ECF
-set @dtInicial = '20161103'				-- Insira a Data inicial da venda
-set @dtFinal = '20161103'				-- Insira a Data Final da venda
+set @serieecf = 'BE091410100011345758'		-- Insira a Série do ECF
+set @dtInicial = '20170616'				-- Insira a Data inicial da venda
+set @dtFinal = '20170616'				-- Insira a Data Final da venda
 --------------------------------------------------------------------------------------------------------------
 -- Dados do Banco de Dados	
 --------------------------------------------------------------------------------------------------------------
@@ -25,7 +23,7 @@ set @dtFinal = '20161103'				-- Insira a Data Final da venda
 Select @filial = filial, @serieecf = serieecf  from nfsaidacad where serieecf = @serieecf
 select 
 	n.serieecf, n.numnota,n.serie,n.filial, n.numord, i.cfo, 
-	sum(i.quant * i.preco + i.valsubstri + i.quant * i.preco  * (n.valfrete  - desconto)/(n.valcontab - n.valsubstri - n.valfrete  + n.desconto) ) valor 
+	sum(i.quant * i.preco + i.valsubstri + i.quant * i.preco  * (n.OUTRASDESPESASINCLUSAS + n.valfrete  - desconto)/(n.valcontab - n.valsubstri - n.valfrete -n.OUTRASDESPESASINCLUSAS + n.desconto) ) valor 
 into #items from itnfsaicad i, nfsaidacad n 
 where n.dtemis between @dtInicial and @dtFinal 
 	and n.numord = i.numord 
@@ -95,7 +93,7 @@ select * from #items where numnota not in (select coo from #precupom)		-- verifi
 select l.oidoperacao,l.coo,l.valor as val_Logecf,i.numnota, sum(i.valor) as val_Item
 from logecf l, #items i 
 where l.oidoperacao = i.numord
-	and l.numeroecf = '001/BE091510100011285054'
+	and l.numeroecf = '001/BE091410100011345758'
 	and l.rtipooperacao not in (26749)
 group by  l.oidoperacao, l.coo,l.valor,i.numnota
 having  sum(i.valor) <> l.valor
@@ -111,11 +109,11 @@ having  sum(i.valor) <> l.valor
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --Consultas Gerais
 ---------------------------------
-Select numord,lif,atualiz,dtcancel,flagemit,* from nfsaidacad where numord = 'Informar o numord da nota'
-Select * from cfosaidcad where numord = 'Informar o numord da nota'
-Select item,* from itnfsaicad where numord = 'Informar o numord da nota'
-Select item,* from ITNFSAICOMPLEMENTO where numord = 'Informar o numord da nota'
-Select SUM(quant*preco) from itnfsaicad where numord = 'Informar o numord da nota'
+Select numord,lif,atualiz,dtcancel,flagemit,OUTRASDESPESASINCLUSAS,valfrete,* from nfsaidacad where numord = 'Numord'
+Select * from cfosaidcad where numord = 'Numord'
+Select item,* from itnfsaicad where numord = 'Numord'
+Select item,ValorDespIncl,ValorFrete,* from ITNFSAICOMPLEMENTO where numord = 'Numord'
+Select SUM(quant*preco) from itnfsaicad where numord = 'Numord'
 
 select * from precupom 
 	where 
