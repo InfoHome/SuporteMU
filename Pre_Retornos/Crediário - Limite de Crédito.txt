@@ -1,0 +1,37 @@
+
+
+
+Bom dia Ives
+
+O limite Mensal está com valor ZERO, neste caso o limite mensal do cliente tem que ser maior que os débitos em aberto 
+mais o valor da parcela mensal da compra.
+
+
+
+Nesse caso você deve verificar na ficha de crédito do cliente (no Crediário) as seguintes informações:
+
+1 - Veja se o valor definido no campo "Novo Limite Mensal" é maior que o saldo dos contas a receber em aberto + o valor do pedido a ser faturado.
+
+2 - Veja se o valor definido no campo "Novo Limite de Crédito" é maior que o saldo dos contas a receber em aberto + o valor do pedido a ser faturado
+Se um dos caso acimas for verdade terá que definir esses limites para o cliente, e também o "Tipo de Limite" Normal.
+
+Ex.:
+Primeiro o sistema valida o "Limite Mensal" e depois o "Limite de Crédito" total.
+
+Exemplo:
+Tipo de limite: Normal
+Limite de Crédito: = 10.000,00 (quanto é liberado para comprar no total)
+Limite Mensal = 1.000,00 (quanto é liberado para comprar por mês)
+
+1 - Apure o saldo de contas a receber mensal em aberto + mais a parcela mensal da nova compra.
+Se não atingir o Limite Mensal de 1.000,00 valide o "Limite de Crédito" total
+
+2 - Apure p saldo total em aberto do cliente mais o valor total das parcelas da nova compra, 
+se não atingir o Limite de Crédito de 10.000,00, não tem validação de limite de crédito.
+
+
+Outras validações poderão sempre ocorrer ou não quando o "Tipo de Limite" for diferente de "Normal" e 
+também outros tipos de validações podem ocorrer baseado no número de dias em atraso das parcelas anteriores em aberto ou pagas. 
+
+A disposição 
+

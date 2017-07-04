@@ -1,0 +1,8 @@
+MindsEyeReportEngine é uma dll que o sistema utiliza para gerar alguns relatórios e que após a formatação dos servidores não foi reinstalada ou atualizada.
+
+Para resolver esse problema por favor efetuar o seguinte procedimento:
+
+1 - Acessar o Link: http://download.microuniverso.com.br/DLL'S/?C=M;O=D
+2 - Baixar E descompactar o arquivo: 96559-MindsEyeReportEngineSetup.zip
+- Senha para descompactar: UTILL
+3 - Instalar o arquivo em cada estação que for necessário: 96559-MindsEyeReportEngineSetup.EXE

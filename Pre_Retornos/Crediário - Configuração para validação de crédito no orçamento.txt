@@ -1,0 +1,19 @@
+Bom dia Ives
+
+O sistema tinha um erro que não validava o parâmetro "Dispensa aprovação de crediário" corretamente se ele estivesse com valor = 'S', 
+na sua base de dados ele está configurado como o valor S, ou seja ativo.
+
+Nas versões mais recentes se o parâmetro "Dispensa aprovação de crediário" estiver ativo, e a venda não for condição de pagamento "À VISTA" 
+e o documento não for Cartão, o orçamento não irá mais para o Crediário.
+
+Salvo os casos onde o parâmetro "Tratamento de Limite de Crédito" estiver ativo, pois neste caso deverá ser verificado o limite de crédito mensal do cliente, 
+e que uma vez ultrapassado, o orçamento deverá passar pelo crediário.
+
+Solução:
+
+Configure os parâmetros abaixo com os seguinte valores:
+
+Parâmetro: "Dispensa aprovação de crediário" como o valor N, ou seja, para o sistema exigir aprovação quando ocorre pendencia de crediário.
+Parâmetro: "Tratamento de Limite de Crédito" como o valor 3, ou seja, para validar também o limite de crédito do cliente
+
+A disposição Parâmetro: 
