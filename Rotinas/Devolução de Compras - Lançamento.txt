@@ -1,0 +1,21 @@
+﻿---------------------------------------------------------------------------------------------------------------
+-- Devolução de Compra
+---------------------------------------------------------------------------------------------------------------
+Bom dia 
+
+Por favor fazer a devolução das notas de compras na opção indicada abaixo:
+
+<b>TradeWin -> Operações -> Saídas -> Devoluções de Compras / Entradas.</b>
+
+-> Informar a Filial da devolução, Destinatário e o TPO, depois clica no botão "Selecionar nota de Entrada".
+-> Na tela que irá abrir você poderá filtrar mais de 1 nota para ser devolvida.
+
+-> Marque a opção "Selecionar Itens NF *", de cada nota e selecione os itens desejados para fazer a deveolução,
+quando selecionar os itens clique em confirmar para voltar a tela inicial do lançamento e prossiga com o lançamento
+até a emissão da nota.
+
+Obs.: as notas de entradas que serão devolvidas tem que ter chave de acesso informada na entrada das notas.
+
+
+
+A disposição 
