@@ -6,21 +6,21 @@
 ---------------------------------------------------------------------------------------------------------------------------
 DECLARE @vpNumord int, @vpSituacaoEnvio char(1)
 
-Set @vpNumord = 2098344				-- Informe o Numord da nota a ser enviada
+Set @vpNumord = 217855				-- Informe o Numord da nota a ser enviada
 Set @vpSituacaoEnvio = '1'			-- Informe a situação de envio da nota
 
 If EXISTS (Select 1 from COMPLEMENTONFSAIDA where numord =  @vpNumord) -- insert nota de SAÍDA
 	begin 
-	update COMPLEMENTONFENTRA set recibonfe = 0 where numord = @vpNumord
+	update COMPLEMENTONFSAIDA set recibonfe = 0, lotenfe=0 where numord = @vpNumord
 	insert into FILANFE (DATAPROCESSAMENTONFE,NUMORD,SITUACAONFE,TEMPOMEDIOESTIMADO,TIPONFE,FILIAL,SITANTERIOR)
-	select GETDATE(),c.NUMORD,vpSituacaoEnvio,0,'S',n.FILIAL,c.SITUACAONFE 
+	select GETDATE(),c.NUMORD,@vpSituacaoEnvio,0,'S',n.FILIAL,c.SITUACAONFE 
 		from COMPLEMENTONFSAIDA c join nfsaidacad n on c.numord = n.numord 	where c.NUMORD = @vpNumord
 	end
 ELSE -- insert nota de ENTRADA
 	begin
-	update COMPLEMENTONFENTRA set recibonfe = 0 where numord = @vpNumord
+	update COMPLEMENTONFENTRA set recibonfe = 0, lotenfe=0 where numord = @vpNumord
 	insert into FILANFE (DATAPROCESSAMENTONFE,NUMORD,SITUACAONFE,TEMPOMEDIOESTIMADO,TIPONFE,FILIAL,SITANTERIOR)
-	select GETDATE(),c.NUMORD,vpSituacaoEnvio,0,'E',n.FILIAL,c.SITUACAONFE 
+	select GETDATE(),c.NUMORD,@vpSituacaoEnvio,0,'E',n.FILIAL,c.SITUACAONFE 
 		from COMPLEMENTONFENTRA c join nfentracad n on c.numord = n.numord 	where c.NUMORD =  @vpNumord
 	end
 GO
@@ -33,8 +33,8 @@ GO
 
 DECLARE @vpNumord int, @vpSituacaoRetorno char(1)
 
-Set @vpNumord = 1453686				-- Informe o Numord da nota a ser enviada
-Set @vpSituacaoRetorno = '6'			-- Informe a situação de retorno da nota
+Set @vpNumord = 217855				-- Informe o Numord da nota a ser enviada
+Set @vpSituacaoRetorno = '1'			-- Informe a situação de retorno da nota
 
 If EXISTS (Select 1 from COMPLEMENTONFSAIDA where numord =  @vpNumord) -- insert nota de SAÍDA
 	insert into FILARETORNONFE (NUMORD,SITUACAONFE,TIPOES,GUID,ATUALIZADOEM) VALUES(@vpNumord,@vpSituacaoRetorno,'S',NULL,NULL)

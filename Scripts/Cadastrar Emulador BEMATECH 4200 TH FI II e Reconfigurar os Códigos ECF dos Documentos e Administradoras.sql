@@ -13,8 +13,8 @@
 -- Cadastra o modelo do ECF
 -----------------------------------------------------------------------------
 PRINT 'Cadastra o modelo do ECF'
-if not exists (select 1 from TABELACNIECF where CNIECF = 032203)
-insert into TABELACNIECF values ('BEMATECH','MP-4200 TH FI II','ECF-IF-MFB','01.00.02',032303)
+if not exists (select 1 from TABELACNIECF where CNIECF = '032203')
+insert into TABELACNIECF values ('BEMATECH','MP-4200 TH FI II','ECF-IF','01.00.02','032303')
 GO
 
 -- Cadastra as impressoras
@@ -24,15 +24,15 @@ if exists (select 1 from SERIALECF where serialimpressora = '001/BE10EMULADOR000
 	Delete from SERIALECF where SERIALIMPRESSORA like '%BE10EMULADOR00000000%'
 GO
 if not exists (select * from SERIALECF where serialimpressora = '001/BE10EMULADOR00000000')
-	INSERT INTO [serialecf] (OIDIMPRESSORA,SERIALIMPRESSORA,CODIMP,MODELO,MARCA,VERSAODLL,TIPO,CNIECF,MFADICIONAL,DATAGRAVASB,VERSAOSB,MaxCol)
-	VALUES(26674,'001/BE10EMULADOR00000000',26674,'MP-4200 TH FI II','BEMATECH','7.0.3.8','ECF-IF','032303',NULL,'20110101 12:00:00:000','01.01.02',NULL)
+	INSERT INTO [serialecf] (OIDIMPRESSORA,SERIALIMPRESSORA,CODIMP,MODELO,MARCA,VERSAODLL,TIPO,CNIECF,MFADICIONAL,DATAGRAVASB,VERSAOSB)
+	VALUES(26674,'001/BE10EMULADOR00000000',26674,'MP-4200 TH FI II','BEMATECH','7.0.3.8','ECF-IF','032303',NULL,'20110101 12:00:00:000','01.01.02')
 GO
 if exists (select 1 from SERIALECF where serialimpressora = '001/BE11EMULADOR00000000')
 	Delete from SERIALECF where SERIALIMPRESSORA like '%BE11EMULADOR00000000%'
 GO
 if not exists (select 1 from SERIALECF where serialimpressora = '001/BE11EMULADOR00000000')
-	INSERT INTO [serialecf] (OIDIMPRESSORA,SERIALIMPRESSORA,CODIMP,MODELO,MARCA,VERSAODLL,TIPO,CNIECF,MFADICIONAL,DATAGRAVASB,VERSAOSB,MaxCol)
-	VALUES(26674,'001/BE11EMULADOR00000000',26674,'MP-4200 TH FI II','BEMATECH','7.0.3.8','ECF-IF','032303',NULL,'20110101 12:00:00:000','01.01.02',NULL)
+	INSERT INTO [serialecf] (OIDIMPRESSORA,SERIALIMPRESSORA,CODIMP,MODELO,MARCA,VERSAODLL,TIPO,CNIECF,MFADICIONAL,DATAGRAVASB,VERSAOSB)
+	VALUES(26674,'001/BE11EMULADOR00000000',26674,'MP-4200 TH FI II','BEMATECH','7.0.3.8','ECF-IF','032303',NULL,'20110101 12:00:00:000','01.01.02')
 GO
 
 -- Altera a data de vidência da tabela IBPT
@@ -43,7 +43,7 @@ GO
 
 -- Ajusta o código do RECEBIMENTO
 -----------------------------------------------------------------------------
-PRINT 'Ajusta o código do RECEBIMENTO'
+/*PRINT 'Ajusta o código do RECEBIMENTO'
 update forcffisfat 
 	set  string =	REPLACE (STRING ,	--onde vai ser feito a troca
 	SUBSTRING(string,8,2) ,	--em que ponto vai ser feito a troca
@@ -52,7 +52,7 @@ where codimp = 26674
 	and codigo = '095' 
 	and ordem = 1
 GO
-
+*/
 
 -- Ajusta Tratar Forma de Pagamento
 -----------------------------------------------------------------------------
