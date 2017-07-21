@@ -1,0 +1,12 @@
+
+Boa tarde 
+
+Ocorreram algumas alterações no sistema que irão limpar a data prevista do item se for Encomenda e se o parâmetro:
+
+<b>Número máximo de dias para a previsão de entrega de encomenda</b> estiver vazio ou igual a 0.
+
+Para que a data prevista do item fique preenchida esse parâmetro deverá ser configurado.
+
+Se não tiver um número de dias definido e desejar que essa data fique sempre preenchida, pode configurar esse parâmetro com 999.
+
+A disposição
