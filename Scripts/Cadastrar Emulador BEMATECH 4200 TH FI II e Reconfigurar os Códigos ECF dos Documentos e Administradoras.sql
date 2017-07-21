@@ -1,6 +1,6 @@
 /********************************************************************************************************************
  A T E N Ç Ã O
- Esse Script efuteua a seguintes alterações no banco de dados para utilizar o Emulador:
+ Esse Script efetua as seguintes alterações no banco de dados para utilizar o Emulador:
  
  1 - Cadastra o modelo do ECF: MP-4200 TH FI II
  2 - Cadastra no cadastro de impressoras os emuladores: 001/BE10EMULADOR00000000 e 001/BE11EMULADOR00000000
@@ -8,6 +8,7 @@
  4 - ****** Ajusta o código ECF dos documentos e administradores cadastrados no sistema, na tabela "NUMERADOR"
  5 - Ajusta o código do RECEBIMENTO para '03' no formatador da BEMATECH codimp 26674
  6 - Ajusta a ForCfFisfat codimp = 26674 a codigo = 260 com as alíquotas padrões definidas para o EMULADOR
+ 7 - Ajusta a ForCfFisfat codimp = 26674 a codigo in('095','096','180') para usar a classe "TrataPagto"
 **********************************************************************************************************************/
 
 -- Cadastra o modelo do ECF
@@ -37,7 +38,7 @@ GO
 
 -- Altera a data de vidência da tabela IBPT
 -----------------------------------------------------------------------------
-PRINT  'Altera a data de vidência da tabela IBPT'
+PRINT  'Altera a data de vigência da tabela IBPT'
 Update TABELAIBPT set VIGENCIAFIM = '21001231'
 GO
 
@@ -56,6 +57,7 @@ GO
 
 -- Ajusta Tratar Forma de Pagamento
 -----------------------------------------------------------------------------
+PRINT 'Ajustando para classe TrataPagto'
 Delete from FORCFFISFAT where codimp = '26674' and codigo in ('095','096','180')
 GO
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '095', 1, '''"'' + ''03'' + ''"'' + "," + ''"'' + TRANSFORM(INT(nValorOP*100)) + ''"'' + '',''', 1)
