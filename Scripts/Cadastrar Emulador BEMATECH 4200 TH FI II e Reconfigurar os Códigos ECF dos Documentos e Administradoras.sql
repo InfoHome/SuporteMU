@@ -4,7 +4,7 @@
  
  1 - Cadastra o modelo do ECF: MP-4200 TH FI II
  2 - Cadastra no cadastro de impressoras os emuladores: 001/BE10EMULADOR00000000 e 001/BE11EMULADOR00000000
- 3 - Altera a data de vidência da tabela IBPT
+ 3 - Altera a data de vigência da tabela IBPT
  4 - ****** Ajusta o código ECF dos documentos e administradores cadastrados no sistema, na tabela "NUMERADOR"
  5 - Ajusta o código do RECEBIMENTO para '03' no formatador da BEMATECH codimp 26674
  6 - Ajusta a ForCfFisfat codimp = 26674 a codigo = 260 com as alíquotas padrões definidas para o EMULADOR
