@@ -1,0 +1,13 @@
+Boa tarde 
+
+Na legislação tratada pelo sistema para as empresas que <b>Não Apuram IPI</b> o tratamento da devolução de compras é o seguinte:
+
+O valor e base do IPI é destacado no quadro <b>Dados Adicionais</b> da Danfe e no quadro <b>CÁLCULO DO IMPOSTO</b> da Danfe e o 
+valor de IPI é somado no campo <b>OUTRAS DESPESAS</b>.
+
+Dessa forma o sistema fará a emissão correta, para empresas que não Apura IPI.
+
+Caso seu fornecedor discorde desse operação, peço por gentileza que veja com seu Contador ou o responsável pela parte 
+tributária da Empresa, para discriminar qual o procedimento correto a ser adotado, e a legislação que justifique o mesmo.
+
+A disposição 
