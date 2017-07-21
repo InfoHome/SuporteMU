@@ -53,6 +53,19 @@ where codimp = 26674
 	and ordem = 1
 GO
 
+
+-- Ajusta Tratar Forma de Pagamento
+-----------------------------------------------------------------------------
+Delete from FORCFFISFAT where codimp = '26674' and codigo in ('095','096','180')
+GO
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '095', 1, '''"'' + ''03'' + ''"'' + "," + ''"'' + TRANSFORM(INT(nValorOP*100)) + ''"'' + '',''', 1)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '095', 2, '''"'' + Left(TrataPagto(cDoc,.t.),16) + ''"''', 1)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '095', 3, 'ImpCmd(''Bematech_FI_RecebimentoNaoFiscal(&cCmdAux)'')', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '096', 1, '''"'' + TrataPagtoEstorno(pnOIDDocumento,.F.) + ''"'' + "," + ''"'' + StrZero(pnValParc*100,14) + ''"'' + '','' + ''"Estorno"''', 1)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '096', 2, 'ImpCmd(''Bematech_FI_RecebimentoNaoFiscal(&cCmdAux)'')', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '180', 1, '''"'' + Left(TrataPagto(Documen.Oid,.t.),16) + ''"'' + '','' + ''"'' + StrZero(Left(Str(nValParc,15,2),12) + Right(Str(nValParc,15,2),2),14) + ''"''', 1)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '180', 2, 'ImpCmd(''Bematech_FI_EfetuaFormaPagamento(&cCmdAux)'')', 0)
+GO
 -- Ajusta as Alíquotas
 -----------------------------------------------------------------------------
 PRINT 'Ajusta as Alíquotas FORCFFISFAT'
