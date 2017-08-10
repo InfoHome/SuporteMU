@@ -99,6 +99,7 @@ GO
 
 
 PRINT 'Ajustar documento de recebimento padrão do usuário'
+-----------------------------------------------------------------------------
 if exists (select 1 from ADITIVO_R where RDEFINICAO = 31266 and ritem = 1)
 update ADITIVO_R set svalor = 'Recebimento' where RDEFINICAO = 31266 and ritem = 1
 else
@@ -107,6 +108,7 @@ values(NULL,'','Recebimento',NULL,1,31266)
 GO
 
 PRINT 'Ajustar porta COM do usuário para COM2'
+-----------------------------------------------------------------------------
 if exists (select 1 from ADITIVO_R where RDEFINICAO = 23750 and ritem = 1)
 update ADITIVO_R set svalor = 'COM2' where RDEFINICAO = 23750 and ritem = 1
 else
@@ -115,6 +117,7 @@ values(NULL,'','COM2',NULL,1,23750)
 GO
 
 PRINT 'Ajustar modelo da Impressora usuário para 26674'
+-----------------------------------------------------------------------------
 if exists (select 1 from ADITIVO_R where RDEFINICAO = 21330 and ritem = 1)
 update ADITIVO_R set svalor = 26674 where RDEFINICAO = 21330 and ritem = 1
 else
