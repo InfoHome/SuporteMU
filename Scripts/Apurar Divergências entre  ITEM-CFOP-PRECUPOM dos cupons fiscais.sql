@@ -20,9 +20,9 @@ declare @serieecf char(20) -- Mudara para char(15) se form Impressora Daruma
 
 -- Informe aqui os dados do dia da venda
 ---------------------------------------------------------------
-set @serieecf = 'BE091510100011285054'	-- Série do ECF
-set @dtInicial = '20161007'				-- Data inicial da venda
-set @dtFinal = '20161007'				-- Data Final da venda
+set @serieecf = 'BE051172900000034210'	-- Série do ECF
+set @dtInicial = '20170804'				-- Data inicial da venda
+set @dtFinal = '20170804'				-- Data Final da venda
 ---------------------------------------------------------------
 -- Lipar Registros
 ------------------
@@ -48,7 +48,7 @@ where n.dtemis between @dtInicial and @dtFinal
 group by n.numnota,n.serie,n.filial, n.numord, i.cfo
 
 select 
-	numnota, numord, cfo,baseicm + baseicm2 + baseicm3 + baseicm4 + baseicm5 + outricm + valsemicm  valor 
+	numnota, numord, cfo,baseicm + baseicm2 + baseicm3 + baseicm4 + baseicm5 + outricm + valsemicm + valtribdif valor 
 into #cfos from cfosaidcad 
 where  numord in ( select numord from nfsaidacad 
 					where dtemis between @dtInicial and @dtFinal 

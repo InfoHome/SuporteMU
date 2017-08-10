@@ -39,7 +39,8 @@ GO
 -- Altera a data de vidência da tabela IBPT
 -----------------------------------------------------------------------------
 PRINT  'Altera a data de vigência da tabela IBPT'
-Update TABELAIBPT set VIGENCIAFIM = '21001231'
+if exists (select 1 from sys.columns where OBJECT_ID = 1183095751 and name = 'VIGENCIAFIM')
+Update TABELAIBPT set VIGENCIAFIM = '20201231'
 GO
 
 -- Ajusta o código do RECEBIMENTO
@@ -96,6 +97,30 @@ INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '2
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 21, '25.00 - {16}', 0)
 GO
 
+
+PRINT 'Ajustar documento de recebimento padrão do usuário'
+if exists (select 1 from ADITIVO_R where RDEFINICAO = 31266 and ritem = 1)
+update ADITIVO_R set svalor = 'Recebimento' where RDEFINICAO = 31266 and ritem = 1
+else
+Insert ADITIVO_R (dtvalor,LSVALOR,SVALOR,NVALOR,RITEM,RDEFINICAO)
+values(NULL,'','Recebimento',NULL,1,31266)
+GO
+
+PRINT 'Ajustar porta COM do usuário para COM2'
+if exists (select 1 from ADITIVO_R where RDEFINICAO = 23750 and ritem = 1)
+update ADITIVO_R set svalor = 'COM2' where RDEFINICAO = 23750 and ritem = 1
+else
+Insert ADITIVO_R (dtvalor,LSVALOR,SVALOR,NVALOR,RITEM,RDEFINICAO)
+values(NULL,'','COM2',NULL,1,23750)
+GO
+
+PRINT 'Ajustar modelo da Impressora usuário para 26674'
+if exists (select 1 from ADITIVO_R where RDEFINICAO = 21330 and ritem = 1)
+update ADITIVO_R set svalor = 26674 where RDEFINICAO = 21330 and ritem = 1
+else
+Insert ADITIVO_R (dtvalor,LSVALOR,SVALOR,NVALOR,RITEM,RDEFINICAO)
+values(NULL,'',26674,NULL,1,21330)
+GO
 
 -- Ajuste dos códigos ECF
 -------------------------------------------------------------------------
