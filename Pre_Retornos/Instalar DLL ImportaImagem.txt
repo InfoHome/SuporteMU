@@ -1,0 +1,24 @@
+Bom dia 
+
+Por favor efetuar os seguintes procedimentos:
+
+1- Configurar o Parâmetro Geral: Formato Item Externo Texto (S/N)? com o Valor igual S
+2 - Baixar o arquivo ImportaImagem.rar no link: http://download.microuniverso.com.br/MasterEn/DLLs_de_Instalacao/
+3 - Descompactar arquivo ImportaImagem.rar
+3.1 - Os aruivos descompactados são esses:
+importaimagem.dll
+importaimagem.tlb
+importaimagem.VBR
+
+4 - Copiar os arquivos acima para C:\Windows\System32 ou em C:\Windows\SysWOW64 de acordo com o Tipo de Sistema Operacional.
+
+5 - Registrar a DLL importaimagem.dll
+
+A DLL deve estar na pasta C:\Windows\System32 ou em C:\Windows\SysWOW64 de acordo com o Tipo de Sistema Operacional.
+
+Para registrar:
+
+Exemplo: REGSVR32 C:\WINDOWS\SYSTEM32\ImportaImagem.dll
+ou Exemplo: REGSVR32 C:\Windows\SysWOW64\ImportaImagem.dll
+
+A disposição 
