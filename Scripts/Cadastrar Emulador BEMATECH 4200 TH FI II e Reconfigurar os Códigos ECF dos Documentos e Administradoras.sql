@@ -10,7 +10,7 @@
  6 - Ajusta a ForCfFisfat codimp = 26674 a codigo = 260 com as alíquotas padrões definidas para o EMULADOR
  7 - Ajusta a ForCfFisfat codimp = 26674 a codigo in('095','096','180') para usar a classe "TrataPagto"
 **********************************************************************************************************************/
-
+use bigolin
 -- Cadastra o modelo do ECF
 -----------------------------------------------------------------------------
 PRINT 'Cadastra o modelo do ECF'
@@ -43,19 +43,6 @@ if exists (select 1 from sys.columns where OBJECT_ID = 1183095751 and name = 'VI
 Update TABELAIBPT set VIGENCIAFIM = '20201231'
 GO
 
--- Ajusta o código do RECEBIMENTO
------------------------------------------------------------------------------
-/*PRINT 'Ajusta o código do RECEBIMENTO'
-update forcffisfat 
-	set  string =	REPLACE (STRING ,	--onde vai ser feito a troca
-	SUBSTRING(string,8,2) ,	--em que ponto vai ser feito a troca
-	'03' )	-- o valor que que eu quero informar 
-where codimp = 26674 
-	and codigo = '095' 
-	and ordem = 1
-GO
-*/
-
 -- Ajusta Tratar Forma de Pagamento
 -----------------------------------------------------------------------------
 PRINT 'Ajustando para classe TrataPagto'
@@ -74,27 +61,29 @@ GO
 PRINT 'Ajusta as Alíquotas FORCFFISFAT'
 Delete from FORCFFISFAT where codimp = 26674 and codigo = '260'
 GO
+
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 1, '''I'' - {II}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 2, '''S'' - {FF}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 3, '''N'' - {NN}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 4, '''O'' - {NN}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 5, '''A'' - {FF}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 6, '01.80 - {01}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 7, '04.00 - {02}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 8, '04.10 - {03}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 9, '05.00 - {04}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 10, '05.14 - {05}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 6, '07.00 - {01}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 7, '12.00 - {02}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 8, '17.00 - {03}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 9, '18.00 - {04}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 10, '25.00 - {05}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 11, '05.60 - {06}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 12, '07.00 - {07}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 12, '01.80 - {07}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 13, '08.80 - {08}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 14, '10.50 - {09}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 15, '12.00 - {10}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 15, '04.00 - {10}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 16, '13.20 - {11}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 17, '14.40 - {12}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 18, '17.00 - {13}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 19, '18.00 - {14}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 18, '04.10 - {13}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 19, '05.00 - {14}', 0)
 INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 20, '19.00 - {15}', 0)
-INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 21, '25.00 - {16}', 0)
+INSERT INTO FORCFFISFAT (Codimp, Codigo, Ordem, String, Somar) VALUES (26674, '260', 21, '11.02 - {16}', 0)
+
 GO
 
 
@@ -107,13 +96,13 @@ Insert ADITIVO_R (dtvalor,LSVALOR,SVALOR,NVALOR,RITEM,RDEFINICAO)
 values(NULL,'','Recebimento',NULL,1,31266)
 GO
 
-PRINT 'Ajustar porta COM do usuário para COM2'
+PRINT 'Ajustar porta COM do usuário para COM255'
 -----------------------------------------------------------------------------
 if exists (select 1 from ADITIVO_R where RDEFINICAO = 23750 and ritem = 1)
-update ADITIVO_R set svalor = 'COM2' where RDEFINICAO = 23750 and ritem = 1
+update ADITIVO_R set svalor = 'COM255' where RDEFINICAO = 23750 and ritem = 1
 else
 Insert ADITIVO_R (dtvalor,LSVALOR,SVALOR,NVALOR,RITEM,RDEFINICAO)
-values(NULL,'','COM2',NULL,1,23750)
+values(NULL,'','COM255',NULL,1,23750)
 GO
 
 PRINT 'Ajustar modelo da Impressora usuário para 26674'

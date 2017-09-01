@@ -37,7 +37,7 @@ group by n.serieecf,n.numnota,n.serie,n.filial, n.numord, i.cfo
 -- Alimentar a tabela temporária (#cfos)
 -------------------------------------------
 select 
-	numnota, numord, cfo,baseicm + baseicm2 + baseicm3 + baseicm4 + baseicm5 + outricm + valsemicm  valor 
+	numnota, numord, cfo,baseicm + baseicm2 + baseicm3 + baseicm4 + baseicm5 + outricm + valsemicm + valtribdif  valor 
 into #cfos from cfosaidcad 
 where  numord in ( select numord from nfsaidacad 
 					where dtemis between @dtInicial and @dtFinal 
@@ -49,7 +49,7 @@ where  numord in ( select numord from nfsaidacad
 
 -- Alimentar a tabela temporária (#precupom)
 -------------------------------------------
-Select Coo, serialecf,Data ,sum(ValorTotal+Acrescimo-DESCONTO) as ValorTotal
+Select Coo, serialecf,Data ,sum(ValorTotal+Acrescimo) as ValorTotal
 into #precupom from precupom
 where serialecf = @serieecf
 	and data between @dtInicial and @dtFinal
