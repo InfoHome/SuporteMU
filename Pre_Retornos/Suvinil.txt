@@ -1,0 +1,23 @@
+
+-- IMPORTAÇÃO
+-- Permissão nas Views
+----------------------------------------------------------------------------------------------
+
+Boa tarde 
+
+O usuário <b>Integracao</b> da SUVINIL não tem acesso as seguintes views:
+
+V_TWEB_EMBALAGENS
+V_TWEB_CORES_COLORANTES
+V_TWEB_TIPOS_BASES
+V_TWEB_PRODUTOS
+V_TWEB_COLORANTES
+V_TWEB_GRUPOS
+V_TWEB_BASES
+V_TWEB_CORES
+
+Entre em contato com o suporte técnico da Suvinil e solicite que atualizem o banco 
+de dados e conceda permissões as views acima ao usuário Integracao.
+
+----------------------------------------------------------------------------------------------
+

@@ -1,0 +1,23 @@
+
+
+
+As permissões do Masteren são concedidas em: 
+
+1 - Masteren / Dados / Dados Permissões por Usuário
+
+1.1 - No campo "Usuário": Você seleciona qual usuário quer conceder permissões
+1.2 - No campo "Tipo": você informa qual o Tipo de permissão preceisa conceder, que são em qual opção o recurso está, CADASTRO, RELATÓRIOS, FERRAMENTAS OU CONSULTA
+1.3 - No campo "Domínio": Onde o que quer que seja concedido ao usuário está.
+1.4 - Após filtrar a opção que pretender liberar para o usuário na coluna "Permissão" selecione "Permite" e clique em aplicar.
+
+2 A outra forma é na opção: Masteren / Exibir / Escopo
+
+2.1 - No Escopo Global / Opção de Menu, seleciona qual opção. Ex.: Tesouraria
+2.2 - Expanda clicando na setinha + do menu selecionado
+2.3 - Em cima da opção que deseja liberar, clique com o botão direito do mouse e selecione a opção "Acesso".
+2.4 - Selecione os usuários que terão acesso a essa opção do menu e clique na setinha para passar os usuário para caixa a direita
+2.5 - Na coluna "Permissão" de cada  usuário selecione "Permite" e clique em OK.
+
+A disposição
+
+
