@@ -1,16 +1,17 @@
 -- INFORMAÇÕES GERAIS ----------------------------------------------------------------------------------------
 -- Importação dos Registros E14 e E15 ATO COTEPE/ICMS N° 08/07, DE 28 DE JUNHO DE 2007
 -- Layout: http://www1.fazenda.gov.br/confaz/confaz/atos/atos_cotepe/2004/..%5C2007%5CAC008_07.htm
+-- Específico para impressora *** D A R U M A ***
 --------------------------------------------------------------------------------------------------------------
 -- Inserir os dados para importação:
 ---------------------------------------------------------------
 Declare @filial char(2), @dtInicial datetime, @dtFinal datetime, @pathFileName varchar(100),@sql_Statemanet varchar(1000),@serieecf varchar(max)
 -- Insira o caminho do arquivo Cotep e os dados da venda
 --------------------------------------------------------------------------------------------
-set @pathFileName = 'C:\Temp\ATOCOTEPE_DATA_Abril.TXT'	-- Insira o caminho do arquivo Cotep
-set @serieecf =  'BE091710100011201517'					-- Insira a Série do ECF
-set @dtInicial = '20170401'								-- Insira a Data inicial da venda
-set @dtFinal =   '20170430'								-- Insira a Data Final da venda
+set @pathFileName = 'C:\TEMP2\ATOCOTEPE_DATA.TXT'	-- Insira o caminho do arquivo Cotep
+set @serieecf =  ''								-- Insira a Série do ECF
+set @dtInicial = ''								-- Insira a Data inicial da venda
+set @dtFinal =   ''								-- Insira a Data Final da venda
 
 --------------------------------------------------------------------------------------------
 IF object_id('ImportacaoAto_Cotep') IS NOT NULL Drop table ImportacaoAto_Cotep
@@ -97,7 +98,7 @@ select n.serieecf, n.numnota,n.serie,n.filial, n.numord, i.cfo, n.lif, n.atualiz
 where n.dtemis between @dtInicial and @dtFinal 
 	and n.numord = i.numord 
 	and n.filial = @filial
-	and @serieecf = serieecf
+	and @serieecf = n.serieecf
 group by n.serieecf,n.numnota,n.serie,n.filial, n.numord, i.cfo ,n.lif, n.atualiz, n.dtcancel
 
 -- Alimentar a tabela temporária (#cfos)
@@ -109,14 +110,13 @@ where  numord in ( select numord from nfsaidacad
 						and filial = @filial
 						and @serieecf = serieecf)
 
-
-
+						
 /**********************************************************************************************************************************************************************/
 -- ****** C O N S U L T A S *******
 --------------------------------------------------------------------------------------------------------------
 select * from ImportacaoAto_Cotep
-select * from #TempE14 where coo = '000642'
-select * from #TempE15 where coo = '000642'
+select * from #TempE14 where coo = ''
+select * from #TempE15 where coo = ''
 /**********************************************************************************************************************************************************************/
 -- Externo X Banco
 -- Lista divergência de valor entre valor do ARQUIVO ATOCOTEP/REGISRO E14 com o valor do cupom
@@ -124,7 +124,7 @@ select * from #TempE15 where coo = '000642'
 select 
 	a.numord, sum(a.valor) , b.Total_Liquido, sum(a.valor) - b.Total_Liquido
 from #items a,  #TempE14 b
-where a.numnota = b.COO and a.SerieECF = b.SerieECF 
+where a.numnota = b.COO and a.SerieECF = b.SerieECF
 group by a.numord, b.Total_Liquido
 having sum(a.valor) - b.Total_Liquido < - 0.000001 or sum(a.valor) - b.Total_Liquido > 0.000001
 
@@ -149,13 +149,24 @@ select * from #items where numnota not in (select COO from #TempE14)
 SELECT 
 	Imp.COO,imp.Total_Liquido as [Valor da MFD] ,	case when imp.cancelado = 'S' then 'Cupom Cancelado na Impressora' else 'Cupom Faturado na MFD' end as Situacao_da_MFD,
 	bd.numord, 	bd.numnota,sum(bd.valor) as [Valor do Sistema],	case when bd.dtcancel is not null then 'Cupom Cancelado no Banco de Dados' else 'Cupom Faturado no Sistema' end as Situacao_do_Banco,
-	imp.Total_Liquido - sum(bd.valor) as Compracao
+	case when imp.cancelado = 'S' then imp.Total_Liquido else imp.Total_Liquido - sum(bd.valor) end  as Compracao
 FROM #TempE14 AS IMP 
 	JOIN #items BD on imp.COO = bd.numnota and imp.SerieECF = bd.SerieECF
 --WHERE bd.numnota = '000640'
 GROUP BY Imp.COO,bd.numnota,bd.numord,bd.dtcancel, imp.cancelado,imp.Total_Liquido
 --HAVING imp.Total_Liquido - sum(bd.valor) <> 0	
 
+/**************************************************************************************************************************************************************/
+-- Externo X Banco
+-- Lista os cupons do Arquivo MFD Cancelados e compara com os cupons do Banco de dados e fala a situação "Faturado e Cancelado"
+----------------------------------------------------------------------------------------------------------------------------------------------
+select 
+	imp.COO,imp.Totalizador,sum(imp.Val_Unitario),nfs.dtemis,nfs.dtcancel,nfs.lif,nfs.atualiz,nfs.flagemit
+from #TempE15 imp 
+	left join nfsaidacad nfs on imp.coo = nfs.numnota and imp.SerieECF = nfs.serieecf  
+where imp.Tipo_Cancelamento = 'S' 
+group by imp.COO,imp.Totalizador,nfs.dtemis,nfs.dtcancel,nfs.lif,nfs.atualiz,nfs.flagemit order by imp.coo,imp.Totalizador
+/**************************************************************************************************************************************************************/
 
 /**************************************************************************************************************************************************************/
 --Consultas Gerais

@@ -10,11 +10,11 @@ IF object_id('tempdb..#precupom') IS NOT NULL DROP TABLE #precupom
 ---------------------------------------------------------------
 declare @filial char(2), @dtInicial datetime, @dtFinal datetime
 
-declare @serieecf char(20)				-- Mudar para char(15) se form Impressora Daruma
+declare @serieecf varchar(max)
 
-set @serieecf = 'BE091410100011345758'		-- Insira a Série do ECF
-set @dtInicial = '20170616'				-- Insira a Data inicial da venda
-set @dtFinal = '20170616'				-- Insira a Data Final da venda
+set @serieecf = '000000000415326'		-- Insira a Série do ECF
+set @dtInicial = '201708'				-- Insira a Data inicial da venda
+set @dtFinal = '201708'				-- Insira a Data Final da venda
 --------------------------------------------------------------------------------------------------------------
 -- Dados do Banco de Dados	
 --------------------------------------------------------------------------------------------------------------
@@ -49,9 +49,9 @@ where  numord in ( select numord from nfsaidacad
 
 -- Alimentar a tabela temporária (#precupom)
 -------------------------------------------
-Select Coo, serialecf,Data ,sum(ValorTotal+Acrescimo) as ValorTotal
+Select Coo, serialecf, Data , sum(ValorTotal+Acrescimo) as ValorTotal, sum(desconto) as Desconto
 into #precupom from precupom
-where serialecf = @serieecf
+where serialecf = @serieecf and cancelado = 0
 	and data between @dtInicial and @dtFinal
 	and filial = @filial
 group by  Coo,serialecf,Data
@@ -76,7 +76,7 @@ select * from #items where numord not in (select numord from #cfos) -- verifica 
 ------------------------------------------------------------------------------------
 select 
 	a.filial, p.data,a.serie, p.serialecf, a.numord, a.numnota, 
-	sum(a.valor) as valItens , p.valortotal as valPrecupom, sum(a.valor) - p.valortotal as Diff
+	sum(a.valor) as valItens , p.valortotal as valPrecupom, sum(a.valor) - p.valortotal as Diff, sum(p.desconto)  as Desconto
 from #items a,  #precupom p
 where a.numnota = p.coo 
 group by a.filial,a.serie, p.data,p.serialecf,a.numord,a.numnota,p.valortotal
