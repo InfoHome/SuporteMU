@@ -39,3 +39,17 @@ deallocate CurAjusta_NFCE_PARA_INUTILIZAR
 
 -- ****** // FIM Ajuste numeração existente no banco de dados inconsistente ******
 -----------------------------------------------------------------------------------------------------
+
+
+
+
+--Ajuste para notas com Valcontab > 0
+---------------------------------------------------------------------------------
+Update COMPLEMENTONFSAIDA set SITUACAONFE = 'T' where numord = 4574711 
+Update NFSAIDACAD set lif = 1 , atualiz = 0, integrado = 1 where numord = 4574711 
+Update itnfsaicad set atuaitem = 0 where numord = 4574711 
+
+--Ajuste para notas com Valcontab > 0
+---------------------------------------------------------------------------------
+Update COMPLEMENTONFSAIDA set SITUACAONFE = 'T' where numord = 4574711 
+Update NFSAIDACAD set lif = 1 , atualiz = 0, integrado = 0 ,flagemit = 0 where numord = 4574711 

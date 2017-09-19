@@ -118,7 +118,7 @@ where  numord in ( select numord from nfsaidacad
 -- ****** C O N S U L T A S *******
 --------------------------------------------------------------------------------------------------------------
 select * from ImportacaoAto_Cotep
-select '000'+substring(SerieECF,9,12) from #TempE14
+select * from #TempE14 where coo = '091949'
 select * from #TempE15 where coo = '091949'
 /**********************************************************************************************************************************************************************/
 -- Externo X Banco
