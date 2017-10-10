@@ -1,0 +1,58 @@
+-- PAs 274603, 304685
+
+Boa tarde
+
+Em alguns estados está em vigor a NF-e de estorno para os casos em que o cancelamento não tenha sido transmitido no prazo de 24 horas. 
+Nestes casos a correção deve ser realizada através da emissão de NF-e de estorno que deve ser emitida com as seguintes características:
+
+<pre>1 - Configurar um TPO de Outras saídas: </pre>
+Emissão de NF-e de estorno pela rotina de devolução de vendas: Tradewin - Operações - Entradas - Devolução de Vendas / Saídas
+
+Características do TPO:
+
+a) Finalidade de emissão da NF-e (campo FinNFe) = “3 - NF-e de ajuste”;
+b) Descrição da Natureza da Operação (campo natOp) = “999 - Estorno de NF-e não cancelada no prazo legal”;
+c) Referenciar a chave de acesso da NF-e que está sendo estornada (campo refNFe);
+Basta informar o número e a série da NF-e na capa da nota.
+d) Dados de produtos/serviços e valores equivalentes aos da NF-e estornada;
+e) Códigos de CFOP inversos aos constantes na NF-e estornada;
+f) Informar a justificativa do estorno nas Informações Adicionais de Interesse do Fisco (campo infAdFisco).
+
+A NF-e de estorno para notas de saídas será emitida pela opção de devolução de vendas utilizando um TPO devidamente configurado para esta operação.
+Configurações necessárias no TPO para emissão da NF-e de estorno:
+
+<li>Finalidade de emissão da NFe  = 3 (NF-e de ajuste);
+<li>Exigir justificativa na emissão da NFe = S;
+<li>Utilizado na devolução = S 
+<li>Utilizado para Estorno Devolução = S.
+<li>Natureza da Operação = 999 - Estorno de NF-e não cancelada no prazo legal;
+<li>CFOP = CFOP de estorno
+
+<pre>2 - Configurar TPO de Outras entradas:</pre>
+Emissão de NF-e de estorno pela rotina de devolução de compras: Tradewin - Operações - Saídas - Devolução de compras / Entradas
+
+Características do TPO:
+
+a) Finalidade de emissão da NF-e (campo FinNFe) = “3 - NF-e de ajuste”;
+b) Descrição da Natureza da Operação (campo natOp) = “999 - Estorno de NF-e não cancelada no prazo legal”;
+c) Referenciar a chave de acesso da NF-e que está sendo estornada (campo refNFe);
+Basta informar o número e a série da NF-e na capa da nota.
+d) Dados de produtos/serviços e valores equivalentes aos da NF-e estornada;
+e) Códigos de CFOP inversos aos constantes na NF-e estornada;
+f) Informar a justificativa do estorno nas Informações Adicionais de Interesse do Fisco (campo infAdFisco).
+A NF-e de estorno para notas de entradas com emissão será emitida pela opção de devolução de compras utilizando um TPO devidamente configurado para esta operação.
+
+Configurações necessárias no TPO para emissão da NF-e de estorno:
+<li>Finalidade de emissão da NFe  = 3 (NF-e de ajuste);
+<li>Exigir justificativa na emissão da NFe = S;
+<li>Utilizado na devolução = S
+<li>Utilizado para Estorno Devolução = S.
+<li>Natureza da Operação = 999 - Estorno de NF-e não cancelada no prazo legal;
+<li>CFOP = CFOP de estorno
+
+
+
+As Demais integrações como são definidas pelo usuário, se irá emitir NFE, se irá integrar com controle de estoque e etc.
+
+
+A disposição

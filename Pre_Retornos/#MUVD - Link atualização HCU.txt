@@ -1,8 +1,7 @@
-
 Acesse a <b>Base de Conhecimento</b> pela sua EXTRANET e assista os vídeos na ordem proposta abaixo. 
 Nesses vídeos constam as orientações necessárias para que possa manter seu ambiente de trabalho atualizado:
 
-O importante é atualizar os scripts de banco de dados antes de colocar as novas versões em produção
+É importante é atualizar os scripts de banco de dados antes de colocar as novas versões em produção.
 
 Segue:
 
@@ -41,16 +40,16 @@ Caso Contrário assista esse vídeo: #MUVD - Estrutura - Links para atualização MU
 #MUVD - Estrutura - DANFE sem código de barras (Bcode128).mp4
 #MUVD - Estrutura - Configurações básicas CobrebemX (Principais causas de erros para rotina já implantada).mp4
 
+<pre>-- Orientações para automatizar a atualização do banco de dados -----------------------------------------------------</pre>
+#MUVD - Estrutura - MUSincronizador - Agendamento automático.mp4
+#MUVD - Estrutura - MUSincronizador - Instalação e Configuração.mp4
 
-<pre>
-A T E N Ç Ã O: 
-
+<pre>A T E N Ç Ã O: 
 Se após assistir esses vídeos não conseguir efetuar a instalação, então deverá contratar o serviço de Base 
 da Microuniverso para fazer a instalação e também solicitar o treinamento se desejar.
 Esse serviço é passível de cobrança.
 
 Para autorizar o serviço é só retornar o atendimento com a autorização, que solicitaremos que um analista do setor de 
-base entre em contato.
-</pre>
+base entre em contato.</pre>
 
 A disposição

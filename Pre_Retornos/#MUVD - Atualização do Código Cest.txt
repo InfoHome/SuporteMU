@@ -1,0 +1,32 @@
+
+
+
+Boa tarde 
+
+Conforme conversamos segue ETAPAS DE ATUALIZAÇÃO do CEST com base.
+
+Na base de conhecimento tem o vídeo <b>#MUVD - Configuração CEST.mp4</b> com as orientações necessárias para fazer essa atualização.
+
+
+A atualização deve ser feita da seguinte forma:
+
+0. Assistir o vídeo <b>#MUVD - Configuração CEST.mp4</b> disponível na Base de Conhecimento em sua Extranet 
+e seguir as orientações abaixo para atualizar.
+
+1. As versões dos módulos  Tradewin.exe e  Siswproj.exe devem estar atualizadas;
+
+2. Acessar o link http://download.microuniverso.com.br/TradSql/Utilitarios/AtualizaCest e baixar os arquivos: 
+atualizacest21903.zip / Atualização_NCM_CEST.rar
+Senha para descompactar: UTILL 
+
+3. Copiar os scripts que constam no arquivo 'Insert_CodigoCest.txt' para o SQL e executar no banco de dados.
+
+4. Abrir o aplicativo 'AtualizaCest21903.exe' e clicar em 'Atualização Automática'.
+
+5. Após concluir a atualização, clicar em 'Gerar arquivo com os produtos para atualização manual' e verificar no arquivo 'Produtos_sem_CEST.txt' 
+que será gerado no diretório de instalação do sistema.
+
+O código CEST desses itens deve ser informado manualmente no cadastro do produto.
+*** Estes arquivos devem ficar no mesmo diretório do Tradewin.exe.
+
+

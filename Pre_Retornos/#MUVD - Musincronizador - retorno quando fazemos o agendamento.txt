@@ -1,0 +1,20 @@
+
+Bom dia Vandenilza
+
+Foi feito a instalação do sistema para fazer a atualização do Banco de Dados automaticamente.
+
+O Programa está localizado no servidor: 192.168.0.13 em C:\Microuni\MUSincronizadorBD.exe versão atual 5.5
+O script de Agendamento está localizado em C:\Microuni\MUSINC.bat
+
+Foi feito o agendamento pelo Agendador de Tarefas do Windows com nome MUSincronizador as 01:00:00 Horas diariamente.
+Depois, por favor certificar que a mesma está sendo executar corretamente, caso não esteja por favor acionar o responsável 
+de TI da sua empresa para ajustar.
+
+Nos testes que fiz não ocorreu problemas.
+
+Para maiores indormações assista os vídeos abaixo disponíveis na Base de Conhecimento em sua Extranet:
+
+#MUVD - Estrutura - MUSincronizador - Agendamento automático.mp4
+#MUVD - Estrutura - MUSincronizador - Instalação e Configuração.mp4
+
+A diposição
