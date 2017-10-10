@@ -10,7 +10,7 @@
  6 - Ajusta a ForCfFisfat codimp = 26674 a codigo = 260 com as alíquotas padrões definidas para o EMULADOR
  7 - Ajusta a ForCfFisfat codimp = 26674 a codigo in('095','096','180') para usar a classe "TrataPagto"
 **********************************************************************************************************************/
-use bigolin
+
 -- Cadastra o modelo do ECF
 -----------------------------------------------------------------------------
 PRINT 'Cadastra o modelo do ECF'
