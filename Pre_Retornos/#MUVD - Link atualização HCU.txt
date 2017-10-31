@@ -39,6 +39,7 @@ Caso Contrário assista esse vídeo: #MUVD - Estrutura - Links para atualização MU
 #MUVD - Estrutura - Usuário predefinido ao carregar o sistema.mp4
 #MUVD - Estrutura - DANFE sem código de barras (Bcode128).mp4
 #MUVD - Estrutura - Configurações básicas CobrebemX (Principais causas de erros para rotina já implantada).mp4
+#MUVD - Relatórios Gerenciais - Recursos do botão Parâmetros dos relatórios.mp4
 
 <pre>-- Orientações para automatizar a atualização do banco de dados -----------------------------------------------------</pre>
 #MUVD - Estrutura - MUSincronizador - Agendamento automático.mp4
