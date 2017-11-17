@@ -1,0 +1,22 @@
+---------------------------------------------------------------------------------------------
+-- Cancelamento Extemporâneo
+---------------------------------------------------------------------------------------------
+
+
+Olá, Jussara.
+
+Após recebido o protocolo do Cancelamento Extemporâneo feito pelo Siare, faça o seguinte em 
+nosso sistema:
+
+1 - Acessar: Sistema de Usuário > Movimentos > Saídas > Cancelamento de NF > Vendas
+2 - Se caso exigir senha, informe senha de permissão para cancelamento de NF e clique em OK.
+3 - Informe os seguintes campos: 
+3.1 - "Filial" da nota
+3.2 - "Número da Nota Fiscal" com zeros a esquerda
+3.3 - "Série da Nota Fiscal" 
+3.4 - "Data de Cancelamento" deixe a data atual
+3.5 - Marque o Checkbox "Cancelamento Extemporâneo" e clique em OK.
+4 - Após isso, na justificativa da nota deve informar o número do protocolo e informar que é 
+um "Cancelamento Extemporâneo".
+
+A disposição

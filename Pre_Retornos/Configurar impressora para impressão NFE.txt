@@ -1,0 +1,20 @@
+---------------------------------------------------------------------------------------------------------------
+-- Configurar impressora para impressão NFE
+---------------------------------------------------------------------------------------------------------------
+
+Por favor 
+
+Acessar o cadastro do Usuário que está emitindo a Nota Fiscal e configurar o compartilhamento válido da impressora
+para impressão de Nota Fiscal Eletrônica.
+
+1 - Acessar Masteren / Cadastros / Núcleo Comum / Usuários
+2 - Selecionar o usuário
+3 - Clicar na Guia Dados Adicionais
+4 - Incluir ou alterar o valor do parâmetro: <b>Impressora a ser utilizada para emissão da DANFE</b>
+
+Exemplo: 
+<b>\\Nome_Computador_ou_IP\Nome_Impressora</b>, \\10.10.10.10\Imp_Nota
+
+O caminho deve ser reconhecido no servidor onde o Monitornfe está e também na estação do usuário
+
+A disposição
