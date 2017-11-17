@@ -1,3 +1,8 @@
+
+insert into lancheccxa (datalanc,tpo,filial,vallanc,documen,localporta,datadisp,numord,codigo,tipolanc,moeda,atualiz,numped,codutil)
+select dtemis,tpo,filial,valcontab,condpag,localporta,dtemis,numord,7,'C',1,1,numped,'' from nfsaidacad where numord = 8618679 
+
+
 declare @pDocumen int 
 
 set @pDocumen = 11056
