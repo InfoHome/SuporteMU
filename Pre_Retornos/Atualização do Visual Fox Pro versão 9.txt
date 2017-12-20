@@ -1,0 +1,12 @@
+
+-----------------------------------------------------------------------------------------------------------
+-- Atualização do Visual Fox Pro, versão 9.0
+-- Ficha 328701
+-----------------------------------------------------------------------------------------------------------
+
+1 - Acessar: http://download.microuniverso.com.br/DLL'S/Runtime%20MS%20Visual%20FoxPro%209%20SP2.zip
+2 - Ao abrir o instalador: Runtime MS Visual FoxPro 9 SP2.exe
+3 - Ao abrir o instalador será sugerido o caminho c:\Microuni\Enterprise, esse é o caminho da pasta dos executáveis foxpro que pode ser alteado pelo usuário
+de acordo com sua instalação correspondente a este diretório.
+4 - Siga as orientações do instalador até finalizar o processo.
+5 - O restante dos aquivos necessários serão copiados para pasta system32 ou syswow64 do windows.

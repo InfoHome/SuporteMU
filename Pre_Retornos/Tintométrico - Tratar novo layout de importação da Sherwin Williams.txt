@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------------------------------------------------
+-- PA 324682
+-- Tintométrico - Tratar novo layout de importação da Sherwin Williams
+-------------------------------------------------------------------------------------------------------------------------
+
+
+Segue opções:
+
+1.Sistema de usuários - Tabelas - Sistema Tintométrico - Importar Cadastros - Sherwin Williams
+2.Sistema de usuários - Tabelas - Sistema Tintométrico - Importar Fórmulas - Sherwin Williams
+
+A importação poderá ser realizada com os arquivos do layout antigo (DBF) para os clientes que não estão 
+com a máquina com software atualizado ou com o arquivo do layout atual (Formulas.txt) para os clientes que 
+estão com a máquina com o software atualizado.
+
+Para importação o sistema irá considerar os arquivos atuais (Products.dbf, Bases.dbf, Cans.dbf, Cnts.dbf)  <b>OU</b> somente o arquivo “Formulas.txt”
+que é o novo arquivo de importação da Sherwin Williams.
+
+
+
+Por favor verificar com o fabricante se o Sistema Tintométrico está atualizado e como gerar o arquivo "Formulas.txt".
+
+
+A disposição

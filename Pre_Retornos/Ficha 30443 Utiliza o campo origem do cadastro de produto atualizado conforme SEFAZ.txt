@@ -1,0 +1,50 @@
+--------------------------------------------------------------------------------------------------------------------
+-- Utiliza o campo origem do cadastro de produto atualizado conforme SEFAZ
+-- Ficha 301443
+--------------------------------------------------------------------------------------------------------------------
+
+Foi incluido um tratamento nas regras do PA 286466, da seguinte forma:
+
+1-Quando o parâmetro "Utiliza o campo origem do cadastro de produto atualizado conforme SEFAZ" estiver desligado, o sistema irá considerar a coluna PRODUTOCAD.ORIGEM como letras "N,M,L,I,H,G".
+
+2-Quando o parâmetro "Utiliza o campo origem do cadastro de produto atualizado conforme SEFAZ" estiver ligado:
+
+2.1-O sistema irá considerar a coluna PRODUTOCAD.ORIGEM como números "0,1,2,3,4,5,6,7,8".
+
+2.2-Ao entrar na tela de cadastro de produtos do sistema de usuários, o sistema irá verificar se existe algum produto com a coluna ORIGEM diferente de 0,1,2,3,4,5,6,7,8, se existir o sistema irá exibir a mensagem:
+
+Existem produtos com ORIGEM em desacordo com os códigos de origem da SEFAZ. Entrar em contato com o suporte MicroUniverso, informar a ficha 301443 como referência.
+
+Neste caso, para corrigir o problema deve-se rodar o script do PA 286466 para atualizar a coluna ORIGEM do cadastro de produtos ou desligar o parâmetro "Utiliza o campo origem do cadastro de produto atualizado conforme SEFAZ".
+
+
+
+--PA 286466 ---------------------------------------------------------
+----------- BANCO SQL SERVER
+-- Regravar coluna ORIGEM
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'COMPLEMENTOPRODUTO' AND COLUMN_NAME = 'ORIGEM') 
+UPDATE PRODUTOCAD SET ORIGEM = (SELECT ORIGEM FROM COMPLEMENTOPRODUTO WHERE CODPRO = PRODUTOCAD.CODPRO)
+WHERE CODPRO IN (SELECT CODPRO FROM COMPLEMENTOPRODUTO WHERE ORIGEM IN ('0','1','2','3','4','5','6','7','8'))
+GO
+
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'COMPLEMENTOPRODUTO' AND COLUMN_NAME = 'ORIGEM') AND
+   EXISTS (SELECT CODPRO FROM COMPLEMENTOPRODUTO WHERE ORIGEM IN ('0','1','2','3','4','5','6','7','8'))
+   UPDATE PRODUTOCAD SET ORIGEM = (SELECT ORIGEM FROM COMPLEMENTOPRODUTO WHERE CODPRO = PRODUTOCAD.CODPRO)
+   WHERE CODPRO IN (SELECT CODPRO FROM COMPLEMENTOPRODUTO WHERE ORIGEM IN ('0','1','2','3','4','5','6','7','8'))
+GO 
+
+UPDATE PRODUTOCAD SET origem = '0' WHERE origem IN ('M','N','L')
+UPDATE PRODUTOCAD SET origem = '1' WHERE origem IN ('I')
+UPDATE PRODUTOCAD SET origem = '2' WHERE origem IN ('H','G')
+go
+
+
+----------- BANCO ORACLE
+-- Regravar coluna ORIGEM
+UPDATE PRODUTOCAD SET ORIGEM = (SELECT ORIGEM FROM COMPLEMENTOPRODUTO WHERE CODPRO = PRODUTOCAD.CODPRO)
+WHERE CODPRO IN (SELECT CODPRO FROM COMPLEMENTOPRODUTO WHERE ORIGEM IN ('0','1','2','3','4','5','6','7','8'));
+commit;
+UPDATE PRODUTOCAD SET origem = '0' WHERE origem IN ('M','N','L');
+UPDATE PRODUTOCAD SET origem = '1' WHERE origem IN ('I');
+UPDATE PRODUTOCAD SET origem = '2' WHERE origem IN ('H','G');
+commit;

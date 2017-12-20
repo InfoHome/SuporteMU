@@ -25,6 +25,9 @@ Obs.: Deve ser feito sem usuários conectados no sistema
 #MUVD - Estrutura - Links de atualização MUNFE versão 4.1.x.x.mp4
 
 -- ECF ------------------------------------------------------------------------------------------------------------
+
+Atenção:
+
 Caso utilize o PAF-ECF assista esse vídeo: #MUVD - Estrutura - Links para atualização ESGE(Validar).mp4
 Caso Contrário assista esse vídeo: #MUVD - Estrutura - Links para atualização MU_ECF.mp4
 
