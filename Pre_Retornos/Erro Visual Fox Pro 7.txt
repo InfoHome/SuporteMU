@@ -1,0 +1,42 @@
+-- Ficha:  244085
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Boa tarde 
+ 
+Refenrte a imagem enviada trata-se de um bug do Visual FoxPro, abaixo estão os procedimentos, na tentativa de solucionar o problema:
+
+<li> Atualização do Sistema Operacional Windows, com os services packs e atualizações críticas disponíveis, na máquina dos Usuários.
+
+<li> Atualização do Runtime do Visual FoxPro, versão 7 (07.00.0000.9465), na máquina dos Usuários.
+     - Executar o aplicativo /DLL'S/Setup_VFP7RunTime.exe, baixar em: http://download.microuniverso.com.br/DLL'S/?C=M;O=D
+	 
+<li> Verificar a existência de arquivos VFP5*.* e VFP6*.*, na máquina dos Usuários.
+     - Os arquivos encontrados devem ser excluídos da máquina dos Usuários.
+   
+<li> Atualização do arquivo CONFIG.FPW, na máquina dos Usuários, no diretório C:\Windowns\System32, ou compatível com a versão
+     do Windows da máquina de cada Usuário.
+     
+	 * Descompactar o arquivo CONFIG_FPW_VFP.zip (anexado ao atendimento).
+     * Este arquivo só pode existir em um diretório na máquina dos Usuários.
+     * Verificar sua existência na máquina dos Usuários.
+     * Excluí-lo dos demais diretórios.
+   
+<li> Exclusão do arquivo VFP7RERR.LOG, da máquina dos Usuários.
+	
+<li> Inclusão das Variáveis de Ambiente, abaixo relacionadas, na máquina dos Usuários, via configurações do Painel de Controle,
+     opção Sistema, guia "Avançado", botão "Variáveis de Ambiente", campo "Variáveis do Sistema", botão "Nova":
+     * BUFFERS com o Valor 40.
+     * FILES com o Valor 255.
+     * FOXPROWCFG com o diretório completo onde fica o arquivo CONFIG.FPW.
+   
+<li> Permissão completa para todos os Usuários, do diretório C:\Windowns\System32, ou compatível com a versão do Windows da máquina de cada Usuário.
+
+<li> Atualização do Runtime MS Visual FoxPro 9 SP2.zip na máquina dos Usuários.
+     - Baixar em: http://download.microuniverso.com.br/DLL'S/?C=M;O=D
+	 
+A disposição
+	
+	
+	
+--Conteudo do Arquivo CONFIG.FPW -----------------------
+MVCOUNT  = 65000

@@ -14,3 +14,23 @@ Parâmertro: Código de mensagem para órgão público:
 -------------------------------------------------------------------------------------------------
 3- No cadastro do Cliente, neste caso: SESP - SECRETARIA DE ESTADO DE SEGURANÇA PUBLICA
 - Tem que estar com o "Dado adicional" <b>Órgão público</b> = S
+
+
+
+
+Confira as configurações abaixo:
+
+Órgão Público:
+
+*- Cliente:
+    Dado Adicional "Contribuinte": S
+    Dado Adicional "Órgão Público": S, E (Estadual e Federal) ou F
+    Dado Adicional "TPO para Orçamento": Informar um TpO
+
+*- Filial:
+Parâmetro "Destaca desconto de ICMS para orgão público no corpo da nota fiscal?" (Domínio: Sistema de Vendas): 
+Se ativado, grava ValorICMSDispensado na PediCliComplemento (NomeInterno: DESTACA_DESCTO_ICMS_NF, variável "glDestacaDescontoICMSOrgaoPublico")
+
+
+Parâmetro "Código de Mensagem para órgão público" (Domínio: Faturamento): 
+Deve ser um Código de Mensagem com o Tipo de Mensagem Isento, Não Tributado ou Outras         (NomeInterno: CM_ORGAO_PUBLICO)

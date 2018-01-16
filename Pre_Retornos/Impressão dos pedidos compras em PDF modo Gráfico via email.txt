@@ -1,0 +1,18 @@
+-- Impressão dos pedidos em modo 'Gráfico via email'
+-- PA 319883
+---------------------------------------------------------------------------------------------------------------
+
+Pré-requisitos:
+
+Versão 2.2.2 ou superior do PDFCreator.
+
+1 - Acessar modulo de compras / Pedidos / Consulta / Pedido 5754("pedido interno - MicroUniverso") 
+2 - Imprimir pedido / Confirma impressão do pedido? Sim 
+3 - Marcar "Gráfico via email" / informar o email e clicar em ok. 
+
+
+Favor baixar o PDFCreator no link disponível, para efetuar a impressão dos pedidos em modo 'Gráfico via email'.
+
+http://download.pdfforge.org/download/pdfcreator/PDFCreator-stable
+
+
