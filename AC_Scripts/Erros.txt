@@ -1,0 +1,24 @@
+02/03/2018 - 33,80 - venda a Vista (identificado)
+-------------------------------------------------------------------------------------------------------------
+24/02/2018 - 105,00 - valor do fechamento maior que a Planilha de Documento.
+--insert logecf select * from BD01_DESENV..LOGECF where OIDOPERACAO = 1285174
+-------------------------------------------------------------------------------------------------------------
+
+08/01/2018 - Diferenca Nota promissória 968,10 pedido 1547910 sitven = 1
+Orçamentos: 1550691, 1550740 Pendentes
+-- Não constam no fechamento de caixa.
+-- Não foi gerado contas a receber.
+UPDATE NFSAIDACAD SET ATUALIZ = 1 , FLAGEMIT = 1 WHERE NUMORD IN (1260494,1260480)
+
+*** Não Ajustado **
+
+-------------------------------------------------------------------------------------------------------------
+04/01/2018 - Diferença de 590,00 Cheque Predatado. Orçamento 1549554
+--insert logecf select * from BD01_DESENV..LOGECF where OIDOPERACAO = 1258934
+-------------------------------------------------------------------------------------------------------------
+04/01/2018 - 10,50 - Venda A vista, venda Inconsistente caixa "112 CAIXA CRISTIANE DARC"
+-------------------------------------------------------------------------------------------------------------
+03/01/2018 - Diferenca Nota promissória 968,10 pedido 1547910 sitven = 1
+--Update pediclicad set sitven = 2, sitmanut ='' where numped = 1547910
+--Update pediclicad set sitven = 2, sitmanut ='' where numped = 1550768 -- FILIAL 02
+-------------------------------------------------------------------------------------------------------------
