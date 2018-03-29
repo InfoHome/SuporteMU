@@ -1,7 +1,7 @@
-IF object_id('tempdb..#tmp_DRE_Contrular') IS NOT NULL 
-IF object_id('tempdb..#tmp_DRE_Contrular_itens') IS NOT NULL 
-DROP TABLE #tmp_DRE_Contrular
-DROP TABLE #tmp_DRE_Contrular_itens
+USE BD01_DESENV
+GO
+IF object_id('tempdb..#tmp_DRE_Contrular') IS NOT NULL DROP TABLE #tmp_DRE_Contrular
+IF object_id('tempdb..#tmp_DRE_Contrular_itens') IS NOT NULL DROP TABLE #tmp_DRE_Contrular_itens
 -------------------------------------------------------------------------------
 -- Apuração Venda a Vista
 -- Venda "A Vista" Com pedido, NÃO considera Administradora de Cartões
