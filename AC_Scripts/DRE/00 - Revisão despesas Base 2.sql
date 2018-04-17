@@ -1,9 +1,10 @@
 
---drop table #tmp_DRE_Contrular_Email
+
 
 -- SQL: 1 
 --------------------------------------------------------------------------------------------------------------------------------
 SELECT DISTINCT	
+	'SQL1'														as [Origem],
 	FATOFINANCEIRO_R.OID										as [Codigo],
 	FATOFINANCEIRO_R.RATOFINANCEIRO 							as [Referencia],
 	FATOFINANCEIRO_R.DATA										as [Data],
@@ -11,7 +12,7 @@ SELECT DISTINCT
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	FILIAL.CODIGO												as [Filial],
-	CONVERT(VARCHAR,FATOFINANCEIRO_R.RTPO) + ' - ' + T.NOME		as [TPO],
+	T.HIERARQUIANUMERO + ' - ' + T.NOME							as [TPO],
 	FATOFINANCEIRO_R.VALOR										as [VALOR]
 	--SUM(FATOFINANCEIRO_R.VALOR*FATOFINANCEIRO_R.SINAL), 
 	--FATOFINANCEIRO_R.RTPO
@@ -34,6 +35,7 @@ WHERE FATOFINANCEIRO_R.RFONTEPAGADORA = CAIXABANCARIA.OID
 --SQL: 2 
 --------------------------------------------------------------------------------------------------------------------------------
 UNION ALL SELECT DISTINCT	
+	'SQL2'														as [Origem],
 	PG.OID														as [Codigo],
 	PG.OID														as [Referencia],
 	AT.DATA														as [Data],
@@ -41,7 +43,7 @@ UNION ALL SELECT DISTINCT
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	FILIAL.CODIGO												as [Filial],
-	CONVERT(VARCHAR,CONTA.RTPO) + ' - ' + T.NOME				as [TPO],
+	T.HIERARQUIANUMERO + ' - ' + T.NOME				as [TPO],
 	CASE WHEN PG.VALOR < 0 THEN PG.VALOR *-1 ELSE PG.VALOR END  as [Valor]
 	--SUM(PG.VALOR), 
 	--CONTA.RTPO, 
@@ -69,6 +71,7 @@ WHERE CONTA.RSITUACAO IN ( 2346, 2347 )
 --SQL: 3 
 --------------------------------------------------------------------------------------------------------------------------------
 UNION ALL SELECT DISTINCT
+	'SQL3'														as [Origem],
 	PG.OID														as [Codigo],
 	PG.OID														as [Referencia],
 	AT.DATA														as [Data],
@@ -76,7 +79,7 @@ UNION ALL SELECT DISTINCT
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	FILIAL.CODIGO												as [Filial],
-	CONVERT(VARCHAR,CONTA.RTPO) + ' - ' + T.NOME				as [TPO],
+	T.HIERARQUIANUMERO + ' - ' + T.NOME				as [TPO],
 	CASE WHEN PG.VALOR < 0 THEN PG.VALOR *-1 ELSE PG.VALOR END  as [Valor]
 	--SUM(PG.VALOR), 
 	--CONTA.RTPO, 
@@ -102,6 +105,7 @@ WHERE CONTA.RSITUACAO IN ( 2346, 2347 )
 --SQL: 4
 --------------------------------------------------------------------------------------------------------------------------------
 UNION ALL SELECT DISTINCT
+	'SQL4'														as [Origem],
 	FATOFINANCEIRO_R.OID										as [Codigo],
 	FATOFINANCEIRO_R.RATOFINANCEIRO 							as [Referencia],
 	FATOFINANCEIRO_R.DATA										as [Data],
@@ -109,7 +113,7 @@ UNION ALL SELECT DISTINCT
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	FILIAL.CODIGO												as [Filial],
-	CONVERT(VARCHAR,FATOFINANCEIRO_R.RTPO) + ' - ' + T.NOME		as [TPO],
+	T.HIERARQUIANUMERO + ' - ' + T.NOME		as [TPO],
 	FATOFINANCEIRO_R.VALOR										as [VALOR]
 	--SUM(FATOFINANCEIRO_R.VALOR*FATOFINANCEIRO_R.SINAL), 
 	--FATOFINANCEIRO_R.RTPO
@@ -129,6 +133,7 @@ WHERE FATOFINANCEIRO_R.OID = U.RITEM
 --SQL: 5
 --------------------------------------------------------------------------------------------------------------------------------
 UNION ALL SELECT DISTINCT
+	'SQL5'														as [Origem],
 	FATOFINANCEIRO_R.OID										as [Codigo],
 	FATOFINANCEIRO_R.RATOFINANCEIRO 							as [Referencia],
 	FATOFINANCEIRO_R.DATA										as [Data],
@@ -136,7 +141,7 @@ UNION ALL SELECT DISTINCT
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	FILIAL.CODIGO												as [Filial],
-	CONVERT(VARCHAR,FATOFINANCEIRO_R.RTPO) + ' - ' + T.NOME		as [TPO],
+	T.HIERARQUIANUMERO + ' - ' + T.NOME		as [TPO],
 	FATOFINANCEIRO_R.VALOR										as [VALOR]
 	--SUM(FATOFINANCEIRO_R.VALOR*FATOFINANCEIRO_R.SINAL), 
 	--FATOFINANCEIRO_R.RTPO
@@ -159,6 +164,7 @@ WHERE FATOFINANCEIRO_R.RFONTEPAGADORA = CAIXABANCARIA.OID
 -- SQL: 6
 --------------------------------------------------------------------------------------------------------------------------------
 UNION ALL SELECT DISTINCT
+	'SQL6'														as [Origem],
 	DO.OID														as [Codigo],
 	DO.OID														as [Referencia],
 	DO.EMISSAO													as [Data],
@@ -166,7 +172,7 @@ UNION ALL SELECT DISTINCT
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	F.FILIAL													as [Filial],
-	NFS.TPO + ' - ' + T.NOME									as [TPO],
+	T.HIERARQUIANUMERO + ' - ' + T.NOME									as [TPO],
 	DO.VALORNAMOEDA1											as [VALOR]
 	--SUM(DO.VALORNAMOEDA1) AS Valor, 
 	--T.OID, 
@@ -184,6 +190,7 @@ WHERE DO.OID = NFS.OIDDOCDEORIGEM
 	AND F.OID IN ( 2302256, 2302250, 2653583, 2653570, 1224953, 2537974, 227135206 )
 
 UNION ALL SELECT DISTINCT
+	'SQL7'														as [Origem],
 	DO.OID														as [Codigo],
 	DO.OID														as [Referencia],
 	DO.EMISSAO													as [Data],
@@ -191,7 +198,7 @@ UNION ALL SELECT DISTINCT
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	F.FILIAL													as [Filial],
-	NFS.TPO + ' - ' + T.NOME									as [TPO],
+	T.HIERARQUIANUMERO + ' - ' + T.NOME									as [TPO],
 	DO.VALORNAMOEDA1											as [VALOR]
 	--SUM(DO.VALORNAMOEDA1) AS Valor, 
 	--T.OID, 
@@ -213,19 +220,21 @@ WHERE DO.OID = NFS.OIDDOCDEORIGEM
 -- Listar DRE
 ------------------------------------------------------------------------------------
 select 
-	FILIAL, 
+	--FILIAL, 
 	TIPO,
 	SINAL,
 	Hierarquia,
-	--TPO,
+	TPO,
 	SUM(VALOR)
 	 
 from #tmp_DRE_Contrular_Email 
 where 
-	filial = '01' and 
+	--filial = '01' and 
 	data between '20180201' and '20180228'
 group by 
-		FILIAL, 
+		--FILIAL, 
 		TIPO, SINAL, Hierarquia 
-		--,TPO
-order by filial, TIPO,Hierarquia
+		,TPO
+order by 
+	--filial, 
+	TIPO,Hierarquia

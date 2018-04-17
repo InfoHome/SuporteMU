@@ -76,6 +76,41 @@ union select
 where CR.SITUACAOPREVISAO <= 0
 
 GROUP BY CLI.NOME, 	CR.OID,	FIL.FILIAL,	CR.CODIGO
+
+----------------------------------------------------------------
+-- NFE pendente de envio/atualização
+----------------------------------------------------------------
+union select 
+	'NFe Saida com Inconsistencia: ' + CLI.NOME			    as Referencia,
+	n.FILIAL												as Filial,
+	n.numnota												as [Codigo1],
+	n.numord												as [Codigo2],
+	COUNT(*)												as [TotalRegistros]
+from nfsaidacad n join COMPLEMENTONFSAIDA c 
+	on n.numord = c.numord 
+		and n.modelonf = '55' 
+		and c.SITUACAONFE in ('','1','6')
+		and n.dtcancel is null
+		and year(n.dtemis) >= 2017
+	join pessoa_r cli on cli.oid = n.codclie
+where n.dtemis <= GETDATE()-1
+Group by CLI.NOME,n.numnota,n.numord,n.FILIAL
+union select 
+	'NFe Entrada com Inconsistencia: ' + CLI.NOME			    as Referencia,
+	n.FILIAL												as Filial,
+	n.numnota												as [Codigo1],
+	n.numord												as [Codigo2],
+	COUNT(*)												as [TotalRegistros]
+from nfEntracad n join COMPLEMENTONFEntra c 
+	on n.numord = c.numord 
+		and n.modelonf = '55' 
+		and c.SITUACAONFE in ('1','6')
+		and n.dtcancel is null
+		and year(n.dtemis) >= 2017
+	join pessoa_r cli on cli.oid = n.codfor
+where n.dtcheg <= GETDATE()-1
+Group by CLI.NOME,n.numnota,n.numord,n.FILIAL
+
 ORDER BY 2,1,3 asc
 
 -------------------------------------------------------------------------------------------------------------
