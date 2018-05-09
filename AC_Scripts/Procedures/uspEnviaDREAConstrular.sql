@@ -1,12 +1,14 @@
 
 --ALTER PROCEDURE [dbo].[uspEnviaDREAConstrular]
 --as
+
 IF object_id('tempdb..#tmpDRE_Vendas') IS NOT NULL DROP TABLE #tmpDRE_Vendas
 IF object_id('tempdb..#tmpDRE_Vendas_itens') IS NOT NULL DROP TABLE #tmpDRE_Vendas_itens
 if OBJECT_ID('tempdb..#tmpDRE_Despesas') IS NOT NULL drop table #tmpDRE_Despesas
 IF object_id('tempdb..#tmpDRE_Constrular_Email') IS NOT NULL DROP TABLE #tmpDRE_Constrular_Email
+IF object_id('tempdb..#tempRateio') IS NOT NULL DROP TABLE #tempRateio
 GO
--- VENDAS ---------------------------------------------------------------------------
+-- VENDAS ---------------------------------------------------------------------
 -------------------------------------------------------------------------------
 -- Apuração Venda a Vista
 -- Venda "A Vista" Com pedido, NÃO considera Administradora de Cartões
@@ -261,15 +263,15 @@ UNION ALL SELECT
 	FILIAL.CODIGO						as [Filial],
 	PAGTO.VALOR							as [Valor]
 FROM ATOFINANCEIRO_R ATO 
- JOIN ACAOFINANCEIRA ACAO ON ATO.OID = ACAO.RATOFINANCEIRO 
- JOIN PAGAMENTO PAGTO ON ACAO.OID = PAGTO.RACAOFINANCEIRA 
- JOIN CONTAARECEBER_R CONTA ON ACAO.RCONTA = CONTA.OID 
- JOIN PESSOA_R CLIENTE ON CONTA.RDESTINATARIO = CLIENTE.OID 
- JOIN PESSOA_R FILIAL ON CONTA.REMITENTE = FILIAL.OID 
- JOIN CATEGORIA ON PAGTO.RTIPO = CATEGORIA.OID 
- JOIN ITEM DO ON CONTA.RDOCDEORIGEM = DO.OID 
- LEFT JOIN FATOFINANCEIRO_R FATO ON ATO.OID = FATO.RATOFINANCEIRO 
- LEFT JOIN ADITIVO ON CONTA.OID = ADITIVO.RITEM
+	 JOIN ACAOFINANCEIRA ACAO ON ATO.OID = ACAO.RATOFINANCEIRO 
+	 JOIN PAGAMENTO PAGTO ON ACAO.OID = PAGTO.RACAOFINANCEIRA 
+	 JOIN CONTAARECEBER_R CONTA ON ACAO.RCONTA = CONTA.OID 
+	 JOIN PESSOA_R CLIENTE ON CONTA.RDESTINATARIO = CLIENTE.OID 
+	 JOIN PESSOA_R FILIAL ON CONTA.REMITENTE = FILIAL.OID 
+	 JOIN CATEGORIA ON PAGTO.RTIPO = CATEGORIA.OID 
+	 JOIN ITEM DO ON CONTA.RDOCDEORIGEM = DO.OID 
+	 LEFT JOIN FATOFINANCEIRO_R FATO ON ATO.OID = FATO.RATOFINANCEIRO 
+	 LEFT JOIN ADITIVO ON CONTA.OID = ADITIVO.RITEM
 WHERE 
 	CONTA.OID > 7 
 	AND CATEGORIA.RSUPER = 2330
@@ -285,20 +287,20 @@ UNION ALL SELECT
 	'1'									as [Sinal],
 	'08 - (=) RECEITAS FINANCEIRAS'		as [Tipo], 
 	'ENCARGOS'							as [Operacao],
-	'08.004 - ENCARGOS (ANALIZAR)'					as [Hierarquia],
+	'08.004 - ENCARGOS'					as [Hierarquia],
 	FILIAL.CODIGO						as [Filial],
 	PAGTO.VALOR							as [Valor]
 FROM ATOFINANCEIRO_R ATO 
- JOIN ACAOFINANCEIRA ACAO ON ATO.OID = ACAO.RATOFINANCEIRO 
- JOIN PAGAMENTO PAGTO ON ACAO.OID = PAGTO.RACAOFINANCEIRA 
- JOIN CONTAARECEBER_R CONTA ON ACAO.RCONTA = CONTA.OID 
- JOIN PESSOA_R CLIENTE ON CONTA.RDESTINATARIO = CLIENTE.OID 
- JOIN PESSOA_R FILIAL ON CONTA.REMITENTE = FILIAL.OID 
- JOIN CATEGORIA ON PAGTO.RTIPO = CATEGORIA.OID 
- JOIN ITEM DO ON CONTA.RDOCDEORIGEM = DO.OID 
- JOIN AGRUPAMENTO AG ON ATO.OID = AG.RGRUPO AND AG.RPAPEL = 33978 
- JOIN FATOFINANCEIRO_R FATO ON AG.RITEM = FATO.RATOFINANCEIRO 
- LEFT JOIN ADITIVO ON CONTA.OID = ADITIVO.RITEM
+	 JOIN ACAOFINANCEIRA ACAO ON ATO.OID = ACAO.RATOFINANCEIRO 
+	 JOIN PAGAMENTO PAGTO ON ACAO.OID = PAGTO.RACAOFINANCEIRA 
+	 JOIN CONTAARECEBER_R CONTA ON ACAO.RCONTA = CONTA.OID 
+	 JOIN PESSOA_R CLIENTE ON CONTA.RDESTINATARIO = CLIENTE.OID 
+	 JOIN PESSOA_R FILIAL ON CONTA.REMITENTE = FILIAL.OID 
+	 JOIN CATEGORIA ON PAGTO.RTIPO = CATEGORIA.OID 
+	 JOIN ITEM DO ON CONTA.RDOCDEORIGEM = DO.OID 
+	 JOIN AGRUPAMENTO AG ON ATO.OID = AG.RGRUPO AND AG.RPAPEL = 33978 
+	 JOIN FATOFINANCEIRO_R FATO ON AG.RITEM = FATO.RATOFINANCEIRO 
+	 LEFT JOIN ADITIVO ON CONTA.OID = ADITIVO.RITEM
 WHERE CONTA.OID > 7 
 	AND CATEGORIA.RSUPER = 2330
 	AND ATO.RTIPO = 23744 
@@ -479,7 +481,6 @@ WHERE CONTA.RSITUACAO IN ( 2346, 2347 )
 	AND AT.RTIPO IN  ( 2372, 23709, 23724 ) 
 	AND NOT ( AT.RTIPO = 23724 	AND CONTA.RTIPO = 23669 )
 	AND AT.RESTORNO = 7 
-	AND AT.DATA >= '20180201'  AND AT.DATA <= '20180228 23:59'  
 	AND CONTA.RTPO IN ( 8159, 2300468, 2679694, 4360902 ) 
 	AND PG.RTIPO = CAT.OID   
 	AND CONTA.RMOEDA1 = 113702 
@@ -613,7 +614,7 @@ UNION ALL SELECT DISTINCT
 	FATOFINANCEIRO_R.OID										as [Codigo],
 	FATOFINANCEIRO_R.RATOFINANCEIRO 							as [Referencia],
 	FATOFINANCEIRO_R.DATA										as [Data],
-	DRE.SINAL													as [Sinal], --SELECT * FROM AC_DRE_CONSTRULAR_R
+	DRE.SINAL													as [Sinal], 
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	FILIAL.CODIGO												as [Filial],
@@ -699,7 +700,7 @@ UNION ALL SELECT DISTINCT
 	FATOFINANCEIRO_R.OID										as [Codigo],
 	FG.OID							 							as [Referencia],
 	FATOFINANCEIRO_R.DATA										as [Data],
-	DRE.SINAL													as [Sinal], --SELECT * FROM AC_DRE_CONSTRULAR_R
+	DRE.SINAL													as [Sinal], 
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 
 	CASE WHEN SUBSTRING(CC.OBSERVACAO,3,2) = 'DV' THEN DRE.VARIACAO  + ' - ' + DRE.DESCRICAO
@@ -737,7 +738,7 @@ UNION ALL SELECT DISTINCT
 	DO.OID														as [Codigo],
 	DO.OID														as [Referencia],
 	DO.EMISSAO													as [Data],
-	DRE.SINAL													as [Sinal], --SELECT * FROM AC_DRE_CONSTRULAR_R
+	DRE.SINAL													as [Sinal], 
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	F.FILIAL													as [Filial],
@@ -761,7 +762,7 @@ UNION ALL SELECT DISTINCT
 	DO.OID														as [Codigo],
 	FG.OID														as [Referencia],
 	DO.EMISSAO													as [Data],
-	DRE.SINAL													as [Sinal], --SELECT * FROM AC_DRE_CONSTRULAR_R
+	DRE.SINAL													as [Sinal], 
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 
 	CASE WHEN SUBSTRING(CC.OBSERVACAO,3,2) = 'DV' THEN DRE.VARIACAO  + ' - ' + DRE.DESCRICAO
@@ -795,7 +796,7 @@ UNION ALL SELECT DISTINCT
 	DO.OID														as [Codigo],
 	DO.OID														as [Referencia],
 	DO.EMISSAO													as [Data],
-	DRE.SINAL													as [Sinal], --SELECT * FROM AC_DRE_CONSTRULAR_R
+	DRE.SINAL													as [Sinal], 
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 	DRE.HIERARQUIA + ' - ' + DRE.DESCRICAO						as [Hierarquia],
 	F.FILIAL													as [Filial],
@@ -819,7 +820,7 @@ UNION ALL SELECT DISTINCT
 	DO.OID														as [Codigo],
 	FG.OID														as [Referencia],
 	DO.EMISSAO													as [Data],
-	DRE.SINAL													as [Sinal], --SELECT * FROM AC_DRE_CONSTRULAR_R
+	DRE.SINAL													as [Sinal], 
 	DRE.CODIGO + ' - ' + DRE.GRUPO								as [Tipo], 
 
 	CASE WHEN SUBSTRING(CC.OBSERVACAO,3,2) = 'DV' THEN DRE.VARIACAO  + ' - ' + DRE.DESCRICAO
@@ -864,137 +865,231 @@ UNION ALL select
 	from #tmpDRE_Despesas
 
 GO
+
+-- Rateio das Despesas do Depósito ---------------------------------------------------------
 --------------------------------------------------------------------------------------------
---DECLARE @tableHTML  NVARCHAR(MAX), @subjectMSG NVARCHAR(MAX), @dataInicial VARCHAR(MAX),@dataFim VARCHAR(MAX) 
+select 
+	Filial,
+	MES,
+	ANO, 
+	'-1' AS SINAL,
+	'V' as Tipo,  
+	'06.003.024 - DESPESAS RATEADAS CONTORNO' as Hierarquia, 
+	sum(valor * SINAL) as Valor, 
+	'' as Rateio
+into #tempRateio
+from AC_DRE_RESULT 
+where 
+	LEFT(Hierarquia,2) = '01' 
+	group by filial,MES,ANO
 
---SET @dataInicial = '20180201'	-- (select convert (varchar,GETDATE()- 31,103))
---set @dataFim =	'20180228 23:59:59' -- (select convert (varchar,GETDATE()- 1,103)) + ' 23:59:59'
---SET @subjectMSG = 'DRE referente período: '
---set @subjectMSG = @subjectMSG +  + @dataInicial +' até ' + @dataFim
+union ALL select 
+	Filial,
+	MES,
+	ANO, 
+	'-1' AS SINAL,
+	'D' as Tipo, 
+	'06.003.024 - TOTAL DESPESAS CONTORNO' as Hierarquia, 
+	sum(valor * SINAL) as Valor, 
+	'' as Rateio
+from AC_DRE_RESULT 
+where 
+	LEFT(Hierarquia,2) >= '06' -- Para não filtrar o faturamento mensal
+	and filial = '04'
+	and sinal = -1            -- Sinal de despesas
+group by filial,MES,ANO
 
---SET @tableHTML =
---		N'<head>
---		<style type="text/css">
---			.alert{
---				background-color: #b9c9fe;
---				padding: 15px;
---				color: #039;
---			}
---			#box-table
---			{
---			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
---			font-size: 12px;
---			text-align: left;
---			border-collapse: collapse;
---			border-top: 7px solid #9baff1;
---			border-bottom: 7px solid #9baff1;
---			}
---			#box-table th
---			{
---			font-size: 13px;
---			font-weight: normal;
---			background: #b9c9fe;
---			border-right: 2px solid #9baff1;
---			border-left: 2px solid #9baff1;
---			border-bottom: 2px solid #9baff1;
---			color: #039;
---			}
---			#box-table td
---			{
---			border-right: 1px solid #aabcfe;
---			border-left: 1px solid #aabcfe;
---			border-bottom: 1px solid #aabcfe;
---			padding: 4px;
---			color: #039;
---			}
+Go
+-- Inserir ao DRE
+-------------------------------------------------------------------------------
+TRUNCATE TABLE AC_DRE_RESULT
+GO
+INSERT INTO AC_DRE_RESULT 
+select
+	a.filial,
+	MONTH(a.data) AS MES,
+	YEAR(a.data) AS ANO,
+	a.Sinal,
+	a.Tipo,
+	a.Hierarquia,	
+	sum(a.valor*sinal) 
+from #tmpDRE_Constrular_Email a
+group by a.filial,MONTH(data),YEAR(data),a.Sinal,Tipo,Hierarquia
 
---			table > tbody > td:last-child {
---				text-align: center;
---			}
+Union select 
+	a.filial,
+	a.MES,
+	a.ANO,
+	a.SINAL,
+	'06 - (=) DESPESAS OPERACIONAIS' as Tipo,
+	a.HIERARQUIA,
+	a.valor * sinal * (d.despesa /(
+				select sum(valor) from #tempRateio 
+				where tipo = 'V' 
+					and a.ano=ano 
+					and a.MES = mes 
+					)) as Valor
+from #tempRateio a, 
+	(select r.filial, r.ano, r.mes,sum(r.valor) as despesa 
+		from #tempRateio r where r.tipo = 'D' and r.ano =2018 and r.mes = 2 
+		group by r.MES,	r.ANO,r.filial) as D
+where 
+	a.ANO = d.ano
+	and a.MES = d.MES
+	and a.Tipo = 'V'
+GO
+-- TOTALIZADORES DO DRE
+-- 03.001 - RECEITA OPERACIONAL LÍQUIDA (1-2) ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'03 - (=) ---------------------------------' AS TIPO,
+	'03.001 - RECEITA OPERACIONAL LÍQUIDA (1-2)' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where left (HIERARQUIA,6) in (
+								'01.001',	-- VENDAS À VISTA
+								'01.002',	-- VENDAS À PRAZO
+								'01.003',	-- VENDAS C/ CARTÃO
+								'02.001',	-- ABATIMENTOS/DESCONTOS CONCEDIDOS
+								'02.002'	-- DEVOLUÇÕES DE VENDAS
+								)
+group by filial, MES, ANO
+order by filial, 6
 
---			#box-table >tr:nth-child(odd) { background-color:black; }
---			#box-table >tr:nth-child(even) { background-color:red; } 
---		</style>
---	</head>
+GO
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'05 - (=) ---------------------------------' AS TIPO,
+	'05.001 - (=) RESULTADO OPERACIONAL BRUTO ( LUCRO BRUTO (3-(4-5)))' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where left (HIERARQUIA,6) in (
+								'03.001',	-- RECEITA OPERACIONAL LÍQUIDA (1-2)
+								'02.003',	-- IMPOSTOS
+								'04.001',	-- CUSTO DOS PRODUTOS VENDIDOS (CMV)
+								'04.005'	-- CUSTO DAS DEVOLUÇÕES DE VENDAS (CMV)
+
+								)
+group by filial, MES, ANO
+order by filial, 6
+-- FIM Rateio das Despesas do Depósito ---------------------------------------------------------
+/*
+--------------------------------------------------------------------------------------------
+DECLARE @tableHTML  NVARCHAR(MAX), @subjectMSG NVARCHAR(MAX), @dataInicial VARCHAR(MAX),@dataFim VARCHAR(MAX) 
+
+SET @dataInicial =  (select convert (varchar,GETDATE()- 31,103))
+set @dataFim =	(select convert (varchar,GETDATE()- 1,103)) + ' 23:59:59'
+SET @subjectMSG = 'DRE referente período: '
+set @subjectMSG = @subjectMSG +  + @dataInicial +' até ' + @dataFim
+
+SET @tableHTML =
+		N'<head>
+		<style type="text/css">
+			.alert{
+				background-color: #b9c9fe;
+				padding: 15px;
+				color: #039;
+			}
+			#box-table
+			{
+			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+			font-size: 12px;
+			text-align: left;
+			border-collapse: collapse;
+			border-top: 7px solid #9baff1;
+			border-bottom: 7px solid #9baff1;
+			}
+			#box-table th
+			{
+			font-size: 13px;
+			font-weight: normal;
+			background: #b9c9fe;
+			border-right: 2px solid #9baff1;
+			border-left: 2px solid #9baff1;
+			border-bottom: 2px solid #9baff1;
+			color: #039;
+			}
+			#box-table td
+			{
+			border-right: 1px solid #aabcfe;
+			border-left: 1px solid #aabcfe;
+			border-bottom: 1px solid #aabcfe;
+			padding: 4px;
+			color: #039;
+			}
+
+			table > tbody > td:last-child {
+				text-align: center;
+			}
+
+			#box-table >tr:nth-child(odd) { background-color:black; }
+			#box-table >tr:nth-child(even) { background-color:red; } 
+		</style>
+	</head>
 	
---    <table  id="box-table">
---	 <thead>
---	 <tr>
---		 <th colspan="6" class="alert">
---			Demonstrativo de Resultado Empresa Aconstrular
---			 <br> Perído: '	+ @dataInicial + ' até ' + @dataFim +' <br> Data de Emissão: ' +  convert(varchar,GETDATE(),104) +
---	 + N'</th>
---	 </tr>
---		<tr>
---			<th>Filial</th>
---			<th>Tipo</th>
---			<th>Sinal</th>
---			<th>Hierarquia</th>
---			<th>Valor</th>
---		</tr>
---	 </thead>
---	 <tbody>' +
---    CAST ( ( 
---			select 
---				 Filial,
---				 Tipo,'',
---				 Sinal,	
---				 Hierarquia, 
---				 cast(sum(valor) as decimal(15,2))
---			from #tmp_DRE_Contrular_Email 
---			where 
---				filial in('04','01') and 
---				data between @dataInicial and @dataFim
---			group by 
---				Tipo, Hierarquia, Sinal, filial
---			order by filial, Hierarquia
+    <table  id="box-table">
+	 <thead>
+	 <tr>
+		 <th colspan="6" class="alert">
+			Demonstrativo de Resultado Empresa Aconstrular
+			 <br> Perído: '	+ @dataInicial + ' até ' + @dataFim +' <br> Data de Emissão: ' +  convert(varchar,GETDATE(),104) +
+	 + N'</th>
+	 </tr>
+		<tr>
+			<th>Filial</th>
+			<th>Tipo</th>
+			<th>Sinal</th>
+			<th>Hierarquia</th>
+			<th>Valor</th>
+		</tr>
+	 </thead>
+	 <tbody>' +
+    CAST ( ( 
+			select 
+				td = Filial,'',
+				td = Tipo,'',
+				td = Sinal,'',	
+				td = Hierarquia, '',
+				td = cast(sum(valor) as decimal(15,2)), ''
+			from #tmpDRE_Constrular_Email 
+			--where 
+			--	filial in('04','01') and 
+			--	data between @dataInicial and @dataFim
+			group by 
+				Tipo, Hierarquia, Sinal, filial
+			order by filial, Hierarquia
 
---              FOR XML PATH('tr'), TYPE   
---    ) AS NVARCHAR(MAX) ) +  
---    N'
---	</table> 
---	</tbody> ' ;   
+              FOR XML PATH('tr'), TYPE   
+    ) AS NVARCHAR(MAX) ) +  
+    N'
+	</table> 
+	</tbody> ' ;   
 
---EXEC msdb.dbo.sp_send_dbmail  
---    @profile_name = 'DBEmail Tobias',  
---    @recipients = 'tobiasitin@gmail.com',  
---	--@copy_recipients = 'infoaconstrular@gmail.com',
---	--@copy_recipients = 'alexaconstrular@gmail.com',
---    @subject = @subjectMSG,  
---	@body =  @tableHTML, 
---	@body_format='HTML'; 
-	
---GO
-
-
----- Limpar o cache
---------------------------------------------------------------------------
+EXEC msdb.dbo.sp_send_dbmail  
+    @profile_name = 'DBEmail Tobias',  
+    @recipients = 'tobiasitin@gmail.com',  
+	--@copy_recipients = 'infoaconstrular@gmail.com',
+	--@copy_recipients = 'alexaconstrular@gmail.com',
+    @subject = @subjectMSG,  
+	@body =  @tableHTML, 
+	@body_format='HTML'; 
+GO
+*/
+------ Limpar o cache
+----------------------------------------------------------------------------
 --DROP TABLE #tmpDRE_Vendas
 --DROP TABLE #tmpDRE_Vendas_itens
---DROP TABLE #tmp_DRE_Contrular_Email
+--DROP TABLE #tmpDRE_Constrular_Email
+--DROP TABLE #tempRateio
+GO
 
 
-
-select 
-	 Filial, Tipo, Sinal, Hierarquia,tpo, origem, cast(sum(valor*sinal) as decimal(15,2))
-from #tmpDRE_Constrular_Email where 
-	--filial = '01' and 
-	data between '20180201' and '20180228 23:59:59'
-	and Hierarquia like '%JUROS RECE%'
-group by Tipo, Hierarquia, Sinal, filial
-	,tpo, origem
-order by filial,Hierarquia
-----------------------------------------------------------------
-SELECT
-	--origem,tpo,
-	HIERARQUIA, SUM(VALOR) 
-FROM #tmpDRE_Constrular_Email WHERE  
-	--filial = '01' and 
-	data between '20180201' and '20180228 23:59:59'
-	and Hierarquia like '%JUROS RECE%' 
-	
-group by 
-	--origem,tpo,
-	Hierarquia
-order by Hierarquia
 
