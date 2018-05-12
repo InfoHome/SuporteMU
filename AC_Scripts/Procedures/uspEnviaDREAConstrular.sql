@@ -7,6 +7,7 @@ IF object_id('tempdb..#tmpDRE_Vendas_itens') IS NOT NULL DROP TABLE #tmpDRE_Vend
 if OBJECT_ID('tempdb..#tmpDRE_Despesas') IS NOT NULL drop table #tmpDRE_Despesas
 IF object_id('tempdb..#tmpDRE_Constrular_Email') IS NOT NULL DROP TABLE #tmpDRE_Constrular_Email
 IF object_id('tempdb..#tempRateio') IS NOT NULL DROP TABLE #tempRateio
+
 GO
 -- VENDAS ---------------------------------------------------------------------
 -------------------------------------------------------------------------------
@@ -259,7 +260,7 @@ UNION ALL SELECT
 	'1'									as [Sinal],
 	'08 - (=) RECEITAS FINANCEIRAS'		as [Tipo], 
 	'ENCARGOS'							as [Operacao],
-	'08.003 - ENCARGOS RECEBIMENTO'		as [Hierarquia],
+	'09.002 - ENCARGOS RECEBIMENTO'		as [Hierarquia],
 	FILIAL.CODIGO						as [Filial],
 	PAGTO.VALOR							as [Valor]
 FROM ATOFINANCEIRO_R ATO 
@@ -481,7 +482,6 @@ WHERE CONTA.RSITUACAO IN ( 2346, 2347 )
 	AND AT.RTIPO IN  ( 2372, 23709, 23724 ) 
 	AND NOT ( AT.RTIPO = 23724 	AND CONTA.RTIPO = 23669 )
 	AND AT.RESTORNO = 7 
-	AND CONTA.RTPO IN ( 8159, 2300468, 2679694, 4360902 ) 
 	AND PG.RTIPO = CAT.OID   
 	AND CONTA.RMOEDA1 = 113702 
 	AND CONTA.RDESTINATARIO IN ( 2302256, 2302250, 2653583, 2653570, 1224953, 2537974, 227135206 ) 
@@ -894,9 +894,11 @@ union ALL select
 	'' as Rateio
 from AC_DRE_RESULT 
 where 
-	LEFT(Hierarquia,2) >= '06' -- Para não filtrar o faturamento mensal
+	LEFT(Hierarquia,2) = '06' -- Para não filtrar o faturamento mensal, Filtra somente o grupo de despesas
+	AND  LEFT(Hierarquia,2) not in ('07') -- Para não filtrar a si própprio
+	AND HIERARQUIA NOT IN ('06.003.024 - DESPESAS RATEADAS CONTORNO') -- Para não incluir sua própria despesa rateada.
 	and filial = '04'
-	and sinal = -1            -- Sinal de despesas
+	--and sinal = -1            -- Sinal de despesas
 group by filial,MES,ANO
 
 Go
@@ -904,6 +906,7 @@ Go
 -------------------------------------------------------------------------------
 TRUNCATE TABLE AC_DRE_RESULT
 GO
+
 INSERT INTO AC_DRE_RESULT 
 select
 	a.filial,
@@ -938,6 +941,7 @@ where
 	and a.MES = d.MES
 	and a.Tipo = 'V'
 GO
+
 -- TOTALIZADORES DO DRE
 -- 03.001 - RECEITA OPERACIONAL LÍQUIDA (1-2) ----------------------------------------------------------------------------------------
 INSERT INTO AC_DRE_RESULT 
@@ -946,8 +950,8 @@ select
 	MES,
 	ANO,
 	'0' as Sinal,
-	'03 - (=) ---------------------------------' AS TIPO,
-	'03.001 - RECEITA OPERACIONAL LÍQUIDA (1-2)' AS HIERARQUIA,	 	
+	'03 - ==========================================================' AS TIPO,
+	'03.999 - RECEITA OPERACIONAL LÍQUIDA (1-2)' AS HIERARQUIA,	 	
 	sum(valor) AS Valor
 from AC_DRE_RESULT
 where left (HIERARQUIA,6) in (
@@ -961,25 +965,220 @@ group by filial, MES, ANO
 order by filial, 6
 
 GO
+
+-- 05.001 - LUCRO BRUTO (3-(4-5)) ----------------------------------------------------------------------------------------
 INSERT INTO AC_DRE_RESULT 
 select
 	Filial,
 	MES,
 	ANO,
 	'0' as Sinal,
-	'05 - (=) ---------------------------------' AS TIPO,
-	'05.001 - (=) RESULTADO OPERACIONAL BRUTO ( LUCRO BRUTO (3-(4-5)))' AS HIERARQUIA,	 	
+	'05 - ==========================================================' AS TIPO,
+	'05.999 - LUCRO BRUTO (3-(4-5))' AS HIERARQUIA,	 	
 	sum(valor) AS Valor
 from AC_DRE_RESULT
 where left (HIERARQUIA,6) in (
-								'03.001',	-- RECEITA OPERACIONAL LÍQUIDA (1-2)
-								'02.003',	-- IMPOSTOS
+								'03.999',	-- RECEITA OPERACIONAL LÍQUIDA (1-2)
 								'04.001',	-- CUSTO DOS PRODUTOS VENDIDOS (CMV)
-								'04.005'	-- CUSTO DAS DEVOLUÇÕES DE VENDAS (CMV)
+								'04.005',	-- CUSTO DAS DEVOLUÇÕES DE VENDAS (CMV)
+								'04.006'	-- IMPOSTOS
 
 								)
 group by filial, MES, ANO
 order by filial, 6
+
+GO
+-- 07.001  (=) RESULTADO OPERACIONAL (6-(7+8+9)) ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'07 - ==========================================================' AS TIPO,
+	'07.999.999 - RESULTADO OPERACIONAL (6-(7+8+9))' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where left (HIERARQUIA,6) in (
+								'05.999',	-- LUCRO BRUTO (3-(4-5))
+								'06.001',	-- DESPESAS VARIÁVEIS COM VENDAS
+								'06.002',	-- DESPESAS VARIÁVEIS FIXAS VENDAS
+								'06.003'	-- DESPESAS ADMINISTRATICAS
+								)
+								AND ANO = 2018 AND MES = 2
+group by filial, MES, ANO
+order by filial, 6
+GO
+-- 	'08.001.999 - DESPESAS FINANCEIRAS' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'08 - ==========================================================' AS TIPO,
+	'08.001.999 - DESPESAS FINANCEIRAS' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where left (HIERARQUIA,6) in (
+								'08.001'	-- DESPESAS FINANCEIRAS
+								)
+group by filial, MES, ANO
+order by filial, 6
+GO
+-- 	'08.002.999 - DESPESAS FINANCEIRAS' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'08 - ==========================================================' AS TIPO,
+	'08.002.999 - RECEITAS FINANCEIRAS' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,6) in (
+								'08.002'	-- DESPESAS FINANCEIRAS
+								)
+group by filial, MES, ANO
+order by filial, 6
+GO
+-- 	'09.999 - OUTRAS RECEITAS E DESPESAS' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'09 - ==========================================================' AS TIPO,
+	'09.999.999 - OUTRAS RECEITAS E DESPESAS' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,2) in (
+								'09'	-- OUTRAS RECEITAS E DESPESAS
+								)
+group by filial, MES, ANO
+order by filial, 6
+GO
+
+-- 	'10.999 - RESULTADO ANTES DO IRPJ' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'10 - ==========================================================' AS TIPO,
+	'10.999 - RESULTADO ANTES DO IRPJ' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,10) in (
+								'07.999.999', -- RESULTADO OPERACIONAL (6-(7+8+9))
+								'08.001.999', -- DESPESAS FINANCEIRAS
+								'08.002.999', -- RECEITAS FINANCEIRAS
+								'09.999.999'  -- OUTRAS RECEITAS E DESPESAS
+								)
+group by filial, MES, ANO
+order by filial, 6
+GO
+-- 	'11.999 - RESULTADO LIQUIDO' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'11 - ==========================================================' AS TIPO,
+	'11.999 - RESULTADO LIQUIDO' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,2) in (
+								'10' -- RESULTADO ANTES DO IRPJ E SUBGRUPO
+								)
+group by filial, MES, ANO
+order by filial, 6
+GO
+-- 	'12.999 - ATIVIDADES DE INVESTIMENTO' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'12 - ==========================================================' AS TIPO,
+	'12.999 - ATIVIDADES DE INVESTIMENTO' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,2) in (
+								'12' -- ATIVIDADES DE INVESTIMENTO
+							)
+
+group by filial, MES, ANO
+order by filial, 6
+
+GO
+
+-- 	'13.999 - ATIVIDADES DE FINANCIAMENTO' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'13 - ==========================================================' AS TIPO,
+	'13.999 - ATIVIDADES DE FINANCIAMENTO' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,2) in (
+								'13' -- ATIVIDADES DE INVESTIMENTO
+							)
+
+group by filial, MES, ANO
+order by filial, 6
+
+GO
+
+-- 	'14.999 - MOVIMENTAÇÃO DOS SÓCIOS' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'14 - ==========================================================' AS TIPO,
+	'14.999 - MOVIMENTAÇÃO DOS SÓCIOS' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,2) in (
+								'14' -- ATIVIDADES DE INVESTIMENTO
+							)
+
+group by filial, MES, ANO
+order by filial, 6
+GO
+
+-- 	'15.999 - RESULTADO FINAL' ----------------------------------------------------------------------------------------
+INSERT INTO AC_DRE_RESULT 
+select
+	Filial,
+	MES,
+	ANO,
+	'0' as Sinal,
+	'15 - ==========================================================' AS TIPO,
+	'15.999 - RESULTADO FINAL' AS HIERARQUIA,	 	
+	sum(valor) AS Valor
+from AC_DRE_RESULT
+where LEFT(HIERARQUIA,6) in (
+								'11.999', -- RESULTADO LIQUIDO
+								'12.999', -- ATIVIDADES DE INVESTIMENTO
+								'13.999', -- ATIVIDADES DE FINANCIAMENTO
+								'14.999'  -- MOVIMENTAÇÃO DOS SÓCIOS
+							)
+
+group by filial, MES, ANO
+order by filial, 6
+
+
 -- FIM Rateio das Despesas do Depósito ---------------------------------------------------------
 /*
 --------------------------------------------------------------------------------------------
@@ -1083,13 +1282,15 @@ EXEC msdb.dbo.sp_send_dbmail
 	@body_format='HTML'; 
 GO
 */
+
 ------ Limpar o cache
 ----------------------------------------------------------------------------
---DROP TABLE #tmpDRE_Vendas
---DROP TABLE #tmpDRE_Vendas_itens
---DROP TABLE #tmpDRE_Constrular_Email
---DROP TABLE #tempRateio
 GO
+DROP TABLE #tmpDRE_Vendas
+DROP TABLE #tmpDRE_Vendas_itens
+DROP TABLE #tmpDRE_Constrular_Email
+DROP TABLE #tempRateio
+
 
 
 
