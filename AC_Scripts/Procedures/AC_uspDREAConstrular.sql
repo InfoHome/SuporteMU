@@ -1,6 +1,7 @@
-
---ALTER PROCEDURE [dbo].[uspEnviaDREAConstrular]
---as
+USE BDENTER
+GO
+CREATE PROCEDURE [dbo].[AC_uspDREAConstrular]
+as
 
 IF object_id('tempdb..#tmpDRE_Vendas') IS NOT NULL DROP TABLE #tmpDRE_Vendas
 IF object_id('tempdb..#tmpDRE_Vendas_itens') IS NOT NULL DROP TABLE #tmpDRE_Vendas_itens
@@ -522,7 +523,7 @@ WHERE CONTA.RSITUACAO IN ( 2346, 2347 )
 	AND FR.RCONTACONTABIL = CC.OID
 	AND MOV.OID = FG.RMOVIMENTOGERENCIAL
 		AND (FR.RFILTROPAI > 7
-			-- Medida temporária para ajustar 06.003.015 - RETIRADAS ALEX
+			-- Medida para ajustar 06.003.015 - RETIRADAS ALEX
 			or fr.RFILTROPAI = 7  AND CONTA.RTPO IN ( 8159, 2300468, 2679694, 4360902 ) )
 	AND DRE.HIERARQUIA = T.OBSERVACAO
 	AND T.OID = CONTA.RTPO
@@ -1179,110 +1180,6 @@ group by filial, MES, ANO
 order by filial, 6
 
 
--- FIM Rateio das Despesas do Depósito ---------------------------------------------------------
-/*
---------------------------------------------------------------------------------------------
-DECLARE @tableHTML  NVARCHAR(MAX), @subjectMSG NVARCHAR(MAX), @dataInicial VARCHAR(MAX),@dataFim VARCHAR(MAX) 
-
-SET @dataInicial =  (select convert (varchar,GETDATE()- 31,103))
-set @dataFim =	(select convert (varchar,GETDATE()- 1,103)) + ' 23:59:59'
-SET @subjectMSG = 'DRE referente período: '
-set @subjectMSG = @subjectMSG +  + @dataInicial +' até ' + @dataFim
-
-SET @tableHTML =
-		N'<head>
-		<style type="text/css">
-			.alert{
-				background-color: #b9c9fe;
-				padding: 15px;
-				color: #039;
-			}
-			#box-table
-			{
-			font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-			font-size: 12px;
-			text-align: left;
-			border-collapse: collapse;
-			border-top: 7px solid #9baff1;
-			border-bottom: 7px solid #9baff1;
-			}
-			#box-table th
-			{
-			font-size: 13px;
-			font-weight: normal;
-			background: #b9c9fe;
-			border-right: 2px solid #9baff1;
-			border-left: 2px solid #9baff1;
-			border-bottom: 2px solid #9baff1;
-			color: #039;
-			}
-			#box-table td
-			{
-			border-right: 1px solid #aabcfe;
-			border-left: 1px solid #aabcfe;
-			border-bottom: 1px solid #aabcfe;
-			padding: 4px;
-			color: #039;
-			}
-
-			table > tbody > td:last-child {
-				text-align: center;
-			}
-
-			#box-table >tr:nth-child(odd) { background-color:black; }
-			#box-table >tr:nth-child(even) { background-color:red; } 
-		</style>
-	</head>
-	
-    <table  id="box-table">
-	 <thead>
-	 <tr>
-		 <th colspan="6" class="alert">
-			Demonstrativo de Resultado Empresa Aconstrular
-			 <br> Perído: '	+ @dataInicial + ' até ' + @dataFim +' <br> Data de Emissão: ' +  convert(varchar,GETDATE(),104) +
-	 + N'</th>
-	 </tr>
-		<tr>
-			<th>Filial</th>
-			<th>Tipo</th>
-			<th>Sinal</th>
-			<th>Hierarquia</th>
-			<th>Valor</th>
-		</tr>
-	 </thead>
-	 <tbody>' +
-    CAST ( ( 
-			select 
-				td = Filial,'',
-				td = Tipo,'',
-				td = Sinal,'',	
-				td = Hierarquia, '',
-				td = cast(sum(valor) as decimal(15,2)), ''
-			from AC_DRE_RESULT 
-			--where 
-			--	filial in('04','01') and 
-			--	data between @dataInicial and @dataFim
-			group by 
-				Tipo, Hierarquia, Sinal, filial
-			order by filial, Hierarquia
-
-              FOR XML PATH('tr'), TYPE   
-    ) AS NVARCHAR(MAX) ) +  
-    N'
-	</table> 
-	</tbody> ' ;   
-
-EXEC msdb.dbo.sp_send_dbmail  
-    @profile_name = 'DBEmail Tobias',  
-    @recipients = 'tobiasitin@gmail.com',  
-	--@copy_recipients = 'infoaconstrular@gmail.com',
-	--@copy_recipients = 'alexaconstrular@gmail.com',
-    @subject = @subjectMSG,  
-	@body =  @tableHTML, 
-	@body_format='HTML'; 
-GO
-*/
-
 ------ Limpar o cache
 ----------------------------------------------------------------------------
 GO
@@ -1290,7 +1187,7 @@ DROP TABLE #tmpDRE_Vendas
 DROP TABLE #tmpDRE_Vendas_itens
 DROP TABLE #tmpDRE_Constrular_Email
 DROP TABLE #tempRateio
-
+GO
 
 
 
