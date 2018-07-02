@@ -1,0 +1,47 @@
+Script para recuperação de falha
+
+Falha: 
+	Banco de dados BDENTER instância AC01BD01\SRV14PR inoperante ou impossibilidade 
+	de recuperação imediata do AC01BD01 ou instância AC01BD01\SRV14PR.
+	
+Procedimentos:
+Ativação servidor Secundário:
+--------------------------------
+	0 - Se possível fazer bkp de log do servidor primário 
+	1 - Transferir esse backup para o servidor secundário
+	2 - Verifcar ultimo log restaurado no servidor secundário 
+	3 - Transferir para servidor secundário ultimos logs gerados no servidor primário 
+	    após ultimo log restaurado no servidor primário.
+	4 - Se possível desativar todos os Jobs criados no servidor primário
+	5 - Desativar todos os Jobs refrente ao LS no servidor Secundário
+	6 - Aguradar 6 minutos para iniciar o processo de reversão do modo de recuperação
+	7 - Restaurar ultimos logs de transação após o ultimo log restaurado no servidor secundário
+		no modo WITH RECOVERY
+		==> Marque a opção Fechar conexões existentes 
+	8 - Incluir servidor secundário ao NLB
+	9 - Remover servidor primário do NLB
+	10 - Ativar planos de manutenção no servidor secundário, exceto os planos refrente ao LS
+	11 - Desativar todos os Jobs no servidor primário
+	12 - Testar sistema
+	13 - Liberar usuários
+
+Reativação servidor Primário:
+--------------------------------
+Solução servidor primário	
+	1 - Analisar causa do problema
+	2 - Aplicar correções
+	3 - Fazer backup Full servidor secundário
+	4 - Transferir backup para servidor primário
+	5 - Restaurar backup servidor primário
+	6 - Reverter planos de manutenção
+	7 - Desconectar todos usuários do sistema
+	8 - Reverter NLB e deixar acesso indisponível
+	9 - Fazer backup de log de transação do servidor secundário
+	10- Transferir backups de log de transação para servidor primário
+	11- Restaurar backup de log
+	12 - Testar sistema
+	13 - Ativar NLB
+	14 - Liberar usuários
+	15 - Reiniciar LS em WITH STANDBY
+		 ==> Marque a opção Fechar conexões existentes 
+	
